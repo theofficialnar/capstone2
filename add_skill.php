@@ -12,7 +12,6 @@ function display_content(){
 	echo '<div class="container">
 		<form method="POST" action="">
 			<div class="input-field">
-<<<<<<< HEAD
 				<select name="class">
 					<option value="" disabled selected>Choose an option</option>
 					<option>Novice</option>
@@ -26,13 +25,10 @@ function display_content(){
 				<label>Class</label>
 			</div>
 			<div class="input-field">
-=======
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 				<input type="text" name="skill_name" id="skill_name">
 				<label for="skill_name">Skill Name</label>
 			</div>
 			<div class="input-field">
-<<<<<<< HEAD
 				<textarea name="description" id="description" class="materialize-textarea"></textarea>
 				<label for="description">Description</label>
 			</div>
@@ -51,26 +47,19 @@ function display_content(){
 					<option>10</option>
 				</select>
 				<label>Max Level</label>
-=======
-				<input type="text" name="description" id="description">
-				<label for="description">Description</label>
 			</div>
 			<div class="input-field">
 				<input type="text" name="class" id="class">
 				<label for="class">Class</label>
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 			</div>
 			<div class="input-field">
 				<input type="text" name="required_for" id="required_for">
 				<label for="required_for">Required for</label>
 			</div>
-<<<<<<< HEAD
-=======
 			<div class="input-field">
 				<input type="text" name="max_level" id="max_level">
 				<label for="max_level">Max Level</label>
 			</div>
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 			<div class="file-field input-field">
 				<div class="btn">
 					<span>File</span>

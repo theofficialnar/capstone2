@@ -3,11 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
 -- Generation Time: Jun 28, 2017 at 02:33 PM
-=======
 -- Generation Time: Jun 28, 2017 at 10:46 AM
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 7.1.2
 
@@ -103,7 +100,6 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (34, 'Charge Arrow', 'Ranged attack at 150% ATK. The target is pushed back 6 cells. Only 1 arrow is consumed. ', 'Archer', 'None', 1, 'ro_skill_icons/ac_chargearrow.svg'),
 (35, 'Divine Protection', 'Reduces damage from Undead property and Demon family monsters by (3*SkillLV)+[0.04*(BaseLV + 1)]. Damage is subtracted after DEF reductions.\r\nDoes not work against Players.', 'Acolyte', 'Demon Bane (Lv 3), Angelus (Lv 3), Blessing (Lv 5), Iron Hand (Lv 10, Monk)', 10, 'ro_skill_icons/al_dp.svg'),
 (36, 'Demon Bane', 'Increases damage against Undead property and Demon family monsters by (3*SkillLV)+[0.05*(BaseLV + 1)]. Damage ignores DEF reduction from armor, but not from VIT. The skill bonus increases with higher character BaseLV. Does not work against Players.', 'Acolyte', 'Signum Crucis (Lv 3), Iron Hand (Lv 10, Monk), Mana Recharge (Lv 10, High Priest)', 10, 'ro_skill_icons/al_demonbane.svg'),
-<<<<<<< HEAD
 (37, 'Ruwach ', 'Reveals Hiding and Cloaking players and monsters within range. Revealed players and monsters are hit with a holy element Magic attack with a strength of MATK*1.45.', 'Acolyte', 'Teleportation (Lv 1), Lex Divina (Lv 1, Priest)', 1, 'ro_skill_icons/al_ruwach.svg'),
 (38, 'Pneuma', 'Creates a 3x3 cell cloud (although the animation only appears to cover the center cell!) around the target cell that blocks all ranged Physical attacks. This means that it also blocks the bow attacks of players, so take care not to prevent any Hunters or ', 'Acolyte', 'None', 10, 'ro_skill_icons/al_pneuma.svg'),
 (39, 'Teleportation', 'At level 1, you can teleport to a random spot on the same map. At level 2, you can also choose to teleport to your save point. When Teleportation is actually cast, a window will appear showing the available options (including cancel). You must actually se', 'Acolyte', 'Warp Portal (Lv 2)', 2, 'ro_skill_icons/al_teleport.svg'),
@@ -116,9 +112,7 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (46, 'Angelus', 'Increases the DEF from VIT of all party members on screen by (5*SkillLV)%. Does not increase anything else that has to do with VIT at all. ', 'Acolyte', 'Kyrie Eleison (Lv 2, Priest), Assumptio (Lv 1, High Priest)', 10, 'ro_skill_icons/al_angelus.svg'),
 (47, 'Blessing', 'Increases STR, DEX and INT of the target by 1*SkillLV and removes any Curse effect.\r\nIf used on Undead property or Demon family monsters, it halves their STR, DEX and INT, regardless of skill level.\r\nThis \"Bless Curse\" or \"Offensive Blessing\" will lower t', 'Acolyte', 'Clementia (Lv 1, Arch Bishop)', 10, 'ro_skill_icons/al_blessing.svg'),
 (48, 'Cure', 'Cures Blind, Confusion and Silence (limitation: you can\'t cure yourself from Silence since you can\'t cast while Silenced).\r\nDoes not work against Players.', 'Acolyte', 'None', 1, 'ro_skill_icons/al_cure.svg');
-=======
 (37, 'Ruwach ', 'Reveals Hiding and Cloaking players and monsters within range. Revealed players and monsters are hit with a holy element Magic attack with a strength of MATK*1.45.', 'Acolyte', 'Teleportation (Lv 1), Lex Divina (Lv 1, Priest)', 1, 'ro_skill_icons/al_ruwach.svg');
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 
 -- --------------------------------------------------------
 
@@ -152,12 +146,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`) VALUES
-<<<<<<< HEAD
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin'),
 (5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'regular');
-=======
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin');
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 
 --
 -- Indexes for dumped tables
@@ -216,11 +207,8 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-<<<<<<< HEAD
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-=======
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 --
 -- AUTO_INCREMENT for table `skill_calcs`
 --
@@ -230,11 +218,8 @@ ALTER TABLE `skill_calcs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-=======
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
->>>>>>> b430b21831e472d7444dba0f7c3e16ad7ccec0a9
 --
 -- Constraints for dumped tables
 --
