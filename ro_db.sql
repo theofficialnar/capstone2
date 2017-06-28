@@ -3,10 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2017 at 02:33 PM
--- Generation Time: Jun 28, 2017 at 10:46 AM
+-- Generation Time: Jun 28, 2017 at 03:07 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -68,16 +67,16 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (2, 'First Aid', 'Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.', 'Novice', 'None', 1, 'ro_skill_icons/nv_firstaid.svg'),
 (3, 'Trick Dead', 'You lay on the ground like you were dead and aggressive monsters won\'t target you. You can\'t recover HP or SP while pretending to be dead. You can Trick Dead as long as you want.\r\nCasting Trick Dead a second time cancels it, letting you move again. Once y', 'Novice', 'None', 1, 'ro_skill_icons/nv_trickdead.svg'),
 (4, 'Sword Mastery', 'Increases damage with Daggers and Swords (1-handed only) by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks. ', 'Swordsman', 'Two-Handed Sword Mastery (Lv 1)', 10, 'ro_skill_icons/sm_sword.svg'),
-(5, 'Two-Handed Sword Mastery', '	Increases damage with Two-Handed Swords by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks. ', 'Swordsman', 'Two-Hand Quicken (Lv 1, Knight), Auto Counter (Lv 1, Knight), Bowling Bash (Lv 5, Knight), Parrying (Lv 10, Lord Knight), Aura Blade (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_twohand.svg'),
+(5, 'Two-Handed Sword Mastery', ' Increases damage with Two-Handed Swords by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks. ', 'Swordsman', 'Two-Hand Quicken (Lv 1, Knight), Auto Counter (Lv 1, Knight), Bowling Bash (Lv 5, Knight), Parrying (Lv 10, Lord Knight), Aura Blade (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_twohand.svg'),
 (6, 'Increase Recuperative Power', 'Heals ((5*SkillLV) + (Maximum HP*0.002*SkillLV)) HP per 10 full seconds spent standing on one cell. Increases the effect of healing items by (10*SkillLV)% (cumulative with the increase from VIT).', 'Swordsman', 'Concentration (Lv 5, Lord Knight), Tension Relax (Lv 10, Lord Knight)', 10, 'ro_skill_icons/sm_recovery.svg'),
 (7, 'Bash', 'A melee attack with ATK equal to (100+30*SkillLV)%. There is a HIT bonus of 5*SkillLV. If the character has the Fatal Blow skill as well, levels 6-10 will add a chance to Stun of 5%*(Bash SkillLV - 5) plus a bonus depending on BaseLV.', 'Swordsman', 'Magnum Break (Lv 5), Bowling Bash (Lv 10, Knight)', 10, 'ro_skill_icons/sm_bash.svg'),
 (8, 'Provoke', 'Lowers the enemy DEF and VIT DEF by (5+5*SkillLV)% and increases their ATK by (2+3*SkillLV)%. Undead property and Boss monsters are not affected. ', 'Swordsman', 'Endure (Lv 5), Tension Relax (Lv 5, Lord Knight), Parrying (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_provoke.svg'),
 (9, 'Magnum Break', '5x5 cells, Fire property splash attack with ATK of (100+20*SkillLV)% and a +10*SkillLV bonus to HIT. Enemies hit by the attack are pushed back 2 cells. Drains 15 HP per use, but cannot kill character. After usage, it adds a 20% Fire-elemental bonus to ATK', 'Swordsman', 'Bowling Bash (Lv 3, Knight), Aura Blade (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_magnum.svg'),
-(10, 'Endure ', '	Makes character skip \"flinch\" animation when hit, thus preventing \"stun lock\". You still take full damage from hits, but you keep on doing whatever you were doing without pause. A sitting character does not stand up when hit while affected by Endure. The', 'Swordsman', 'Riding (Lv 1, Knight), Riding (Lv 1, Crusader), Tension Relax (Lv 3, Lord Knight), Sacrifice (Lv 1, Paladin), Pressure (Lv 5, Paladin)', 10, 'ro_skill_icons/sm_endure.svg'),
+(10, 'Endure ', ' Makes character skip \"flinch\" animation when hit, thus preventing \"stun lock\". You still take full damage from hits, but you keep on doing whatever you were doing without pause. A sitting character does not stand up when hit while affected by Endure. The', 'Swordsman', 'Riding (Lv 1, Knight), Riding (Lv 1, Crusader), Tension Relax (Lv 3, Lord Knight), Sacrifice (Lv 1, Paladin), Pressure (Lv 5, Paladin)', 10, 'ro_skill_icons/sm_endure.svg'),
 (11, 'Moving HP Recovery', 'Character regenerates HP while walking. Rate is 50% of standing recovery, and not affected by Increase Recuperative Power skill. ', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_movingrecovery.svg'),
 (12, 'Fatal Blow', 'Adds chance of causing stun on target when using Bash level 6 or above. Base Stun Chance is 5%*(Bash SkillLV - 5) with a further modifier from character BaseLV and a minimum chance of 0%.', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_fatalblow.svg'),
 (13, 'Auto Berserk', 'When your HP goes below 25%, you gain the effect of Provoke L10 on yourself. That means +32% ATK and -55% VIT DEF. The effect lasts until the character returns to more than 25% HP. The skill can be set to activate or not. The skill will even function afte', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_autoberserk.svg'),
-(14, '	Increase Spiritual Power', 'Recovers (Maximum SP/500 + 3)*SkillLV SP per 10 full seconds when standing still and increases the efficiency of SP recovering items by +2% per SkillLV.', 'Magician', 'Magic Crasher (Lv 1, High Wizard), Soul Drain (Lv 5, High Wizard), Health Conversion (Lv 1, Professor), Mind Breaker (Lv 3, Professor)', 10, 'ro_skill_icons/mg_srecovery.svg'),
+(14, '  Increase Spiritual Power', 'Recovers (Maximum SP/500 + 3)*SkillLV SP per 10 full seconds when standing still and increases the efficiency of SP recovering items by +2% per SkillLV.', 'Magician', 'Magic Crasher (Lv 1, High Wizard), Soul Drain (Lv 5, High Wizard), Health Conversion (Lv 1, Professor), Mind Breaker (Lv 3, Professor)', 10, 'ro_skill_icons/mg_srecovery.svg'),
 (15, 'Sight', 'Nullifies the Hide, Tunnel Drive and Cloaking effects within range.', 'Magician', 'Fire Wall (Lv 1), Sightrasher (Lv 1, Wizard)', 1, 'ro_skill_icons/mg_sight.svg'),
 (16, 'Napalm Beat', 'Hits every Enemy in a 3x3 area around the target for an MATK of (70+10*SkillLV)% using Ghost Element. This damage is spread equally between all targets. For example, if 3 monsters are hit, then each takes 1/3rd of the damage a single target would take.', 'Magician', 'Safety Wall (Lv 7), Soul Strike (Lv 4), Jupitel Thunder (Lv 1, Wizard), Napalm Vulcan (Lv 5, High Wizard)', 10, 'ro_skill_icons/mg_napalmbeat.svg'),
 (17, 'Safety Wall', 'Creates a Safety Wall effect in 1 cell. The effect will protect anyone standing on that cell from 1+SkillLV Physical attacks. The attacks do not have to hit to count against the total number of protected hits. Multiple Safety Walls do not stack on one cel', 'Magician', 'None', 10, 'ro_skill_icons/mg_safetywall.svg'),
@@ -112,7 +111,6 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (46, 'Angelus', 'Increases the DEF from VIT of all party members on screen by (5*SkillLV)%. Does not increase anything else that has to do with VIT at all. ', 'Acolyte', 'Kyrie Eleison (Lv 2, Priest), Assumptio (Lv 1, High Priest)', 10, 'ro_skill_icons/al_angelus.svg'),
 (47, 'Blessing', 'Increases STR, DEX and INT of the target by 1*SkillLV and removes any Curse effect.\r\nIf used on Undead property or Demon family monsters, it halves their STR, DEX and INT, regardless of skill level.\r\nThis \"Bless Curse\" or \"Offensive Blessing\" will lower t', 'Acolyte', 'Clementia (Lv 1, Arch Bishop)', 10, 'ro_skill_icons/al_blessing.svg'),
 (48, 'Cure', 'Cures Blind, Confusion and Silence (limitation: you can\'t cure yourself from Silence since you can\'t cast while Silenced).\r\nDoes not work against Players.', 'Acolyte', 'None', 1, 'ro_skill_icons/al_cure.svg');
-(37, 'Ruwach ', 'Reveals Hiding and Cloaking players and monsters within range. Revealed players and monsters are hit with a holy element Magic attack with a strength of MATK*1.45.', 'Acolyte', 'Teleportation (Lv 1), Lex Divina (Lv 1, Priest)', 1, 'ro_skill_icons/al_ruwach.svg');
 
 -- --------------------------------------------------------
 
@@ -148,7 +146,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`) VALUES
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin'),
 (5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'regular');
-(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -208,7 +205,6 @@ ALTER TABLE `ratings`
 --
 ALTER TABLE `skills`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
 -- AUTO_INCREMENT for table `skill_calcs`
 --
@@ -219,7 +215,6 @@ ALTER TABLE `skill_calcs`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
