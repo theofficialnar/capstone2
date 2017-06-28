@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2017 at 03:33 PM
+-- Generation Time: Jun 28, 2017 at 10:46 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,160 +23,95 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `acolyte`
---
-
-CREATE TABLE `acolyte` (
-  `id` int(10) NOT NULL,
-  `d_protect` int(10) NOT NULL,
-  `d_bane` int(10) NOT NULL,
-  `ruwach` int(10) NOT NULL,
-  `pneuma` int(10) NOT NULL,
-  `tele` int(10) NOT NULL,
-  `w_portal` int(10) NOT NULL,
-  `heal` int(10) NOT NULL,
-  `i_agi` int(10) NOT NULL,
-  `d_agi` int(10) NOT NULL,
-  `a_benedicta` int(10) NOT NULL,
-  `s_crucis` int(10) NOT NULL,
-  `angelus` int(10) NOT NULL,
-  `bless` int(10) NOT NULL,
-  `cure` int(10) NOT NULL,
-  `h_light` int(10) NOT NULL,
-  `build_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `archer`
---
-
-CREATE TABLE `archer` (
-  `id` int(10) NOT NULL,
-  `o_eye` int(10) NOT NULL,
-  `v_eye` int(10) NOT NULL,
-  `atten_con` int(10) NOT NULL,
-  `d_strafe` int(10) NOT NULL,
-  `a_shower` int(10) NOT NULL,
-  `m_arrow` int(10) NOT NULL,
-  `c_arrow` int(10) NOT NULL,
-  `build_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `builds`
 --
 
 CREATE TABLE `builds` (
   `id` int(10) NOT NULL,
-  `acct_id` int(10) NOT NULL
+  `acct_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `magician`
+-- Table structure for table `ratings`
 --
 
-CREATE TABLE `magician` (
+CREATE TABLE `ratings` (
   `id` int(10) NOT NULL,
-  `sp_rec` int(10) NOT NULL,
-  `sight` int(10) NOT NULL,
-  `nap_beat` int(10) NOT NULL,
-  `s_wall` int(10) NOT NULL,
-  `soul_strike` int(10) NOT NULL,
-  `c_bolt` int(10) NOT NULL,
-  `f_diver` int(10) NOT NULL,
-  `s_curse` int(10) NOT NULL,
-  `f_ball` int(10) NOT NULL,
-  `f_wall` int(10) NOT NULL,
-  `f_bolt` int(10) NOT NULL,
-  `l_bolt` int(10) NOT NULL,
-  `t_storm` int(10) NOT NULL,
-  `e_coat` int(10) NOT NULL,
-  `build_id` int(10) NOT NULL
+  `build_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `merchant`
+-- Table structure for table `skills`
 --
 
-CREATE TABLE `merchant` (
-  `id` int(11) NOT NULL,
-  `e_weight` int(11) NOT NULL,
-  `discount` int(11) NOT NULL,
-  `overcharge` int(11) NOT NULL,
-  `pcart` int(11) NOT NULL,
-  `identify` int(11) NOT NULL,
-  `vend` int(11) NOT NULL,
-  `mammo` int(11) NOT NULL,
-  `c_revo` int(11) NOT NULL,
-  `c_cart` int(11) NOT NULL,
-  `loud_exclam` int(11) NOT NULL,
-  `buying` int(11) NOT NULL,
-  `c_deco` int(11) NOT NULL,
-  `build_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `novice`
---
-
-CREATE TABLE `novice` (
+CREATE TABLE `skills` (
   `id` int(10) NOT NULL,
-  `basic` int(10) NOT NULL,
-  `f_aid` int(10) NOT NULL,
-  `t_dead` int(10) NOT NULL,
-  `build_id` int(10) NOT NULL
+  `skill_name` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `class` varchar(255) NOT NULL,
+  `required_for` varchar(255) NOT NULL,
+  `max_level` int(10) NOT NULL,
+  `icon` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `skills`
+--
+
+INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`, `max_level`, `icon`) VALUES
+(1, 'Basic Skill', 'Enable to apply Basic Interface Skills.', 'Novice', 'All first job skills.', 9, 'ro_skill_icons/nv_basic.svg'),
+(2, 'First Aid', 'Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.', 'Novice', 'None', 1, 'ro_skill_icons/nv_firstaid.svg'),
+(3, 'Trick Dead', 'You lay on the ground like you were dead and aggressive monsters won\'t target you. You can\'t recover HP or SP while pretending to be dead. You can Trick Dead as long as you want.\r\nCasting Trick Dead a second time cancels it, letting you move again. Once y', 'Novice', 'None', 1, 'ro_skill_icons/nv_trickdead.svg'),
+(4, 'Sword Mastery', 'Increases damage with Daggers and Swords (1-handed only) by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks. ', 'Swordsman', 'Two-Handed Sword Mastery (Lv 1)', 10, 'ro_skill_icons/sm_sword.svg'),
+(5, 'Two-Handed Sword Mastery', '	Increases damage with Two-Handed Swords by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks. ', 'Swordsman', 'Two-Hand Quicken (Lv 1, Knight), Auto Counter (Lv 1, Knight), Bowling Bash (Lv 5, Knight), Parrying (Lv 10, Lord Knight), Aura Blade (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_twohand.svg'),
+(6, 'Increase Recuperative Power', 'Heals ((5*SkillLV) + (Maximum HP*0.002*SkillLV)) HP per 10 full seconds spent standing on one cell. Increases the effect of healing items by (10*SkillLV)% (cumulative with the increase from VIT).', 'Swordsman', 'Concentration (Lv 5, Lord Knight), Tension Relax (Lv 10, Lord Knight)', 10, 'ro_skill_icons/sm_recovery.svg'),
+(7, 'Bash', 'A melee attack with ATK equal to (100+30*SkillLV)%. There is a HIT bonus of 5*SkillLV. If the character has the Fatal Blow skill as well, levels 6-10 will add a chance to Stun of 5%*(Bash SkillLV - 5) plus a bonus depending on BaseLV.', 'Swordsman', 'Magnum Break (Lv 5), Bowling Bash (Lv 10, Knight)', 10, 'ro_skill_icons/sm_bash.svg'),
+(8, 'Provoke', 'Lowers the enemy DEF and VIT DEF by (5+5*SkillLV)% and increases their ATK by (2+3*SkillLV)%. Undead property and Boss monsters are not affected. ', 'Swordsman', 'Endure (Lv 5), Tension Relax (Lv 5, Lord Knight), Parrying (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_provoke.svg'),
+(9, 'Magnum Break', '5x5 cells, Fire property splash attack with ATK of (100+20*SkillLV)% and a +10*SkillLV bonus to HIT. Enemies hit by the attack are pushed back 2 cells. Drains 15 HP per use, but cannot kill character. After usage, it adds a 20% Fire-elemental bonus to ATK', 'Swordsman', 'Bowling Bash (Lv 3, Knight), Aura Blade (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_magnum.svg'),
+(10, 'Endure ', '	Makes character skip \"flinch\" animation when hit, thus preventing \"stun lock\". You still take full damage from hits, but you keep on doing whatever you were doing without pause. A sitting character does not stand up when hit while affected by Endure. The', 'Swordsman', 'Riding (Lv 1, Knight), Riding (Lv 1, Crusader), Tension Relax (Lv 3, Lord Knight), Sacrifice (Lv 1, Paladin), Pressure (Lv 5, Paladin)', 10, 'ro_skill_icons/sm_endure.svg'),
+(11, 'Moving HP Recovery', 'Character regenerates HP while walking. Rate is 50% of standing recovery, and not affected by Increase Recuperative Power skill. ', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_movingrecovery.svg'),
+(12, 'Fatal Blow', 'Adds chance of causing stun on target when using Bash level 6 or above. Base Stun Chance is 5%*(Bash SkillLV - 5) with a further modifier from character BaseLV and a minimum chance of 0%.', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_fatalblow.svg'),
+(13, 'Auto Berserk', 'When your HP goes below 25%, you gain the effect of Provoke L10 on yourself. That means +32% ATK and -55% VIT DEF. The effect lasts until the character returns to more than 25% HP. The skill can be set to activate or not. The skill will even function afte', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_autoberserk.svg'),
+(14, '	Increase Spiritual Power', 'Recovers (Maximum SP/500 + 3)*SkillLV SP per 10 full seconds when standing still and increases the efficiency of SP recovering items by +2% per SkillLV.', 'Magician', 'Magic Crasher (Lv 1, High Wizard), Soul Drain (Lv 5, High Wizard), Health Conversion (Lv 1, Professor), Mind Breaker (Lv 3, Professor)', 10, 'ro_skill_icons/mg_srecovery.svg'),
+(15, 'Sight', 'Nullifies the Hide, Tunnel Drive and Cloaking effects within range.', 'Magician', 'Fire Wall (Lv 1), Sightrasher (Lv 1, Wizard)', 1, 'ro_skill_icons/mg_sight.svg'),
+(16, 'Napalm Beat', 'Hits every Enemy in a 3x3 area around the target for an MATK of (70+10*SkillLV)% using Ghost Element. This damage is spread equally between all targets. For example, if 3 monsters are hit, then each takes 1/3rd of the damage a single target would take.', 'Magician', 'Safety Wall (Lv 7), Soul Strike (Lv 4), Jupitel Thunder (Lv 1, Wizard), Napalm Vulcan (Lv 5, High Wizard)', 10, 'ro_skill_icons/mg_napalmbeat.svg'),
+(17, 'Safety Wall', 'Creates a Safety Wall effect in 1 cell. The effect will protect anyone standing on that cell from 1+SkillLV Physical attacks. The attacks do not have to hit to count against the total number of protected hits. Multiple Safety Walls do not stack on one cel', 'Magician', 'None', 10, 'ro_skill_icons/mg_safetywall.svg'),
+(18, 'Soul Strike', 'Hits the target with (1+SkillLV/2) bolts for 1*MATK using Ghost Element. Does extra 5% damage per SkillLV to Undead property Monsters.', 'Magician', 'Safety Wall (Lv 5), Soul Drain (Lv 7, High Wizard)', 10, 'ro_skill_icons/mg_soulstrike.svg'),
+(19, 'Cold Bolt', 'Hits the targeted enemy with 1 Water property Bolt per SkillLV for 1*MATK damage each.', 'Magician', 'Frost Diver (Lv 5), Water Ball (Lv 1, Wizard), Frost Weapon (Lv 1, Sage)', 10, 'ro_skill_icons/mg_coldbolt.svg'),
+(20, 'Frost Diver', 'Hits the target for an MATK of (100+10*SkillLV)% Water Element. In addition, has a (35+3*SkillLV)% chance of causing the Frozen status to the target. Undead property and Boss monsters cannot be Frozen. Water and Fire element monsters have a greatly reduce', 'Magician', 'Ice Wall (Lv 1, Wizard), Storm Gust (Lv 1, Wizard)', 10, 'ro_skill_icons/mg_frostdiver.svg'),
+(21, 'Stone Curse', 'Has a (20+4*SkillLV)% chance of causing the Stone Curse effect to the targeted enemy. The Stone Curse effect changes the targets element into Earth 1, gives +25% MDEF and -50% Def and reduces the targets HP by 1% of Maximum HP every 5 seconds (cannot drop', 'Magician', 'Ice Wall (Lv 1, Wizard), Earth Spike (Lv 1, Wizard), Seismic Weapon (Lv 1, Sage)', 10, 'ro_skill_icons/mg_stonecurse.svg'),
+(22, 'Fire Ball', 'Hits every enemy in a 5x5 area around the target with an MATK of (70+10*SkillLV)% and Fire Element. After SkillLV 6, it has a reduced cast / after-Cool Down.', 'Magician', 'Fire Wall (Lv 5)', 10, 'ro_skill_icons/mg_fireball.svg'),
+(23, 'Fire Wall', 'Creates 3 cells of the Fire Wall effect in a line perpendicular to the line between the caster and the targeted cell. Each cell can deliver up to 4+SkillLV Fire Element hits at MATK*0.5 before its effect is drained. When cast diagonal a wall of two rows c', 'Magician', 'Fire Pillar (Lv 1, Wizard)', 10, 'ro_skill_icons/mg_firewall.svg'),
+(24, 'Fire Bolt', 'Hits the targeted enemy with 1 Fire Element Bolt per SkillLV for 1*MATK each.', 'Magician', 'Fire Ball (Lv 4), Flame Launcher (Lv 1, Sage)', 10, 'ro_skill_icons/mg_firebolt.svg'),
+(25, 'Lightning Bolt', 'Hits the targeted enemy with 1 Wind Element Bolt per SkillLV for 1*MATK each.', 'Magician', 'Thunder Storm (Lv 4), Sightrasher (Lv 1, Wizard), Jupitel Thunder (Lv 1, Wizard), Water Ball (Lv 1, Wizard), Lightning Loader (Lv 1, Sage)', 10, 'ro_skill_icons/mg_lightningbolt.svg'),
+(26, 'Thunder Storm', 'Hits every Enemy in a 5x5 area around the targeted cell with 1 Wind Element Bolt per level at a rate of 1 bolt every 0.2 seconds. Each bolt does 0.8*MATK Wind element damage.', 'Magician', 'Meteor Storm (Lv 1, Wizard), Lord of Vermillion (Lv 1, Wizard)', 10, 'ro_skill_icons/mg_thunderstorm.svg'),
+(27, 'Energy Coat', 'Reduces damage from Physical attacks (punching, weapons and skills using weapons) by draining SP. Damage reduction is better and SP lost is higher with higher SP, according to the following table: % of SP Remaining, % of Damage Reduction, % of SP Used.', 'Magician', 'None', 1, 'ro_skill_icons/mg_energycoat.svg'),
+(28, 'Owl\'s Eye', 'Increases DEX by 1*SkillLV.', 'Archer', 'Vulture\'s Eye (Lv 3), True Sight (Lv 10, Sniper)', 10, 'ro_skill_icons/ac_owl.svg'),
+(29, 'Vulture\'s Eye', 'Increases range with bows by 1*SkillLV cells and increases HIT by 1 per SkillLV.', 'Archer', 'Attention Concentrate (Lv 1), True Sight (Lv 10, Sniper), Falcon Assault (Lv 5, Sniper)', 10, 'ro_skill_icons/ac_vulture.svg'),
+(30, 'Attention Concentrate', 'Increases DEX and AGI of the casting character by (2+1*SkillLV)%. Only affects DEX/AGI from base stat, job bonus, armor and Owl\'s Eye. Does not include cards. Detects hidden and cloaked characters within a 3 cells range. ', 'Archer', 'Detecting (Lv 1, Hunter), True Sight (Lv 10, Sniper), Sharp Shooting (Lv 10, Sniper), Wind Walk (Lv 9, Sniper), Tarot Card of Fate (Lv 10, Clown), Wand of Hermode (Lv 10, Clown), Marionette Control (Lv 5, Clown), Moonlit Water Mill (Lv 5, Clown), Tarot Ca', 10, 'ro_skill_icons/ac_concentration.svg'),
+(31, 'Double Strafing', 'Ranged attack, that fires two arrows and hits with an ATK of (180+20*SkillLV)%. Requires an equipped bow. Only 1 arrow is consumed. ', 'Archer', 'Arrow Shower (Lv 5), Beast Strafing (Lv 10, Hunter), Sharp Shooting (Lv 5, Sniper), Arrow Vulcan (Lv 5, Clown), Arrow Vulcan (Lv 5, Gypsy)', 10, 'ro_skill_icons/ac_double.svg'),
+(32, 'Arrow Shower', '3x3 cells, ranged splash attack with an ATK of (75+5*SkillLV)%. Enemies hit by the attack are pushed back 2 cells. Requires an equipped bow. Only 1 arrow is consumed.', 'Archer', 'Arrow Vulcan (Lv 5, Clown), Arrow Vulcan (Lv 5, Gypsy)', 10, 'ro_skill_icons/ac_shower.svg'),
+(33, 'Making Arrow', 'Creates arrows from an item. Different items give different amounts and types of arrows. Cannot be used if above 50% weight. ', 'Archer', 'None', 1, 'ro_skill_icons/ac_makingarrow.svg'),
+(34, 'Charge Arrow', 'Ranged attack at 150% ATK. The target is pushed back 6 cells. Only 1 arrow is consumed. ', 'Archer', 'None', 1, 'ro_skill_icons/ac_chargearrow.svg'),
+(35, 'Divine Protection', 'Reduces damage from Undead property and Demon family monsters by (3*SkillLV)+[0.04*(BaseLV + 1)]. Damage is subtracted after DEF reductions.\r\nDoes not work against Players.', 'Acolyte', 'Demon Bane (Lv 3), Angelus (Lv 3), Blessing (Lv 5), Iron Hand (Lv 10, Monk)', 10, 'ro_skill_icons/al_dp.svg'),
+(36, 'Demon Bane', 'Increases damage against Undead property and Demon family monsters by (3*SkillLV)+[0.05*(BaseLV + 1)]. Damage ignores DEF reduction from armor, but not from VIT. The skill bonus increases with higher character BaseLV. Does not work against Players.', 'Acolyte', 'Signum Crucis (Lv 3), Iron Hand (Lv 10, Monk), Mana Recharge (Lv 10, High Priest)', 10, 'ro_skill_icons/al_demonbane.svg'),
+(37, 'Ruwach ', 'Reveals Hiding and Cloaking players and monsters within range. Revealed players and monsters are hit with a holy element Magic attack with a strength of MATK*1.45.', 'Acolyte', 'Teleportation (Lv 1), Lex Divina (Lv 1, Priest)', 1, 'ro_skill_icons/al_ruwach.svg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `swordsman`
+-- Table structure for table `skill_calcs`
 --
 
-CREATE TABLE `swordsman` (
+CREATE TABLE `skill_calcs` (
   `id` int(10) NOT NULL,
-  `sword` int(10) NOT NULL,
-  `two_hand_sword` int(10) NOT NULL,
-  `hp_rec` int(10) NOT NULL,
-  `bash` int(10) NOT NULL,
-  `provoke` int(10) NOT NULL,
-  `m_break` int(10) NOT NULL,
-  `endure` int(10) NOT NULL,
-  `m_hp_rec` int(10) NOT NULL,
-  `f_blow` int(10) NOT NULL,
-  `a_berserk` int(10) NOT NULL,
-  `build_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `thief`
---
-
-CREATE TABLE `thief` (
-  `id` int(10) NOT NULL,
-  `d_attack` int(10) NOT NULL,
-  `i_dodge` int(10) NOT NULL,
-  `steal` int(10) NOT NULL,
-  `hide` int(10) NOT NULL,
-  `envenom` int(10) NOT NULL,
-  `detox` int(10) NOT NULL,
-  `s_sand` int(10) NOT NULL,
-  `b_slide` int(10) NOT NULL,
-  `p_stone` int(10) NOT NULL,
-  `t_stone` int(10) NOT NULL,
-  `build_id` int(10) NOT NULL
+  `skill_id` int(10) DEFAULT NULL,
+  `level` int(10) NOT NULL,
+  `build_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -188,26 +123,21 @@ CREATE TABLE `thief` (
 CREATE TABLE `users` (
   `id` int(10) NOT NULL,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `role` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `acolyte`
---
-ALTER TABLE `acolyte`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `build_id` (`build_id`);
-
---
--- Indexes for table `archer`
---
-ALTER TABLE `archer`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `build_id` (`build_id`);
 
 --
 -- Indexes for table `builds`
@@ -217,38 +147,24 @@ ALTER TABLE `builds`
   ADD KEY `acct_id` (`acct_id`);
 
 --
--- Indexes for table `magician`
+-- Indexes for table `ratings`
 --
-ALTER TABLE `magician`
+ALTER TABLE `ratings`
   ADD PRIMARY KEY (`id`),
   ADD KEY `build_id` (`build_id`);
 
 --
--- Indexes for table `merchant`
+-- Indexes for table `skills`
 --
-ALTER TABLE `merchant`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `build_id` (`build_id`);
+ALTER TABLE `skills`
+  ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `novice`
+-- Indexes for table `skill_calcs`
 --
-ALTER TABLE `novice`
+ALTER TABLE `skill_calcs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `acct_id` (`build_id`);
-
---
--- Indexes for table `swordsman`
---
-ALTER TABLE `swordsman`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `acct_id` (`build_id`);
-
---
--- Indexes for table `thief`
---
-ALTER TABLE `thief`
-  ADD PRIMARY KEY (`id`),
+  ADD KEY `skill_id` (`skill_id`),
   ADD KEY `build_id` (`build_id`);
 
 --
@@ -263,101 +179,52 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `acolyte`
---
-ALTER TABLE `acolyte`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `archer`
---
-ALTER TABLE `archer`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `magician`
+-- AUTO_INCREMENT for table `ratings`
 --
-ALTER TABLE `magician`
+ALTER TABLE `ratings`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `merchant`
+-- AUTO_INCREMENT for table `skills`
 --
-ALTER TABLE `merchant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `skills`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 --
--- AUTO_INCREMENT for table `novice`
+-- AUTO_INCREMENT for table `skill_calcs`
 --
-ALTER TABLE `novice`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `swordsman`
---
-ALTER TABLE `swordsman`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `thief`
---
-ALTER TABLE `thief`
+ALTER TABLE `skill_calcs`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `acolyte`
---
-ALTER TABLE `acolyte`
-  ADD CONSTRAINT `acolyte_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`);
-
---
--- Constraints for table `archer`
---
-ALTER TABLE `archer`
-  ADD CONSTRAINT `archer_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`);
-
---
 -- Constraints for table `builds`
 --
 ALTER TABLE `builds`
-  ADD CONSTRAINT `builds_ibfk_1` FOREIGN KEY (`acct_id`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `builds_ibfk_1` FOREIGN KEY (`acct_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
--- Constraints for table `magician`
+-- Constraints for table `ratings`
 --
-ALTER TABLE `magician`
-  ADD CONSTRAINT `magician_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`);
+ALTER TABLE `ratings`
+  ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `merchant`
+-- Constraints for table `skill_calcs`
 --
-ALTER TABLE `merchant`
-  ADD CONSTRAINT `merchant_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`);
-
---
--- Constraints for table `novice`
---
-ALTER TABLE `novice`
-  ADD CONSTRAINT `novice_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`);
-
---
--- Constraints for table `swordsman`
---
-ALTER TABLE `swordsman`
-  ADD CONSTRAINT `swordsman_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`);
-
---
--- Constraints for table `thief`
---
-ALTER TABLE `thief`
-  ADD CONSTRAINT `thief_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`);
+ALTER TABLE `skill_calcs`
+  ADD CONSTRAINT `skill_calcs_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `skill_calcs_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
