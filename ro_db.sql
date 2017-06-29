@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2017 at 03:07 PM
+-- Generation Time: Jun 29, 2017 at 10:30 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,6 +30,13 @@ CREATE TABLE `builds` (
   `id` int(10) NOT NULL,
   `acct_id` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `builds`
+--
+
+INSERT INTO `builds` (`id`, `acct_id`) VALUES
+(7, 1);
 
 -- --------------------------------------------------------
 
@@ -76,7 +83,7 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (11, 'Moving HP Recovery', 'Character regenerates HP while walking. Rate is 50% of standing recovery, and not affected by Increase Recuperative Power skill. ', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_movingrecovery.svg'),
 (12, 'Fatal Blow', 'Adds chance of causing stun on target when using Bash level 6 or above. Base Stun Chance is 5%*(Bash SkillLV - 5) with a further modifier from character BaseLV and a minimum chance of 0%.', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_fatalblow.svg'),
 (13, 'Auto Berserk', 'When your HP goes below 25%, you gain the effect of Provoke L10 on yourself. That means +32% ATK and -55% VIT DEF. The effect lasts until the character returns to more than 25% HP. The skill can be set to activate or not. The skill will even function afte', 'Swordsman', 'None', 1, 'ro_skill_icons/sm_autoberserk.svg'),
-(14, '  Increase Spiritual Power', 'Recovers (Maximum SP/500 + 3)*SkillLV SP per 10 full seconds when standing still and increases the efficiency of SP recovering items by +2% per SkillLV.', 'Magician', 'Magic Crasher (Lv 1, High Wizard), Soul Drain (Lv 5, High Wizard), Health Conversion (Lv 1, Professor), Mind Breaker (Lv 3, Professor)', 10, 'ro_skill_icons/mg_srecovery.svg'),
+(14, 'Increase Spiritual Power', 'Recovers (Maximum SP/500 + 3)*SkillLV SP per 10 full seconds when standing still and increases the efficiency of SP recovering items by +2% per SkillLV.', 'Magician', 'Magic Crasher (Lv 1, High Wizard), Soul Drain (Lv 5, High Wizard), Health Conversion (Lv 1, Professor), Mind Breaker (Lv 3, Professor)', 10, 'ro_skill_icons/mg_srecovery.svg'),
 (15, 'Sight', 'Nullifies the Hide, Tunnel Drive and Cloaking effects within range.', 'Magician', 'Fire Wall (Lv 1), Sightrasher (Lv 1, Wizard)', 1, 'ro_skill_icons/mg_sight.svg'),
 (16, 'Napalm Beat', 'Hits every Enemy in a 3x3 area around the target for an MATK of (70+10*SkillLV)% using Ghost Element. This damage is spread equally between all targets. For example, if 3 monsters are hit, then each takes 1/3rd of the damage a single target would take.', 'Magician', 'Safety Wall (Lv 7), Soul Strike (Lv 4), Jupitel Thunder (Lv 1, Wizard), Napalm Vulcan (Lv 5, High Wizard)', 10, 'ro_skill_icons/mg_napalmbeat.svg'),
 (17, 'Safety Wall', 'Creates a Safety Wall effect in 1 cell. The effect will protect anyone standing on that cell from 1+SkillLV Physical attacks. The attacks do not have to hit to count against the total number of protected hits. Multiple Safety Walls do not stack on one cel', 'Magician', 'None', 10, 'ro_skill_icons/mg_safetywall.svg'),
@@ -115,15 +122,35 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skill_calcs`
+-- Table structure for table `skill_sims`
 --
 
-CREATE TABLE `skill_calcs` (
+CREATE TABLE `skill_sims` (
   `id` int(10) NOT NULL,
   `skill_id` int(10) DEFAULT NULL,
   `level` int(10) NOT NULL,
   `build_id` int(10) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `skill_sims`
+--
+
+INSERT INTO `skill_sims` (`id`, `skill_id`, `level`, `build_id`) VALUES
+(1, 14, 4, 7),
+(2, 15, 0, 7),
+(3, 16, 4, 7),
+(4, 17, 0, 7),
+(5, 18, 0, 7),
+(6, 19, 0, 7),
+(7, 20, 0, 7),
+(8, 21, 0, 7),
+(9, 22, 3, 7),
+(10, 23, 0, 7),
+(11, 24, 0, 7),
+(12, 25, 4, 7),
+(13, 26, 0, 7),
+(14, 27, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -145,7 +172,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`) VALUES
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin'),
-(5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'regular');
+(5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'regular'),
+(6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'hghghg', 'regular');
 
 --
 -- Indexes for dumped tables
@@ -172,9 +200,9 @@ ALTER TABLE `skills`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `skill_calcs`
+-- Indexes for table `skill_sims`
 --
-ALTER TABLE `skill_calcs`
+ALTER TABLE `skill_sims`
   ADD PRIMARY KEY (`id`),
   ADD KEY `skill_id` (`skill_id`),
   ADD KEY `build_id` (`build_id`);
@@ -194,7 +222,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `ratings`
 --
@@ -206,15 +234,15 @@ ALTER TABLE `ratings`
 ALTER TABLE `skills`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 --
--- AUTO_INCREMENT for table `skill_calcs`
+-- AUTO_INCREMENT for table `skill_sims`
 --
-ALTER TABLE `skill_calcs`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `skill_sims`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
@@ -232,11 +260,11 @@ ALTER TABLE `ratings`
   ADD CONSTRAINT `ratings_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `skill_calcs`
+-- Constraints for table `skill_sims`
 --
-ALTER TABLE `skill_calcs`
-  ADD CONSTRAINT `skill_calcs_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `skill_calcs_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE `skill_sims`
+  ADD CONSTRAINT `skill_sims_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `skill_sims_ibfk_2` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

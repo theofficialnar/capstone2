@@ -11,8 +11,9 @@
 				$_SESSION['username']= $username;
 				$_SESSION['role'] = $role;
 				$_SESSION['loginFlag'] = true;
-				echo '<span id="alert" style="display: none">Log in successful!</span>';
-				alert();
+				$_SESSION['id'] = $id;
+				// echo '<span id="alert" style="display: none">Log in successful! ID: '.$id.'</span>';
+				// alert();
 				header('location: register.php');
 			}
 		}else{

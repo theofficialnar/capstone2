@@ -15,6 +15,7 @@
 		}
 		?>
 	<li><a href="skill_db.php">Skill Database</a></li>
+	<li><a href="skill_sim.php">Skill Simulator</a></li>
 	<li><a href="?logOut">Logout</a></li>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -26,6 +27,7 @@ if(isset($_GET['logOut'])){
 	unset($_SESSION['username']);
 	unset($_SESSION['role']);
 	unset($_SESSION['loginFlag']);
+	unset($_SESSION['id']);
 	header('location: register.php');
 }
 

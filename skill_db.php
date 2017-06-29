@@ -13,7 +13,7 @@ function display_content(){
 		<div class="input-field">
 			<form method="POST" action="">';
 				multiDropdown('class');
-				echo '<input type="submit" name="skillDbSubmit">
+				echo '<input type="submit" name="skillDbSubmit" value="Select" class="btn">
 			</form>
 		</div>';
 		if(isset($_POST['skillDbSubmit'])){

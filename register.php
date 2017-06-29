@@ -33,22 +33,6 @@ function display_content(){
 				</form>
 			</div>
 	</div>';
-
-	if(isset($_POST['registerSubmit'])){
-	$username = $_POST['username'];
-	$email = $_POST['email'];
-	$pw = $_POST['password'];
-	$pw2 = $_POST['pw2'];
-	if($pw == $pw2){
-		$password = sha1($pw);
-		$sql = "INSERT INTO users (username, email, password, role)
-				VALUES ('$username', '$email', '$password', 'regular')";
-		mysqli_query($conn, $sql);
-		echo 'Account successfully registered!<br>Welcome, '.$username;
-	}else{
-		echo 'Passwords do not match. Please try again.';
-		}
-	};
 };
 
 require_once 'template.php';

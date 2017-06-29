@@ -46,7 +46,39 @@
 		$(document).ready(function(){
    				$('.modal').modal();
   			});
+
+		function myFunction(id){
+			document.getElementById("span"+id).innerHTML = counter;	
+		};
+
+		function level(val,id){
+			var skillName = id.substring(3);
+			var maxLevel = document.getElementById("max"+skillName).innerHTML;
+			var max = parseInt(maxLevel,10);
+			var level = document.getElementById("level"+skillName).value;
+			var new_level = parseInt(level,10) + val;
+			document.getElementById("level"+skillName).value = new_level;
+
+			if(new_level == max){
+				document.getElementById("add"+skillName).style.visibility = "hidden";
+			}
+
+			if(new_level < max){
+				document.getElementById("add"+skillName).style.visibility = "visible";
+			}
+
+			if(new_level == 0){
+				document.getElementById("min"+skillName).style.visibility = "hidden";
+			}
+
+			if(new_level > 0){
+				document.getElementById("min"+skillName).style.visibility = "visible";
+			}
+
+			return new_level;
+		}
 	</script>
+		
 
 </body>
 </html>
