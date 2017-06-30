@@ -12,6 +12,9 @@ $(document).ready(function(){
 		$('.20').addClass("disabledbutton");
 		$('.18').addClass("disabledbutton");
 		$('.17').addClass("disabledbutton");
+		$('.29').addClass("disabledbutton");
+		$('.30').addClass("disabledbutton");
+		$('.32').addClass("disabledbutton");
 		});
 
 function myFunction(id){
@@ -44,6 +47,8 @@ function level(val,id){
 	if(new_level > 0){
 		document.getElementById("min"+skillName).style.visibility = "visible";
 	}
+	
+	//Skill Unlock Requirements Section
 	//Endure
 	if($('.hidden8').html() >= 5){
 		$('.10').removeClass("disabledbutton");
@@ -51,6 +56,8 @@ function level(val,id){
 
 	if($('.hidden8').html() < 5){
 		$('.10').addClass("disabledbutton");
+		$('.level10').val(0);
+		$('.hidden10').html(0);
 	}
 
 	//Magnum Break
@@ -60,6 +67,8 @@ function level(val,id){
 
 	if($('.hidden7').html() < 5){
 		$('.9').addClass("disabledbutton");
+		$('.level9').val(0);
+		$('.hidden9').html(0);
 	}
 
 	//Two Hand Sword Mastery
@@ -69,6 +78,8 @@ function level(val,id){
 
 	if($('.hidden4').html() < 1){
 		$('.5').addClass("disabledbutton");
+		$('.level5').val(0);
+		$('.hidden5').html(0);
 	}
 
 	//Thunder Storm
@@ -78,6 +89,8 @@ function level(val,id){
 
 	if($('.hidden25').html() < 4){
 		$('.26').addClass("disabledbutton");
+		$('.level26').val(0);
+		$('.hidden26').html(0);
 	}
 
 	//Fire Wall
@@ -85,8 +98,10 @@ function level(val,id){
 		$('.23').removeClass("disabledbutton");
 	}
 
-	if($('.hidden15').html() < 1 || $('.hidden22').html() < 5){
+	if($('.hidden15').html() < 1 || $('.hidden22').html() < 5 || $('.hidden24').html() < 4){
 		$('.23').addClass("disabledbutton");
+		$('.level23').val(0);
+		$('.hidden23').html(0);
 	}
 
 	//Fire Ball
@@ -96,6 +111,8 @@ function level(val,id){
 
 	if($('.hidden24').html() < 4){
 		$('.22').addClass("disabledbutton");
+		$('.level22').val(0);
+		$('.hidden22').html(0);
 	}
 
 	//Frost Diver
@@ -105,6 +122,8 @@ function level(val,id){
 
 	if($('.hidden19').html() < 5){
 		$('.20').addClass("disabledbutton");
+		$('.level20').val(0);
+		$('.hidden20').html(0);
 	}
 
 	//Soul Strike
@@ -114,6 +133,8 @@ function level(val,id){
 
 	if($('.hidden16').html() < 4){
 		$('.18').addClass("disabledbutton");
+		$('.level18').val(0);
+		$('.hidden18').html(0);
 	}
 
 	//Safety Wall
@@ -123,6 +144,41 @@ function level(val,id){
 
 	if($('.hidden18').html() < 5 || $('.hidden16').html() < 7){
 		$('.17').addClass("disabledbutton");
+		$('.level17').val(0);
+		$('.hidden17').html(0);
+	}
+
+	//Vulture's Eye
+	if($('.hidden28').html() >= 3){
+	$('.29').removeClass("disabledbutton");
+	}
+
+	if($('.hidden28').html() < 3){
+		$('.29').addClass("disabledbutton");
+		$('.level29').val(0);
+		$('.hidden29').html(0);
+	}
+
+	//Attention Concentrate
+	if($('.hidden29').html() >= 1){
+		$('.30').removeClass("disabledbutton");
+	}
+
+	if($('.hidden28').html() < 1 || $('.hidden28').html() < 3){
+		$('.30').addClass("disabledbutton");
+		$('.level30').val(0);
+		$('.hidden30').html(0);
+	}
+
+	//Arrow Shower
+	if($('.hidden31').html() >= 5){
+		$('.32').removeClass("disabledbutton");
+	}
+
+	if($('.hidden31').html() < 5){
+		$('.32').addClass("disabledbutton");
+		$('.level32').val(0);
+		$('.hidden32').html(0);
 	}
 
 	return [new_level, new_hidden];
