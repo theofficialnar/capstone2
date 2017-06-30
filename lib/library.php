@@ -25,15 +25,40 @@ function alert(){
 
 // SKILL SUBMIT
 if(isset($_POST['skillSubmit'])){
-	$skill_name = addslashes($_POST['skill_name']);
-	$description = addslashes($_POST['description']);
+	$skill_name = trim(addslashes($_POST['skill_name']));
+	$description = trim(addslashes($_POST['description']));
 	$class = $_POST['class'];
-	$required_for = addslashes($_POST['required_for']);
-	$max_level = $_POST['max_level'];
+	$required_for = trim(addslashes($_POST['required_for']));
+	$unlock_requirements = trim(addslashes($_POST['unlock_requirements']));
+	$max_level = isset($_POST['max_level']) ? $_POST['max_level'] : 1;
 	$icon = 'ro_skill_icons/' . $_POST['icon'];
+	$quest_skill = isset($_POST['quest_skill']) ? 'Yes' : 'No';
 
-	$sql = "INSERT INTO skills (skill_name, description, class, required_for, max_level, icon)
-			VALUES ('$skill_name', '$description', '$class', '$required_for', '$max_level', '$icon')";
+	// var_dump($skill_name, $description, $class, $required_for, $max_level, $icon, $quest_skill, $unlock_requirements);
+
+	if($required_for == ""){
+		$sql = "INSERT INTO skills (skill_name, description, class, max_level, icon, quest_skill, unlock_requirements)
+				VALUES ('$skill_name', '$description', '$class', '$max_level', '$icon', '$quest_skill', '$unlock_requirements')";
+	}else{
+		$sql = "INSERT INTO skills (skill_name, description, class, required_for, max_level, icon, quest_skill, unlock_requirements)
+				VALUES ('$skill_name', '$description', '$class', '$required_for', '$max_level', '$icon', '$quest_skill', '$unlock_requirements')";
+	}
+
+	if($unlock_requirements == ""){
+		$sql = "INSERT INTO skills (skill_name, description, class, required_for, max_level, icon, quest_skill)
+				VALUES ('$skill_name', '$description', '$class', '$required_for', '$max_level', '$icon', '$quest_skill')";
+	}else{
+		$sql = "INSERT INTO skills (skill_name, description, class, required_for, max_level, icon, quest_skill, unlock_requirements)
+				VALUES ('$skill_name', '$description', '$class', '$required_for', '$max_level', '$icon', '$quest_skill', '$unlock_requirements')";
+	}
+
+	if($unlock_requirements == "" && $required_for == ""){
+		$sql = "INSERT INTO skills (skill_name, description, class, max_level, icon, quest_skill)
+				VALUES ('$skill_name', '$description', '$class', '$max_level', '$icon', '$quest_skill')";
+	}else{
+		$sql = "INSERT INTO skills (skill_name, description, class, required_for, max_level, icon, quest_skill,)
+				VALUES ('$skill_name', '$description', '$class', '$required_for', '$max_level', '$icon', '$quest_skill')";
+	}
 
 	mysqli_query($conn, $sql);
 	echo 'Successfully added ' .$skill_name. ' to database!';
@@ -60,8 +85,8 @@ if(isset($_POST['registerSubmit'])){
 //SAVE_BUILD
 if(isset($_POST['saveBuild'])){
 	$acct_id = $_SESSION['id'];
-	$sql = "INSERT INTO builds (acct_id) VALUES ('$acct_id')";
-	mysqli_query($conn, $sql);
+	// $sql = "INSERT INTO builds (acct_id) VALUES ('$acct_id')";
+	// mysqli_query($conn, $sql);
 
 	$sql = "SELECT * FROM builds ORDER BY builds.id DESC LIMIT 1";
 	$result = mysqli_query($conn,$sql);
@@ -78,9 +103,9 @@ if(isset($_POST['saveBuild'])){
 		$build_id = $_SESSION['buildId'];
 		$skill_name = str_replace(' ', '_', $skill_name);
 		$skill_level = $_POST["$skill_name"];
-		$sql = "INSERT INTO skill_sims (skill_id, level, build_id) VALUES ('$id', '$skill_level', '$build_id')";
-		mysqli_query($conn,$sql);
-		// echo "skill id: $id, skill name: $skill_name, skill level: $skill_level, acct id: $acct_id, build id: $build_id<br>";
+		// $sql = "INSERT INTO skill_sims (skill_id, level, build_id) VALUES ('$id', '$skill_level', '$build_id')";
+		// mysqli_query($conn,$sql);
+		echo "skill id: $id, skill name: $skill_name, skill level: $skill_level, acct id: $acct_id, build id: $build_id<br>";
 		
 	}
 	echo 'Build successfully saved.';

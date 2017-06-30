@@ -40,8 +40,32 @@ nav {
 
 #profile-photo {
 	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	border: 2px solid black;
+	box-shadow: 0px 0px 15px black;
+	/*box-sizing: border-box;*/
 }
 
 .user-view .background {
 	background: url('../images/bg_default.jpeg');
+	height: 200px;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+button[id^="add"],
+button[id^="min"]{
+	background: transparent;
+	border: none;
+}
+
+.current_skill_tree {
+	font-size: 13px;
+	/*border: 1px solid black;*/
+	margin-top: 30px;
+	margin-bottom: 30px;
 }

@@ -34,7 +34,7 @@ function display_content(){
 			</div>
 			<div class="input-field">
 				<select name="max_level">
-					<option value="" disabled selected>Choose an option</option>
+					<option value="1" disabled selected>Choose an option</option>
 					<option>1</option>
 					<option>2</option>
 					<option>3</option>
@@ -47,18 +47,16 @@ function display_content(){
 					<option>10</option>
 				</select>
 				<label>Max Level</label>
-			</div>
-			<div class="input-field">
-				<input type="text" name="class" id="class">
-				<label for="class">Class</label>
+				<input type="checkbox" id="quest_skill" name="quest_skill">
+				<label for="quest_skill">Quest Skill</label>
 			</div>
 			<div class="input-field">
 				<input type="text" name="required_for" id="required_for">
 				<label for="required_for">Required for</label>
 			</div>
 			<div class="input-field">
-				<input type="text" name="max_level" id="max_level">
-				<label for="max_level">Max Level</label>
+				<input type="text" name="unlock_requirements" id="unlock_requirements">
+				<label for="unlock_requirements">Unlock Requirements</label>
 			</div>
 			<div class="file-field input-field">
 				<div class="btn">

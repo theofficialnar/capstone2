@@ -1,6 +1,6 @@
 <ul id="slide-out" class="side-nav fixed">
 	<li><div class="user-view">
-		<div class="background">
+		<div class="background valign-wrapper">
 			<img src="images/user_default.png" alt="user_photo" class="circle" id="profile-photo">
 		</div>
 	</div></li>
