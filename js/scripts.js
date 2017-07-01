@@ -3,6 +3,7 @@ $(".button-collapse").sideNav();
 $(document).ready(function(){
 		$('select').material_select();
 		$('.modal').modal();
+		$("[id^=min]").css("visibility", "hidden");
 		$('.10').addClass("disabledbutton");
 		$('.9').addClass("disabledbutton");
 		$('.5').addClass("disabledbutton");
@@ -27,10 +28,22 @@ function level(val,id){
 	var max = parseInt(maxLevel,10);
 	var level = document.getElementById("level"+skillName).value;
 	var hidden = document.getElementById("hidden"+skillName).innerHTML;
+	var sp_left = document.getElementById("sp_left").innerHTML;
 	var new_level = parseInt(level,10) + val;
 	var new_hidden = parseInt(hidden,10) + val;
+	var new_sp_left = parseInt(sp_left,10) - val;
 	document.getElementById("level"+skillName).value = new_level;
 	document.getElementById("hidden"+skillName).innerHTML = new_hidden;
+	document.getElementById("sp_left").innerHTML = new_sp_left;
+
+	if(new_sp_left <= 0){
+		alert('All points used!');
+		$("[id^=add]").addClass("disabledbutton");
+	}
+
+	if(new_sp_left > 0){
+		$("[id^=add]").removeClass("disabledbutton");
+	}
 
 	if(new_level == max){
 		document.getElementById("add"+skillName).style.visibility = "hidden";
@@ -47,7 +60,7 @@ function level(val,id){
 	if(new_level > 0){
 		document.getElementById("min"+skillName).style.visibility = "visible";
 	}
-	
+
 	//Skill Unlock Requirements Section
 	//Endure
 	if($('.hidden8').html() >= 5){
@@ -181,5 +194,5 @@ function level(val,id){
 		$('.hidden32').html(0);
 	}
 
-	return [new_level, new_hidden];
+	return [new_level, new_hidden, new_sp_left];
 };

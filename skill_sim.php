@@ -39,7 +39,7 @@ function display_content(){
 									echo '<span> / </span>';
 									echo '<span id="max'.$skill_name.'">'.$max_level.'</span><br>';
 									echo '</div>';
-								};
+								};//non-quest skill closer
 								//Automatically sets value for skills tagged as Quest Skill to 1
 								if($class == $class_input && $quest_skill == 'Yes'){
 									echo '<div class="'.$id.'">';
@@ -48,18 +48,19 @@ function display_content(){
 									echo '<span><b>[ Quest Skill ]</b></span><br>';
 									echo '<input hidden type="text" id="level'.$skill_name.'" name="'.$skill_name.'" value="1">';
 									echo '</div>';
-								};
-							};
+								};//quest skill closer
+							};//while loop closer
 							echo '<input type="submit" name="saveBuild" value="Save">';
+							echo 'Unused Skill Points: <span id="sp_left"> 49 </span>';
 						// echo '<button id="hideEndure" type="button">Hide</button>';					
 						echo '</form>';
 					echo '</div>';
 			
 			
-		};
+		};//isset closer
 	echo '</div>';
 
-};
+};//function closer
 
 require_once 'template.php';
 
