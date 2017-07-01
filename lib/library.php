@@ -3,6 +3,7 @@
 function multiDropdown($name){
 	global $conn;
 	echo "<select name='$name'>";
+	echo '<option value="" disabled selected>Choose an option</option>';
 	$sql = "SELECT DISTINCT class FROM skills";
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
