@@ -10,11 +10,15 @@ function get_title(){
 function display_content(){
 	global $conn;
 	echo '<div class="container">
-		<div class="input-field">
-			<form method="POST" action="">';
-				multiDropdown('class');
-				echo '<input type="submit" name="skillSimSubmit" value="Select" class="btn">
-			</form>
+		<div class="row">
+			<div class="col l10 offset-l1 m12 s12 center-align">
+				<div class="input-field">
+					<form method="POST" action="" class="half-centered-form">';
+						multiDropdown('class');
+						echo '<input type="submit" name="skillSimSubmit" value="Select" class="btn btn-select">
+					</form>
+				</div>
+			</div>
 		</div>';
 		
 		if(isset($_POST['skillSimSubmit'])){

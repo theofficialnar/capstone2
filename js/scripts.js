@@ -3,6 +3,7 @@ $(".button-collapse").sideNav();
 $(document).ready(function(){
 		$('select').material_select();
 		$('.modal').modal();
+		$('.collapsible').collapsible();
 		$("[id^=min]").css("visibility", "hidden");
 		$('.10').addClass("disabledbutton");
 		$('.9').addClass("disabledbutton");
@@ -196,3 +197,4 @@ function level(val,id){
 
 	return [new_level, new_hidden, new_sp_left];
 };
+

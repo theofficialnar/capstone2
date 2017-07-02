@@ -7,9 +7,14 @@ main {
 }
 
 @media only screen and (max-width : 992px) {
-  header, main, footer {
-    padding-left: 0;
-  }
+	header, main, footer {
+	    padding-left: 0;
+		}
+
+	.select-wrapper {
+		width: 100%;
+		}
+
 }
 
 body {
@@ -68,4 +73,30 @@ button[id^="min"]{
 	/*border: 1px solid black;*/
 	margin-top: 30px;
 	margin-bottom: 30px;
+}
+
+.collapsible-container {
+	background: #f2f2f2;
+}
+
+.skill-db-title {
+	font-weight: bold;
+}
+
+.collapsible-header {
+	padding-top: 13px;
+	text-align: center;
+}
+
+.skill-db-header {
+	font-size: 1.2em;
+}
+
+.half-centered-form {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.btn-select {
+	margin: 0 auto;
 }
