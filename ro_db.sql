@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 01, 2017 at 11:36 AM
+-- Generation Time: Jul 02, 2017 at 03:23 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -120,7 +120,29 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (46, 'Angelus', 'Increases the DEF from VIT of all party members on screen by (5*SkillLV)%. Does not increase anything else that has to do with VIT at all. ', 'Acolyte', 'Kyrie Eleison (Lv 2, Priest), Assumptio (Lv 1, High Priest)', 10, 'ro_skill_icons/al_angelus.svg', 'No', 'Divine Protection Lv 3'),
 (47, 'Blessing', 'Increases STR, DEX and INT of the target by 1*SkillLV and removes any Curse effect.\r\nIf used on Undead property or Demon family monsters, it halves their STR, DEX and INT, regardless of skill level.\r\nThis \"Bless Curse\" or \"Offensive Blessing\" will lower t', 'Acolyte', 'Clementia (Lv 1, Arch Bishop)', 10, 'ro_skill_icons/al_blessing.svg', 'No', 'Divine Protection Lv 5'),
 (48, 'Cure', 'Cures Blind, Confusion and Silence (limitation: you can\'t cure yourself from Silence since you can\'t cast while Silenced).\r\nDoes not work against Players.', 'Acolyte', 'None', 1, 'ro_skill_icons/al_cure.svg', 'No', 'Heal Lv 2'),
-(49, 'Holy Light', 'Does a single Holy element hit for 125% of your MATK.', 'Acolyte', 'None', 1, 'ro_skill_icons/al_holylight.svg', 'Yes', 'None');
+(49, 'Holy Light', 'Does a single Holy element hit for 125% of your MATK.', 'Acolyte', 'None', 1, 'ro_skill_icons/al_holylight.svg', 'Yes', 'None'),
+(50, 'Enlarge Weight Limit', 'Increases maximum carrying capacity by 200*SkillLV.', 'Merchant', 'Discount (Lv 3), Pushcart (Lv 5)', 10, 'ro_skill_icons/mc_inccarry.svg', 'No', 'None'),
+(51, 'Discount', 'Allows buying items at reduced prices from NPC shops. Deals, vending shops, and chat-selling NPCs (e.g. Upgrade stone NPC) are not affected. The final price is always rounded down and has a minimum value of 1z.', 'Merchant', 'Overcharge (Lv 3)', 10, 'ro_skill_icons/mc_discount.svg', 'No', 'Enlarge Weight Limit Lv 3'),
+(52, 'Overcharge', 'Allows selling items at increased prices to NPC shops. Deals are not affected. The final price is always rounded down and has a minimum value of 0z.', 'Merchant', 'None', 10, 'ro_skill_icons/mc_overcharge.svg', 'No', 'Discount Lv 3'),
+(53, 'Pushcart', 'Allows the character to equip and use a pushcart. Movement speed with a Pushcart equipped is (50+5*SkillLV)% (yes, you move much slower at the beginning).\r\nThe pushcart can hold 8000 Weight and a maximum of 100 distinct items(some items stack, so count as', 'Merchant', 'Vending (Lv 3), Cart Boost (Lv 5, Whitesmith)', 10, 'ro_skill_icons/mc_pushcart.svg', 'No', 'Enlarge Weight Limit Lv 5'),
+(54, 'Identify', 'Identifies an unidentified item. Unidentified item must be in inventory (not cart). A Magnifier duplicates the effect of this skill.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_identify.svg', 'No', 'None'),
+(55, 'Vending', 'Allows the character to set up a shop at his current location. The items you want to sell must be in the characters pushcart, and the character must have his pushcart equipped.\r\nBe very careful to set the correct price!\r\nThe limit on distinct items that c', 'Merchant', 'Buying Store (Lv 1)', 10, 'ro_skill_icons/mc_vending.svg', 'No', 'Pushcart Lv 3'),
+(56, 'Mammonite', 'Uses 100z*SkillLV to increase ATK to (100+50*SkillLV)% for the next attack.', 'Merchant', 'Cart Termination (Lv 10, Whitesmith)', 10, 'ro_skill_icons/mc_mammonite.svg', 'No', 'None'),
+(57, 'Cart Revolution', 'Does ATK*150% neutral-property damage to 3x3 area around your target. Enemies hit by the attack are pushed back 2 cells. The appearance is just like Magnum Break, except you also see your cart go flying over your head and hitting the ground in front of yo', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_cartrevolution.svg', 'Yes', 'None'),
+(58, 'Change Cart', 'Lets you change the appearance of your cart. A \"for fun\" skill, but because the appearances you can pick is restricted by the characters base level, you can tell a high level merchant or blacksmith just by looking at their cart.\r\nLevel 1-40: Normal cart o', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_changecart.svg', 'Yes', 'None'),
+(59, 'Loud Exclamation', 'Adds +4 STR.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_loud.svg', 'Yes', 'None'),
+(60, 'Buying Store', 'Enables the ability to open a purchase stall to buy various kinds of items. Must have atleast 1 item you are buying.', 'Merchant', 'None', 1, 'ro_skill_icons/all_buying_store.svg', 'Yes', 'None'),
+(61, 'Cart Decoration', 'Change Pushcart appearance.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_cartdecorate.svg', 'Yes', 'None'),
+(62, 'Double Attack', 'Gives chance to double swing a Dagger class weapon with a chance equal to (5*SkillLV)%, and adds +1 HIT per SkillLV (that only applies in double attacks). In the case of an Assassin wielding two Dagger class weapons, it applies to the right-hand weapon on', 'Thief', 'Advanced Katar Research (Lv 5, Assassin Cross), Soul Breaker (Lv 5, Assassin Cross)', 10, 'ro_skill_icons/tf_double.svg', 'No', 'None'),
+(63, 'Increase Dodge', 'Increases Flee Rate by +3*SkillLV. This skill boosts the walking speed for Assassins by 1% per SkillLV and gives an additional +1 Flee Rate per SkillLV when you are an Assassin or Rogue.\r\nThe walking speed bonus does not add to the walking speed increase ', 'Thief', 'None', 10, 'ro_skill_icons/tf_miss.svg', 'No', 'None'),
+(64, 'Steal', 'Attempts to \"steal\" an item from the targeted monster. Only items dropped by the monster can be stolen. A successful Steal attempt will not affect what is dropped when the monster dies.\r\nAfter success, it is not possible to Steal again from the same monst', 'Thief', 'Hiding (Lv 5), Snatcher (Lv 1, Rogue)', 10, 'ro_skill_icons/tf_steal.svg', 'No', 'None'),
+(65, 'Hiding', 'Toggles the hide effect on the character on/off. Toggling the hide effect off consumes no SP. Hidden characters cannot move, attack or use any skill (except certain Rogue skills) and do not regenerate HP or SP.\r\nThe hide effect makes a character invisible', 'Thief', 'Cloaking (Lv 2, Assassin), Tunnel Drive (Lv 1, Rogue), Chase Walk (Lv 5, Stalker)', 10, 'ro_skill_icons/tf_hiding.svg', 'No', 'Steal Lv 5'),
+(66, 'Envenom', 'An attack that adds 15*SkillLV to your ATK (unmodified by Armor and VIT Def) to your normal damage. This bonus damage is always inflicted, whether your character lands a normal hit or not.\r\nEnvenom has a (10+4*SkillLV)% chance to inflict poison status on ', 'Thief', 'Detoxify (Lv 3), Enchant Poison (Lv 1, Assassin), Create Deadly Poison (Lv 10, Assassin Cross), Soul Breaker (Lv 5, Assassin Cross)', 10, 'ro_skill_icons/tf_poison.svg', 'No', 'None'),
+(67, 'Detoxify', 'Cures poison status on target.', 'Thief', 'Create Deadly Poison (Lv 1, Assassin Cross)', 1, 'ro_skill_icons/tf_detoxify.svg', 'No', 'Envenom Lv 3'),
+(68, 'Sprinkle Sand', 'An attack with 130% normal ATK and with a 20% chance to cause blind effect. Although it has no Cast Time or Cool Down it can\'t be spammed.', 'Thief', 'None', 1, 'ro_skill_icons/tf_sprinklesand.svg', 'Yes', 'None'),
+(69, 'Back Sliding', 'Moves you backwards 5 cells (depends on the direction you are facing).', 'Thief', 'None', 1, 'ro_skill_icons/tf_backsliding.svg', 'Yes', 'None'),
+(70, 'Pick Stone', 'Adds one Stone item to your inventory. Will not work if you are overweight (more than 50% of total weight capacity).', 'Thief', 'None', 1, 'ro_skill_icons/tf_pickstone.svg', 'Yes', 'None'),
+(71, 'Throw Stone', 'An attack that always does 50 points of damage (but does not ignore damage reduction cards) and has a 3% chance of causing the stun effect on the target. Consumes one stone per use. Useful for luring monsters link monsters away from a pack and other such ', 'Thief', 'None', 1, 'ro_skill_icons/tf_throwstone.svg', 'Yes', 'None');
 
 -- --------------------------------------------------------
 
@@ -235,7 +257,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT for table `skill_sims`
 --

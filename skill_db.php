@@ -31,9 +31,13 @@ function display_content(){
 					while($row = mysqli_fetch_assoc($result)){
 						extract($row);
 						if($class == $class_input){
-						echo '<li>
-						<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. '</span></div>
-							<div class="collapsible-body">
+						echo '<li>';
+							if($quest_skill == 'Yes'){
+								echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. ' <b>[ Quest Skill ]</b></span></div>';
+								}else{
+								echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. '</span></div>';
+								};
+							echo '<div class="collapsible-body">
 								<table class="bordered">
 									<tbody>
 										<tr>

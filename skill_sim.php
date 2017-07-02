@@ -25,44 +25,75 @@ function display_content(){
 			$class_input = $_POST['class'];
 			$sql = "SELECT * FROM skills";
 			$result = mysqli_query($conn, $sql);
-				echo '<div class="row">';
-					echo '<div class="current_skill_tree col l6 m6 s12">';
-						echo '<h5 class="center-align">Current Skills</h5>';
-						echo '<form method="POST" action="skill_sim.php?class='.$class_input.'">';
-							//Table for skills not tagged as Quest Skills
-							while($row = mysqli_fetch_assoc($result)){
-								extract($row);
-								if($class == $class_input && $quest_skill == 'No'){
-									echo '<div class="'.$id.'">';
-									echo '<img id="icon'.$skill_name.'" src="'.$icon.'">';
-									echo ' ' .$skill_name. ' ';
-									echo '<button id="add'.$skill_name.'" onclick="level(1,this.id)" type="button" class="add'.$id.'"><i class="material-icons">call_made</i></button>';
-									echo '<button id="min'.$skill_name.'" onclick="level(-1,this.id)" type="button" class="min'.$id.'"><i class="material-icons">call_received</i></button>';
-									echo '<input readonly type="text" id="level'.$skill_name.'" class="level'.$id.'" name="'.$skill_name.'" value="0" style="width: 15px; border-bottom: none; margin: 0">';
-									echo '<span style="display:none" id="hidden'.$skill_name.'" class="hidden'.$id.'">0</span>';
-									echo '<span> / </span>';
-									echo '<span id="max'.$skill_name.'">'.$max_level.'</span><br>';
-									echo '</div>';
-								};//non-quest skill closer
-								//Automatically sets value for skills tagged as Quest Skill to 1
-								if($class == $class_input && $quest_skill == 'Yes'){
-									echo '<div class="'.$id.'">';
-									echo '<img id="icon'.$skill_name.'" src="'.$icon.'">';
-									echo ' ' .$skill_name. ' ';
-									echo '<span><b>[ Quest Skill ]</b></span><br>';
-									echo '<input hidden type="text" id="level'.$skill_name.'" name="'.$skill_name.'" value="1">';
-									echo '</div>';
-								};//quest skill closer
-							};//while loop closer
-							echo '<input type="submit" name="saveBuild" value="Save">';
-							echo 'Unused Skill Points: <span id="sp_left"> 49 </span>';
-						// echo '<button id="hideEndure" type="button">Hide</button>';					
-						echo '</form>';
-					echo '</div>';
-			
-			
+			echo '<div class="row">
+				<div class="current-skill-tree col l6 m6 s12">
+					<h5 class="center-align">Current Skills</h5>
+					<form method="POST" action="skill_sim.php?class='.$class_input.'">
+						<table>
+							<tbody>';
+						//Table for skills not tagged as Quest Skills
+						while($row = mysqli_fetch_assoc($result)){
+							extract($row);
+							if($class == $class_input && $quest_skill == 'No'){
+									echo '<tr class="'.$id.'">
+										<td><img id="icon'.$skill_name.'" src="'.$icon.'"> '.$skill_name.'</td>
+										<td><button id="add'.$skill_name.'" onclick="level(1,this.id)" type="button" class="add'.$id.'"><i class="material-icons">call_made</i></button>
+										<button id="min'.$skill_name.'" onclick="level(-1,this.id)" type="button" class="min'.$id.'"><i class="material-icons">call_received</i></button></td>
+										<td>
+											<input readonly type="text" id="level'.$skill_name.'" class="level'.$id.'" name="'.$skill_name.'" value="0" style="width: 15px; border-bottom: none; margin: 0">
+											<span style="display:none" id="hidden'.$skill_name.'" class="hidden'.$id.'">0</span>
+											<span> / </span>
+											<span id="max'.$skill_name.'">'.$max_level.'</span><br>
+										</td>
+									</tr>';
+							};//non-quest skill closer
+							//Automatically sets value for skills tagged as Quest Skill to 1
+							if($class == $class_input && $quest_skill == 'Yes'){
+									echo '<tr class="'.$id.'">
+										<td><img id="icon'.$skill_name.'" src="'.$icon.'"> '.$skill_name.' <span><b>[ Quest Skill ]</b></span></td>
+										<td><input hidden type="text" id="level'.$skill_name.'" name="'.$skill_name.'" value="1"></td>
+									</tr>';
+							};//quest skill closer
+						};//while loop closer
+							echo '</tbody>
+						</table>
+							<input type="submit" name="saveBuild" value="Save">
+							Unused Skill Points: <span id="sp_left"> 49 </span>
+					</form>
+				</div>';
+
+			//Locked skills filter
+			if($class_input == 'Swordsman'){
+				$sql = "SELECT * FROM skills WHERE id IN ('5','9','10')";
+				}
+			if($class_input == 'Magician'){
+				$sql = "SELECT * FROM skills WHERE id IN ('17','18','20', '22', '23', '26')";
+				}
+			if($class_input == 'Archer'){
+				$sql = "SELECT * FROM skills WHERE id IN ('29','30','32')";
+				}
+
+			$result = mysqli_query($conn, $sql);
+				echo '<div class="to-be-unlocked-tree col l6 m6 s12">
+					<h5 class="center-align">Skills to be unlocked</h5>
+					<table>
+						<tbody>';
+					if($class_input != 'Novice'){
+						while($row = mysqli_fetch_assoc($result)){
+							extract($row);
+							echo '<tr>
+								<td><img src="'.$icon.'"> '.$skill_name.' '.$unlock_requirements.'</td>
+							</tr>';
+						};
+					}else{
+						echo ' ';
+					}
+						echo '</tbody>
+					</table>
+				</div>
+			</div>'; //row
 		};//isset closer
-	echo '</div>';
+	echo '</div>'; //container
 
 };//function closer
 

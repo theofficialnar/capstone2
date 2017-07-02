@@ -1,5 +1,6 @@
 Bugs to squish:
 - skills set to auto 0 not refunded to total unused skill point counter
+- "10" on skill sim get's cut off on IE
 
 Things to do:
 - put edit/delete buttons on skill db for admin

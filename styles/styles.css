@@ -14,12 +14,19 @@ main {
 	.select-wrapper {
 		width: 100%;
 		}
-
 }
 
 body {
 	background: #b6c2d9;
+	cursor: url('../images/arrow.png'), default;
+}
 
+button,
+li,
+a,
+input,
+.collapsible-header {
+	cursor: url('../images/hand.cur'), default !important;
 }
 
 h1 {
@@ -68,9 +75,10 @@ button[id^="min"]{
 	border: none;
 }
 
-.current_skill_tree {
+.current-skill-tree,
+.to-be-unlocked-tree {
 	font-size: 13px;
-	/*border: 1px solid black;*/
+	border: 1px solid black;
 	margin-top: 30px;
 	margin-bottom: 30px;
 }
