@@ -10,13 +10,20 @@
 		}else{
 			echo '<li> <a href="#modal1">Login</a> </li>';
 			}
+		?>
+	<li><a href="index.php">Home</a></li>
+	<?php
 		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true && $_SESSION['role'] == 'admin'){
 			echo '<li><a href="add_skill.php">Add Skills</a></li>';
 		}
 		?>
 	<li><a href="skill_db.php">Skill Database</a></li>
 	<li><a href="skill_sim.php">Skill Simulator</a></li>
-	<li><a href="?logOut">Logout</a></li>
+	<?php
+		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
+			echo '<li><a href="?logOut">Logout</a></li>';
+		}
+	?>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
@@ -28,7 +35,7 @@ if(isset($_GET['logOut'])){
 	unset($_SESSION['role']);
 	unset($_SESSION['loginFlag']);
 	unset($_SESSION['id']);
-	header('location: register.php');
+	header('location: index.php');
 }
 
 ?>

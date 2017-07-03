@@ -41,7 +41,7 @@ function display_content(){
 											<button id="min'.$skill_name.'" onclick="level(-1,this.id)" type="button" class="min'.$id.'"><i class="material-icons">call_received</i></button>
 										</div>
 										<div class="skill-data'.$id.' col l3 m3 s6">
-												<input readonly type="text" id="level'.$skill_name.'" class="level'.$id.'" name="'.$skill_name.'" value="0" style="width: 15px; border-bottom: none; margin: 0">
+												<input readonly type="text" id="level'.$skill_name.'" class="level'.$id.' current-skill-level" name="'.$skill_name.'" value="0" style="width: 20px; border-bottom: none; margin: 0">
 												<span style="display:none" id="hidden'.$skill_name.'" class="hidden'.$id.'">0</span>
 												<span class="hide-on-small-only"> / </span>
 												<span id="max'.$skill_name.'" class="hide-on-small-only">'.$max_level.'</span><br>
@@ -64,41 +64,13 @@ function display_content(){
 							};//quest skill closer
 						};//while loop closer
 							echo '<input type="submit" name="saveBuild" value="Save">
+								<input type="submit" name="genRep" value="Generate Report">
 								Unused Skill Points: <span id="sp_left"> 49 </span>
-					</form>
+						</form>
+					</div>
 				</div>
-			</div>';
+			</div>'; //row
 
-			//Locked skills filter
-			// if($class_input == 'Swordsman'){
-			// 	$sql = "SELECT * FROM skills WHERE id IN ('5','9','10')";
-			// 	}
-			// if($class_input == 'Magician'){
-			// 	$sql = "SELECT * FROM skills WHERE id IN ('17','18','20', '22', '23', '26')";
-			// 	}
-			// if($class_input == 'Archer'){
-			// 	$sql = "SELECT * FROM skills WHERE id IN ('29','30','32')";
-			// 	}
-
-			// $result = mysqli_query($conn, $sql);
-			// 	echo '<div class="to-be-unlocked-tree col l6 m6 s12">
-			// 		<h5 class="center-align">Skills to be unlocked</h5>
-			// 		<table>
-			// 			<tbody>';
-			// 		if($class_input != 'Novice'){
-			// 			while($row = mysqli_fetch_assoc($result)){
-			// 				extract($row);
-			// 				echo '<tr>
-			// 					<td><img src="'.$icon.'"> '.$skill_name.' '.$unlock_requirements.'</td>
-			// 				</tr>';
-			// 			};
-			// 		}else{
-			// 			echo ' ';
-			// 		}
-			// 			echo '</tbody>
-			// 		</table>
-			// 	</div>
-			echo '</div>'; //row
 		};//isset closer
 	echo '</div>'; //container
 

@@ -97,6 +97,19 @@ if(isset($_POST['saveBuild'])){
 	echo 'Build successfully saved.';
 };
 
+//GENERATE REPORT
+if(isset($_POST['genRep'])){
+	$class = $_GET['class'];
+	$sql = "SELECT * FROM skills WHERE class='$class'";
+	$result = mysqli_query($conn, $sql);
+	while($row = mysqli_fetch_assoc($result)){
+		extract($row);
+		$skill_name = str_replace(' ', '_', $skill_name);
+		$skill_level = $_POST["$skill_name"];
+		echo "skill id: $id, skill name: $skill_name, skill level: $skill_level<br>";
+	};
+};
+
 //SKILL_EDIT
 if(isset($_POST['editYes'])){
 	$id = $_GET['id'];

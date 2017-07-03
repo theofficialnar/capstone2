@@ -14,7 +14,7 @@
 				$_SESSION['id'] = $id;
 				// echo '<span id="alert" style="display: none">Log in successful! ID: '.$id.'</span>';
 				// alert();
-				header('location: register.php');
+				header('location: index.php');
 			}
 		}else{
 		echo '<span id="alert" style="display: none">Account not registered!</span>';

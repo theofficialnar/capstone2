@@ -94,6 +94,7 @@ function level(val,id){
 
 	if(new_level == max){
 		document.getElementById("add"+skillName).style.visibility = "hidden";
+		
 	}
 
 	if(new_level < max || new_level == 0){

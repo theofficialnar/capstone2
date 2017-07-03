@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 02, 2017 at 03:23 PM
+-- Generation Time: Jul 03, 2017 at 10:41 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -128,10 +128,10 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (54, 'Identify', 'Identifies an unidentified item. Unidentified item must be in inventory (not cart). A Magnifier duplicates the effect of this skill.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_identify.svg', 'No', 'None'),
 (55, 'Vending', 'Allows the character to set up a shop at his current location. The items you want to sell must be in the characters pushcart, and the character must have his pushcart equipped.\r\nBe very careful to set the correct price!\r\nThe limit on distinct items that c', 'Merchant', 'Buying Store (Lv 1)', 10, 'ro_skill_icons/mc_vending.svg', 'No', 'Pushcart Lv 3'),
 (56, 'Mammonite', 'Uses 100z*SkillLV to increase ATK to (100+50*SkillLV)% for the next attack.', 'Merchant', 'Cart Termination (Lv 10, Whitesmith)', 10, 'ro_skill_icons/mc_mammonite.svg', 'No', 'None'),
-(57, 'Cart Revolution', 'Does ATK*150% neutral-property damage to 3x3 area around your target. Enemies hit by the attack are pushed back 2 cells. The appearance is just like Magnum Break, except you also see your cart go flying over your head and hitting the ground in front of yo', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_cartrevolution.svg', 'Yes', 'None'),
+(57, 'Buying Store', 'Enables the ability to open a purchase stall to buy various kinds of items. Must have atleast 1 item you are buying.', 'Merchant', 'None', 1, 'ro_skill_icons/all_buying_store.svg', 'No', 'None'),
 (58, 'Change Cart', 'Lets you change the appearance of your cart. A \"for fun\" skill, but because the appearances you can pick is restricted by the characters base level, you can tell a high level merchant or blacksmith just by looking at their cart.\r\nLevel 1-40: Normal cart o', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_changecart.svg', 'Yes', 'None'),
 (59, 'Loud Exclamation', 'Adds +4 STR.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_loud.svg', 'Yes', 'None'),
-(60, 'Buying Store', 'Enables the ability to open a purchase stall to buy various kinds of items. Must have atleast 1 item you are buying.', 'Merchant', 'None', 1, 'ro_skill_icons/all_buying_store.svg', 'Yes', 'None'),
+(60, 'Cart Revolution', 'Does ATK*150% neutral-property damage to 3x3 area around your target. Enemies hit by the attack are pushed back 2 cells. The appearance is just like Magnum Break, except you also see your cart go flying over your head & hitting the ground in front of you.', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_cartrevolution.svg', 'Yes', 'None'),
 (61, 'Cart Decoration', 'Change Pushcart appearance.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_cartdecorate.svg', 'Yes', 'None'),
 (62, 'Double Attack', 'Gives chance to double swing a Dagger class weapon with a chance equal to (5*SkillLV)%, and adds +1 HIT per SkillLV (that only applies in double attacks). In the case of an Assassin wielding two Dagger class weapons, it applies to the right-hand weapon on', 'Thief', 'Advanced Katar Research (Lv 5, Assassin Cross), Soul Breaker (Lv 5, Assassin Cross)', 10, 'ro_skill_icons/tf_double.svg', 'No', 'None'),
 (63, 'Increase Dodge', 'Increases Flee Rate by +3*SkillLV. This skill boosts the walking speed for Assassins by 1% per SkillLV and gives an additional +1 Flee Rate per SkillLV when you are an Assassin or Rogue.\r\nThe walking speed bonus does not add to the walking speed increase ', 'Thief', 'None', 10, 'ro_skill_icons/tf_miss.svg', 'No', 'None'),
