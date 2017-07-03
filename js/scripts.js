@@ -19,9 +19,9 @@ $(document).ready(function(){
 		$('.32').addClass("disabledbutton");
 		});
 
-function myFunction(id){
-	document.getElementById("span"+id).innerHTML = counter;	
-};
+// function myFunction(id){
+// 	document.getElementById("span"+id).innerHTML = counter;	
+// };
 
 function level(val,id){
 	var skillName = id.substring(3);
@@ -56,6 +56,7 @@ function level(val,id){
 
 	if(new_level == 0){
 		document.getElementById("min"+skillName).style.visibility = "hidden";
+		new_level = 0;
 	}
 
 	if(new_level > 0){
@@ -69,9 +70,17 @@ function level(val,id){
 	}
 
 	if($('.hidden8').html() < 5){
+		var skill_pts = parseInt($('.level10').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.10').addClass("disabledbutton");
 		$('.level10').val(0);
 		$('.hidden10').html(0);
+		$('.min10').css("visibility", "hidden");
+	}
+
+	if($('.hidden8').html() >= 5 && $('.level10').val() > 0){
+		$('.min10').css("visibility", "visible");
 	}
 
 	//Magnum Break
@@ -80,9 +89,17 @@ function level(val,id){
 	}
 
 	if($('.hidden7').html() < 5){
+		var skill_pts = parseInt($('.level9').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.9').addClass("disabledbutton");
 		$('.level9').val(0);
 		$('.hidden9').html(0);
+		$('.min9').css("visibility", "hidden");
+	}
+
+	if($('.hidden7').html() >= 5 && $('.level9').val() > 0){
+		$('.min9').css("visibility", "visible");
 	}
 
 	//Two Hand Sword Mastery
@@ -91,9 +108,17 @@ function level(val,id){
 	}
 
 	if($('.hidden4').html() < 1){
+		var skill_pts = parseInt($('.level5').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.5').addClass("disabledbutton");
 		$('.level5').val(0);
 		$('.hidden5').html(0);
+		$('.min5').css("visibility", "hidden");
+	}
+
+	if($('.hidden4').html() >= 1 && $('.level5').val() > 0){
+		$('.min5').css("visibility", "visible");
 	}
 
 	//Thunder Storm
@@ -102,9 +127,17 @@ function level(val,id){
 	}
 
 	if($('.hidden25').html() < 4){
+		var skill_pts = parseInt($('.level26').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.26').addClass("disabledbutton");
 		$('.level26').val(0);
 		$('.hidden26').html(0);
+		$('.min26').css("visibility", "hidden");
+	}
+
+	if($('.hidden25').html() >= 4 && $('.level26').val() > 0){
+		$('.min26').css("visibility", "visible");
 	}
 
 	//Fire Wall
@@ -113,9 +146,17 @@ function level(val,id){
 	}
 
 	if($('.hidden15').html() < 1 || $('.hidden22').html() < 5 || $('.hidden24').html() < 4){
+		var skill_pts = parseInt($('.level23').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.23').addClass("disabledbutton");
 		$('.level23').val(0);
 		$('.hidden23').html(0);
+		$('.min23').css("visibility", "hidden");
+	}
+
+	if($('.hidden15').html() >= 1 && $('.hidden22').html() >= 5 && $('.level23').val() > 0){
+		$('.min23').css("visibility", "visible");
 	}
 
 	//Fire Ball
@@ -124,9 +165,17 @@ function level(val,id){
 	}
 
 	if($('.hidden24').html() < 4){
+		var skill_pts = parseInt($('.level22').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.22').addClass("disabledbutton");
 		$('.level22').val(0);
 		$('.hidden22').html(0);
+		$('.min22').css("visibility", "hidden");
+	}
+
+	if($('.hidden24').html() >= 4 && $('.level22').val() > 0){
+		$('.min22').css("visibility", "visible");
 	}
 
 	//Frost Diver
@@ -135,9 +184,17 @@ function level(val,id){
 	}
 
 	if($('.hidden19').html() < 5){
+		var skill_pts = parseInt($('.level20').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.20').addClass("disabledbutton");
 		$('.level20').val(0);
 		$('.hidden20').html(0);
+		$('.min20').css("visibility", "hidden");
+	}
+
+	if($('.hidden19').html() >= 5 && $('.level20').val() > 0){
+		$('.min20').css("visibility", "visible");
 	}
 
 	//Soul Strike
@@ -146,9 +203,17 @@ function level(val,id){
 	}
 
 	if($('.hidden16').html() < 4){
+		var skill_pts = parseInt($('.level18').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.18').addClass("disabledbutton");
 		$('.level18').val(0);
 		$('.hidden18').html(0);
+		$('.min18').css("visibility", "hidden");
+	}
+
+	if($('.hidden16').html() < 4 && $('.level18').val() > 0){
+		$('.min18').css("visibility", "visible");
 	}
 
 	//Safety Wall
@@ -157,20 +222,36 @@ function level(val,id){
 	}
 
 	if($('.hidden18').html() < 5 || $('.hidden16').html() < 7){
+		var skill_pts = parseInt($('.level17').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.17').addClass("disabledbutton");
 		$('.level17').val(0);
 		$('.hidden17').html(0);
+		$('.min17').css("visibility", "hidden");
+	}
+
+	if($('.hidden18').html() >= 5 && $('.hidden16').html() >= 7 && $('.level17').val() > 0){
+		$('.min17').css("visibility", "visible");
 	}
 
 	//Vulture's Eye
 	if($('.hidden28').html() >= 3){
-	$('.29').removeClass("disabledbutton");
+		$('.29').removeClass("disabledbutton");
 	}
 
 	if($('.hidden28').html() < 3){
+		var skill_pts = parseInt($('.level29').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.29').addClass("disabledbutton");
 		$('.level29').val(0);
 		$('.hidden29').html(0);
+		$('.min29').css("visibility", "hidden");
+	}
+
+	if($('.hidden28').html() >= 3 && $('.level29').val() > 0){
+		$('.min29').css("visibility", "visible");
 	}
 
 	//Attention Concentrate
@@ -178,10 +259,18 @@ function level(val,id){
 		$('.30').removeClass("disabledbutton");
 	}
 
-	if($('.hidden28').html() < 1 || $('.hidden28').html() < 3){
+	if($('.hidden29').html() < 1 || $('.hidden28').html() < 3){
+		var skill_pts = parseInt($('.level30').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.30').addClass("disabledbutton");
 		$('.level30').val(0);
 		$('.hidden30').html(0);
+		$('.min30').css("visibility", "hidden");
+	}
+
+	if($('.hidden29').html() >= 1 && $('.hidden28').html() >= 3 && $('.level30').val() > 0){
+		$('.min30').css("visibility", "visible");
 	}
 
 	//Arrow Shower
@@ -190,9 +279,17 @@ function level(val,id){
 	}
 
 	if($('.hidden31').html() < 5){
+		var skill_pts = parseInt($('.level32').val());
+		new_sp_left = parseInt(new_sp_left,10) + skill_pts;
+		document.getElementById("sp_left").innerHTML = new_sp_left;
 		$('.32').addClass("disabledbutton");
 		$('.level32').val(0);
 		$('.hidden32').html(0);
+		$('.min32').css("visibility", "hidden");
+	}
+
+	if($('.hidden31').html() >= 5 && $('.level32').val() > 0){
+		$('.min32').css("visibility", "visible");
 	}
 
 	return [new_level, new_hidden, new_sp_left];
