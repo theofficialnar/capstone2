@@ -108,3 +108,12 @@ button[id^="min"]{
 .btn-select {
 	margin: 0 auto;
 }
+
+.td-wh {
+	width: 215px;
+	min-height: 95px; 
+}
+
+.td-pts {
+	width: 65px;
+}

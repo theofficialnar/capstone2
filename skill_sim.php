@@ -26,72 +26,79 @@ function display_content(){
 			$sql = "SELECT * FROM skills";
 			$result = mysqli_query($conn, $sql);
 			echo '<div class="row">
-				<div class="current-skill-tree col l6 m6 s12">
+				<div class="current-skill-tree col l12 m12 s12">
 					<h5 class="center-align">Current Skills</h5>
-					<form method="POST" action="skill_sim.php?class='.$class_input.'">
-						<table>
-							<tbody>';
+					<form method="POST" action="skill_sim.php?class='.$class_input.'">';
 						//Table for skills not tagged as Quest Skills
 						while($row = mysqli_fetch_assoc($result)){
 							extract($row);
 							if($class == $class_input && $quest_skill == 'No'){
-									echo '<tr class="'.$id.'">
-										<td><img id="icon'.$skill_name.'" src="'.$icon.'"> '.$skill_name.'</td>
-										<td><button id="add'.$skill_name.'" onclick="level(1,this.id)" type="button" class="add'.$id.'"><i class="material-icons">call_made</i></button>
-										<button id="min'.$skill_name.'" onclick="level(-1,this.id)" type="button" class="min'.$id.'"><i class="material-icons">call_received</i></button></td>
-										<td>
-											<input readonly type="text" id="level'.$skill_name.'" class="level'.$id.'" name="'.$skill_name.'" value="0" style="width: 15px; border-bottom: none; margin: 0">
-											<span style="display:none" id="hidden'.$skill_name.'" class="hidden'.$id.'">0</span>
-											<span> / </span>
-											<span id="max'.$skill_name.'">'.$max_level.'</span><br>
-										</td>
-									</tr>';
+									echo'<div class="row">
+										<div class="'.$id.' col l5 m5 s12">
+											<img id="icon'.$skill_name.'" src="'.$icon.'"> <span>'.$skill_name.'</span>
+										</div>
+										<div class="skill-data'.$id.' col l4 m4 s6"><button id="add'.$skill_name.'" onclick="level(1,this.id)" type="button" class="add'.$id.'"><i class="material-icons">call_made</i></button>
+											<button id="min'.$skill_name.'" onclick="level(-1,this.id)" type="button" class="min'.$id.'"><i class="material-icons">call_received</i></button>
+										</div>
+										<div class="skill-data'.$id.' col l3 m3 s6">
+												<input readonly type="text" id="level'.$skill_name.'" class="level'.$id.'" name="'.$skill_name.'" value="0" style="width: 15px; border-bottom: none; margin: 0">
+												<span style="display:none" id="hidden'.$skill_name.'" class="hidden'.$id.'">0</span>
+												<span class="hide-on-small-only"> / </span>
+												<span id="max'.$skill_name.'" class="hide-on-small-only">'.$max_level.'</span><br>
+										</div>';
+										if($unlock_requirements != 'None'){
+											echo '<div class="skill-requirements'.$id.' col l7 m7 s12">
+												<span>Requires '.$unlock_requirements.' to unlock.</span>
+											</div>';
+										}
+									echo '</div>';
 							};//non-quest skill closer
 							//Automatically sets value for skills tagged as Quest Skill to 1
 							if($class == $class_input && $quest_skill == 'Yes'){
-									echo '<tr class="'.$id.'">
-										<td><img id="icon'.$skill_name.'" src="'.$icon.'"> '.$skill_name.' <span><b>[ Quest Skill ]</b></span></td>
-										<td><input hidden type="text" id="level'.$skill_name.'" name="'.$skill_name.'" value="1"></td>
-									</tr>';
+									echo '<div class="row">
+										<div class="'.$id.' col l5 m5 s12">
+											<img id="icon'.$skill_name.'" src="'.$icon.'"> <span>'.$skill_name.' <b>[ Quest Skill ]</b></span>
+											<input hidden type="text" id="level'.$skill_name.'" name="'.$skill_name.'" value="1">
+										</div>
+									</div>';
 							};//quest skill closer
 						};//while loop closer
-							echo '</tbody>
-						</table>
-							<input type="submit" name="saveBuild" value="Save">
-							Unused Skill Points: <span id="sp_left"> 49 </span>
+							echo '<input type="submit" name="saveBuild" value="Save">
+								Unused Skill Points: <span id="sp_left"> 49 </span>
 					</form>
-				</div>';
+				</div>
+			</div>';
 
 			//Locked skills filter
-			if($class_input == 'Swordsman'){
-				$sql = "SELECT * FROM skills WHERE id IN ('5','9','10')";
-				}
-			if($class_input == 'Magician'){
-				$sql = "SELECT * FROM skills WHERE id IN ('17','18','20', '22', '23', '26')";
-				}
-			if($class_input == 'Archer'){
-				$sql = "SELECT * FROM skills WHERE id IN ('29','30','32')";
-				}
+			// if($class_input == 'Swordsman'){
+			// 	$sql = "SELECT * FROM skills WHERE id IN ('5','9','10')";
+			// 	}
+			// if($class_input == 'Magician'){
+			// 	$sql = "SELECT * FROM skills WHERE id IN ('17','18','20', '22', '23', '26')";
+			// 	}
+			// if($class_input == 'Archer'){
+			// 	$sql = "SELECT * FROM skills WHERE id IN ('29','30','32')";
+			// 	}
 
-			$result = mysqli_query($conn, $sql);
-				echo '<div class="to-be-unlocked-tree col l6 m6 s12">
-					<h5 class="center-align">Skills to be unlocked</h5>
-					<table>
-						<tbody>';
-					if($class_input != 'Novice'){
-						while($row = mysqli_fetch_assoc($result)){
-							extract($row);
-							echo '<tr>
-								<td><img src="'.$icon.'"> '.$skill_name.' '.$unlock_requirements.'</td>
-							</tr>';
-						};
-					}else{
-						echo ' ';
-					}
-						echo '</tbody>
-					</table>
-				</div>
-			</div>'; //row
+			// $result = mysqli_query($conn, $sql);
+			// 	echo '<div class="to-be-unlocked-tree col l6 m6 s12">
+			// 		<h5 class="center-align">Skills to be unlocked</h5>
+			// 		<table>
+			// 			<tbody>';
+			// 		if($class_input != 'Novice'){
+			// 			while($row = mysqli_fetch_assoc($result)){
+			// 				extract($row);
+			// 				echo '<tr>
+			// 					<td><img src="'.$icon.'"> '.$skill_name.' '.$unlock_requirements.'</td>
+			// 				</tr>';
+			// 			};
+			// 		}else{
+			// 			echo ' ';
+			// 		}
+			// 			echo '</tbody>
+			// 		</table>
+			// 	</div>
+			echo '</div>'; //row
 		};//isset closer
 	echo '</div>'; //container
 
