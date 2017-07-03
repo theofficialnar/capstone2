@@ -53,8 +53,14 @@ function display_content(){
 											<td><span>'.$required_for.'</span></td>
 										</tr>
 									</tbody>
-								</table>
-							</div>
+								</table>';
+									if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true && $_SESSION['role'] == 'admin'){
+										echo "<div class='center-align'>
+												<a href='skill_edit.php?id=$id'><button>Edit</button></a>
+												<a href='skill_delete.php?id=$id'><button>Delete</button></a>
+										</div>";
+										}
+							echo '</div>
 						</li>';
 							}
 					};//while end

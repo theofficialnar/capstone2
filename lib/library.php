@@ -97,6 +97,51 @@ if(isset($_POST['saveBuild'])){
 	echo 'Build successfully saved.';
 };
 
+//SKILL_EDIT
+if(isset($_POST['editYes'])){
+	$id = $_GET['id'];
+	$skill_name = trim(addslashes($_POST['skill_name']));
+	$description = trim(addslashes($_POST['description']));
+	if($_POST['required_for'] == ""){
+		$required_for = "None";
+	}else{
+		$required_for = trim(addslashes($_POST['required_for']));
+	};
+	if($_POST['unlock_requirements'] == ""){
+		$unlock_requirements = "None";
+	}else{
+		$unlock_requirements = trim(addslashes($_POST['unlock_requirements']));
+	};
+	$max_level = isset($_POST['max_level']) ? $_POST['max_level'] : 1;
+	$icon = 'ro_skill_icons/' . $_POST['icon'];
+	$quest_skill = isset($_POST['quest_skill']) ? 'Yes' : 'No';
+	$sql = "UPDATE skills SET
+			skill_name = '$skill_name',
+			description = '$description',
+			required_for = '$required_for',
+			unlock_requirements = '$unlock_requirements',
+			max_level = '$max_level',
+			icon = '$icon',
+			quest_skill = '$quest_skill'
+			WHERE id='$id'";
+	mysqli_query($conn, $sql);
+	header('location: skill_db.php');
+};
+
+if(isset($_POST['editNo'])){
+	header('location: skill_db.php');
+};
+
+// SKILL_DELETE
+if(isset($_POST['deleteYes'])){
+	$sql = "DELETE FROM skills WHERE id = '$id'";
+	mysqli_query($conn, $sql);
+	header('location: skill_db.php');
+};
+
+if(isset($_POST['deleteNo'])){
+	header('location: skill_db.php');
+};
 
 	?>
 
