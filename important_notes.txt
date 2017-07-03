@@ -1,16 +1,11 @@
 Bugs to squish:
-- skills set to auto 0 not refunded to total unused skill point counter
-- "10" on skill sim get's cut off on IE
 
 Things to do:
-- put edit/delete buttons on skill db for admin
 - set up proper layout for skill sim
-- make skill sim save button only available for logged in users
 - make front page and credits page
 - include contact me and socials on the bottom of the side nav
 
 To add if there's still enough time:
-- make a page where people can view saved builds
 - set up commenting and rating option on saved build pages
 - set option for each user to change dp and bg pic on side nav
 - set jumping poring as page preloader
