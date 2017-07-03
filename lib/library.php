@@ -71,8 +71,12 @@ if(isset($_POST['registerSubmit'])){
 //SAVE_BUILD
 if(isset($_POST['saveBuild'])){
 	$acct_id = $_SESSION['id'];
-	// $sql = "INSERT INTO builds (acct_id) VALUES ('$acct_id')";
-	// mysqli_query($conn, $sql);
+	$build_name = trim(addslashes($_POST['build_name']));
+	$build_description = trim(addslashes($_POST['build_description']));
+	// echo "build name: $build_name, build description: $build_description<br>";
+	$sql = "INSERT INTO builds (acct_id, build_name, build_description, Date)
+			VALUES ('$acct_id', '$build_name', '$build_description', CURDATE())";
+	mysqli_query($conn, $sql);
 
 	$sql = "SELECT * FROM builds ORDER BY builds.id DESC LIMIT 1";
 	$result = mysqli_query($conn,$sql);
@@ -91,7 +95,7 @@ if(isset($_POST['saveBuild'])){
 		$skill_level = $_POST["$skill_name"];
 		// $sql = "INSERT INTO skill_sims (skill_id, level, build_id) VALUES ('$id', '$skill_level', '$build_id')";
 		// mysqli_query($conn,$sql);
-		echo "skill id: $id, skill name: $skill_name, skill level: $skill_level, acct id: $acct_id, build id: $build_id<br>";
+		echo "skill id: $id, skill name: $skill_name, skill level: $skill_level, acct id: $acct_id, build id: $build_id <br>";
 		
 	}
 	echo 'Build successfully saved.';

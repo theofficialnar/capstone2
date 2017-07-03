@@ -63,9 +63,26 @@ function display_content(){
 									</div>';
 							};//quest skill closer
 						};//while loop closer
-							echo '<input type="submit" name="saveBuild" value="Save">
+							echo '<a href="#modal2"><button>Save</button></a>
 								<input type="submit" name="genRep" value="Generate Report">
 								Unused Skill Points: <span id="sp_left"> 49 </span>
+
+								<div id="modal2" class="modal">
+									<div class="modal-content">
+										<div class="input-field">
+											<input type="text" name="build_name" id="build_name">
+											<label for="build_name">Name</label>
+										</div>
+										<div class="input-field">
+											<textarea name="build_description" id="build_description" class="materialize-textarea"></textarea>
+											<label for="build_description">Description</label>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<input type="submit" name="saveBuild" value="Save">
+										<input type="submit" name="cancelBuild" value="Cancel">
+									</div>
+								</div>
 						</form>
 					</div>
 				</div>

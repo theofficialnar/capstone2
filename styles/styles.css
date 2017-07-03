@@ -108,3 +108,7 @@ button[id^="min"]{
 .btn-select {
 	margin: 0 auto;
 }
+
+.build-date{
+	font-size: 10px;
+}

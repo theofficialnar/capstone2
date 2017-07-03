@@ -17,6 +17,11 @@
 			echo '<li><a href="add_skill.php">Add Skills</a></li>';
 		}
 		?>
+	<?php
+		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
+			echo '<li><a href="my_builds.php">My Builds</a></li>';
+		}
+		?>
 	<li><a href="skill_db.php">Skill Database</a></li>
 	<li><a href="skill_sim.php">Skill Simulator</a></li>
 	<?php
