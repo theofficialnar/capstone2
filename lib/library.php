@@ -73,7 +73,7 @@ if(isset($_POST['saveBuild'])){
 	$acct_id = $_SESSION['id'];
 	$build_name = trim(addslashes($_POST['build_name']));
 	$build_description = trim(addslashes($_POST['build_description']));
-	// echo "build name: $build_name, build description: $build_description<br>";
+	echo "build name: $build_name, build description: $build_description<br>";
 	$sql = "INSERT INTO builds (acct_id, build_name, build_description, build_date)
 			VALUES ('$acct_id', '$build_name', '$build_description', CURDATE())";
 	mysqli_query($conn, $sql);
@@ -93,9 +93,10 @@ if(isset($_POST['saveBuild'])){
 		$build_id = $_SESSION['buildId'];
 		$skill_name = str_replace(' ', '_', $skill_name);
 		$skill_level = $_POST["$skill_name"];
-		// $sql = "INSERT INTO skill_sims (skill_id, level, build_id) VALUES ('$id', '$skill_level', '$build_id')";
-		// mysqli_query($conn,$sql);
-		echo "skill id: $id, skill name: $skill_name, skill level: $skill_level, acct id: $acct_id, build id: $build_id <br>";
+		$pts_left = $_POST['sp_left'];
+		$sql = "INSERT INTO skill_sims (skill_id, level, build_id, pts_left) VALUES ('$id', '$skill_level', '$build_id', '$pts_left')";
+		mysqli_query($conn,$sql);
+		// echo "skill id: $id, skill name: $skill_name, skill level: $skill_level, acct id: $acct_id, build id: $build_id <br>";
 		
 	}
 	echo 'Build successfully saved.';
@@ -158,6 +159,25 @@ if(isset($_POST['deleteYes'])){
 
 if(isset($_POST['deleteNo'])){
 	header('location: skill_db.php');
+};
+
+//BUILD UPDATE
+if(isset($_POST['updateBuild'])){
+	$build_id = $_GET['build_id'];
+	$sql = "SELECT * FROM skill_sims ss JOIN skills s ON ss.skill_id=s.id WHERE build_id = '$build_id'";
+	$result = mysqli_query($conn, $sql);
+	while($row = mysqli_fetch_assoc($result)){
+		extract($row);
+		$skill_name = str_replace(' ', '_', $skill_name);
+		$skill_level = $_POST["$skill_name"];
+		$pts_left = $_POST['sp_left'];
+		$sql = "UPDATE skill_sims SET
+				level = '$skill_level',
+				pts_left = '$pts_left'
+				WHERE skill_id = '$skill_id' AND build_id = '$build_id'";
+		mysqli_query($conn, $sql);
+		header('location: my_builds.php');
+	};
 };
 
 	?>

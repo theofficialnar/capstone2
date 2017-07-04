@@ -13,19 +13,20 @@ function display_content(){
 
 	echo '<div class="container">
 		<div class="row">
-			<div class="col l8 m8 s12 offset-l2 offset-m2">';
+			<div class="col l8 m8 s12 offset-l2 offset-m2 margin-top">';
 	$sql = "SELECT * FROM builds WHERE acct_id = '$acct_id'";
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
-			echo '<div class="card blue-grey darken-1">
+			echo '<div class="card blue-grey">
 				<div class="card-content white-text">
 					<span class="card-title">'.$build_name.'</span>
 					<p class="build-date">'.$build_date.'</p>
 					<p>'.$build_description.'</p>
 				</div>
 				<div class="card-action center-align">';
-					echo "<a href='build.php?build_id=$id'><button>View</button></a>";
+					echo "<a href='build.php?build_id=$id' class='waves-effect btn'>View</a>
+						<a href='build_update.php?build_id=$id' class='waves-effect btn'>Update</a>";
 				echo '</div>
 			</div>';
 	};

@@ -65,7 +65,7 @@ function display_content(){
 						};//while loop closer
 							echo '<a href="#modal2"><button>Save</button></a>
 								<input type="submit" name="genRep" value="Generate Report">
-								Unused Skill Points: <span id="sp_left"> 49 </span>
+								Unused Skill Points: <input type="text" id="sp_left" name="sp_left" value="49" style="width: 20px; border-bottom: none; margin: 0">
 
 								<div id="modal2" class="modal">
 									<div class="modal-content">
