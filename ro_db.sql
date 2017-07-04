@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2017 at 03:09 PM
+-- Generation Time: Jul 04, 2017 at 10:43 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,18 +31,41 @@ CREATE TABLE `builds` (
   `acct_id` int(10) DEFAULT NULL,
   `build_name` varchar(255) NOT NULL DEFAULT 'None',
   `build_description` varchar(255) NOT NULL DEFAULT 'None',
-  `Date` date DEFAULT NULL
+  `build_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `builds`
 --
 
-INSERT INTO `builds` (`id`, `acct_id`, `build_name`, `build_description`, `Date`) VALUES
-(7, 1, 'None', 'None', NULL),
-(8, 1, 'test', 'test', '2017-07-03'),
-(9, 1, 'nov', 'nov\r\n', '2017-07-03'),
-(10, 5, 'test1build', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod asdasdasdasdas\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis', '2017-07-03');
+INSERT INTO `builds` (`id`, `acct_id`, `build_name`, `build_description`, `build_date`) VALUES
+(10, 5, 'test1build', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod asdasdasdasdas\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis', '2017-07-03'),
+(11, 5, 'test\'s build', 'insert random shit', '2017-07-04'),
+(12, 1, 'eh', 'eh', '2017-07-04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `build_comments`
+--
+
+CREATE TABLE `build_comments` (
+  `id` int(11) NOT NULL,
+  `comment` varchar(255) NOT NULL,
+  `build_id` int(11) DEFAULT NULL,
+  `commenter_id` int(11) DEFAULT NULL,
+  `comment_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `build_comments`
+--
+
+INSERT INTO `build_comments` (`id`, `comment`, `build_id`, `commenter_id`, `comment_date`) VALUES
+(1, 'test', NULL, 1, '2017-07-04'),
+(2, 'lol', NULL, 1, '2017-07-04'),
+(3, 'imba', NULL, 1, '2017-07-04'),
+(4, 'eeeee', NULL, 1, '2017-07-04');
 
 -- --------------------------------------------------------
 
@@ -115,7 +138,7 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (35, 'Divine Protection', 'Reduces damage from Undead property and Demon family monsters by (3*SkillLV)+[0.04*(BaseLV + 1)]. Damage is subtracted after DEF reductions.\r\nDoes not work against Players.', 'Acolyte', 'Demon Bane (Lv 3), Angelus (Lv 3), Blessing (Lv 5), Iron Hand (Lv 10, Monk)', 10, 'ro_skill_icons/al_dp.svg', 'No', 'None'),
 (36, 'Demon Bane', 'Increases damage against Undead property and Demon family monsters by (3*SkillLV)+[0.05*(BaseLV + 1)]. Damage ignores DEF reduction from armor, but not from VIT. The skill bonus increases with higher character BaseLV. Does not work against Players.', 'Acolyte', 'Signum Crucis (Lv 3), Iron Hand (Lv 10, Monk), Mana Recharge (Lv 10, High Priest)', 10, 'ro_skill_icons/al_demonbane.svg', 'No', 'Divine Protection Lv 3'),
 (37, 'Ruwach', 'Reveals Hiding and Cloaking players and monsters within range. Revealed players and monsters are hit with a holy element Magic attack with a strength of MATK*1.45.', 'Acolyte', 'Teleportation (Lv 1), Lex Divina (Lv 1, Priest)', 1, 'ro_skill_icons/al_ruwach.svg', 'No', 'None'),
-(38, 'Pneuma', 'Creates a 3x3 cell cloud (although the animation only appears to cover the center cell!) around the target cell that blocks all ranged Physical attacks. This means that it also blocks the bow attacks of players, so take care not to prevent any Hunters or ', 'Acolyte', 'None', 10, 'ro_skill_icons/al_pneuma.svg', 'No', 'Warp Portal Lv 4'),
+(38, 'Pneuma', 'Creates a 3x3 cell cloud (although the animation only appears to cover the center cell!) around the target cell that blocks all ranged Physical attacks. This means that it also blocks the bow attacks of players, so take care not to prevent any Hunters or ', 'Acolyte', 'None', 1, 'ro_skill_icons/al_pneuma.svg', 'No', 'Warp Portal Lv 4'),
 (39, 'Teleportation', 'At level 1, you can teleport to a random spot on the same map. At level 2, you can also choose to teleport to your save point. When Teleportation is actually cast, a window will appear showing the available options (including cancel). You must actually se', 'Acolyte', 'Warp Portal (Lv 2)', 2, 'ro_skill_icons/al_teleport.svg', 'No', 'Ruwach Lv 1'),
 (40, 'Warp Portal', 'Creates a warp portal at the targeted cell after a destination is selected from a list. This spell cannot be cast under a monster or player. If anyone steps onto the targeted cell while the destination is being selected, the spell will fail. After success', 'Acolyte', 'Pneuma (Lv 4)', 4, 'ro_skill_icons/al_warp.svg', 'No', 'Teleportation Lv 2'),
 (41, 'Heal', 'Heals a target\'s HP for [(BaseLV+INT)/8]*(4+8*SkillLV). When used against Undead property monsters, it is a holy attack that ignores MDEF and INT, but deals only half damage (that is, HealValue*ElementModifier/2). To use against a monster, you must shift-', 'Acolyte', 'Increase Agility (Lv 3), Cure (Lv 2), Sanctuary (Lv 1, Priest), Coluceo Heal (Lv 1, Arch Bishop)', 10, 'ro_skill_icons/al_heal.svg', 'No', 'None'),
@@ -160,28 +183,43 @@ CREATE TABLE `skill_sims` (
   `id` int(10) NOT NULL,
   `skill_id` int(10) DEFAULT NULL,
   `level` int(10) NOT NULL,
-  `build_id` int(10) DEFAULT NULL
+  `build_id` int(10) DEFAULT NULL,
+  `pts_left` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `skill_sims`
 --
 
-INSERT INTO `skill_sims` (`id`, `skill_id`, `level`, `build_id`) VALUES
-(1, 14, 4, 7),
-(2, 15, 0, 7),
-(3, 16, 4, 7),
-(4, 17, 0, 7),
-(5, 18, 0, 7),
-(6, 19, 0, 7),
-(7, 20, 0, 7),
-(8, 21, 0, 7),
-(9, 22, 3, 7),
-(10, 23, 0, 7),
-(11, 24, 0, 7),
-(12, 25, 4, 7),
-(13, 26, 0, 7),
-(14, 27, 1, 7);
+INSERT INTO `skill_sims` (`id`, `skill_id`, `level`, `build_id`, `pts_left`) VALUES
+(15, 14, 10, 11, 4),
+(16, 15, 0, 11, 4),
+(17, 16, 10, 11, 4),
+(18, 17, 10, 11, 4),
+(19, 18, 5, 11, 4),
+(20, 19, 0, 11, 4),
+(21, 20, 0, 11, 4),
+(22, 21, 10, 11, 4),
+(23, 22, 0, 11, 4),
+(24, 23, 0, 11, 4),
+(25, 24, 0, 11, 4),
+(26, 25, 0, 11, 4),
+(27, 26, 0, 11, 4),
+(28, 27, 1, 11, 4),
+(29, 14, 0, 12, 45),
+(30, 15, 1, 12, 45),
+(31, 16, 0, 12, 45),
+(32, 17, 0, 12, 45),
+(33, 18, 0, 12, 45),
+(34, 19, 0, 12, 45),
+(35, 20, 0, 12, 45),
+(36, 21, 3, 12, 45),
+(37, 22, 0, 12, 45),
+(38, 23, 0, 12, 45),
+(39, 24, 0, 12, 45),
+(40, 25, 0, 12, 45),
+(41, 26, 0, 12, 45),
+(42, 27, 1, 12, 45);
 
 -- --------------------------------------------------------
 
@@ -216,6 +254,14 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`) VALUES
 ALTER TABLE `builds`
   ADD PRIMARY KEY (`id`),
   ADD KEY `acct_id` (`acct_id`);
+
+--
+-- Indexes for table `build_comments`
+--
+ALTER TABLE `build_comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `build_id` (`build_id`),
+  ADD KEY `commenter_id` (`commenter_id`);
 
 --
 -- Indexes for table `ratings`
@@ -253,7 +299,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `build_comments`
+--
+ALTER TABLE `build_comments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `ratings`
 --
@@ -268,7 +319,7 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `skill_sims`
 --
 ALTER TABLE `skill_sims`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -283,6 +334,13 @@ ALTER TABLE `users`
 --
 ALTER TABLE `builds`
   ADD CONSTRAINT `builds_ibfk_1` FOREIGN KEY (`acct_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `build_comments`
+--
+ALTER TABLE `build_comments`
+  ADD CONSTRAINT `build_comments_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  ADD CONSTRAINT `build_comments_ibfk_2` FOREIGN KEY (`commenter_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ratings`

@@ -803,7 +803,7 @@ $('#build-comment-submit').click(function(){
 	var comment = document.getElementById('build_comment').value;
 	var build_id = document.getElementById('build_id').innerHTML;
 	var user_id = document.getElementById('user_id').innerHTML;
-	$.post('build_comment.php?bid='+build_id,
+	$.post('build_comment_ajax.php?bid='+build_id,
 		{
 			comment: comment,
 			user_id: user_id
@@ -812,4 +812,16 @@ $('#build-comment-submit').click(function(){
 			// alert(data)
 			document.getElementById('comment-section').innerHTML += data
 		});
+});
+//Build delete AJAX
+$('#deleteBuildYes').click(function(){
+	var build_id = document.getElementById('build_id').innerHTML;
+	$.post('build_delete_ajax.php?bid='+build_id,
+	{
+
+	},
+	function(data,status){
+		alert('Build successfully deleted!');
+		document.getElementById('build-container').innerHTML = data
+	});
 });
