@@ -21,14 +21,13 @@ function display_content(){
 			echo '<div class="card blue-grey">
 				<div class="card-content white-text">
 					<span class="card-title">'.$build_name.'</span>
-					<span id="build_id" style="display: none">'.$id.'</span>
 					<p class="build-date">'.$build_date.'</p>
 					<p>'.$build_description.'</p>
 				</div>
 				<div class="card-action center-align">';
 					echo "<a href='build.php?build_id=$id' class='waves-effect btn'>View</a>
 						<a href='build_update.php?build_id=$id' class='waves-effect btn'>Update</a>
-						<a href='#modal3' class='waves-effect btn'>Delete</a>";
+						<a href='#modal3' class='waves-effect btn' id='del".$id."' onclick='modal_pass(this.id)'>Delete</a>";
 				echo '</div>
 			</div>';
 	};
@@ -38,6 +37,7 @@ function display_content(){
 	<div id="modal3" class="modal">
 		<div class="modal-content">
 			<h4>Are you sure you want to delete this build?</h4>
+			<span id="delIdReceiver" style="display: none"></span>
 		</div>
 		<div class="modal-footer">
 			<button id="deleteBuildYes" class="btn">Yes</button>

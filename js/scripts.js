@@ -813,15 +813,24 @@ $('#build-comment-submit').click(function(){
 			document.getElementById('comment-section').innerHTML += data
 		});
 });
+
+function modal_pass(id){
+	$('#delIdReceiver').html(id);
+};
+
 //Build delete AJAX
 $('#deleteBuildYes').click(function(){
-	var build_id = document.getElementById('build_id').innerHTML;
+	var build_id = document.getElementById('delIdReceiver').innerHTML;
 	$.post('build_delete_ajax.php?bid='+build_id,
 	{
 
 	},
 	function(data,status){
-		alert('Build successfully deleted!');
-		document.getElementById('build-container').innerHTML = data
+		// alert(data);
+		alert('Build successfully deleted!');	
+		setTimeout(function(){
+			location.reload();
+		}, 0);
+		// document.getElementById('build-container').innerHTML = data
 	});
 });
