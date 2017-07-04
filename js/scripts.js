@@ -799,4 +799,20 @@ function level(val,id){
 	}
 
 	return [new_level, new_hidden, new_sp_left];
-};
+}; //function end
+
+//Build comment auto post AJAX
+$('#build-comment-submit').click(function(){
+	var comment = document.getElementById('build_comment').value;
+	var build_id = document.getElementById('build_id').innerHTML;
+	var user_id = document.getElementById('user_id').innerHTML;
+	$.post('build_comment.php?bid='+build_id,
+		{
+			comment: comment,
+			user_id: user_id
+		},
+		function(data,status){
+			// alert(data)
+			document.getElementById('comment-section').innerHTML += data
+		});
+});

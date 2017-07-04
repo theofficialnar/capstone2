@@ -74,7 +74,7 @@ if(isset($_POST['saveBuild'])){
 	$build_name = trim(addslashes($_POST['build_name']));
 	$build_description = trim(addslashes($_POST['build_description']));
 	// echo "build name: $build_name, build description: $build_description<br>";
-	$sql = "INSERT INTO builds (acct_id, build_name, build_description, Date)
+	$sql = "INSERT INTO builds (acct_id, build_name, build_description, build_date)
 			VALUES ('$acct_id', '$build_name', '$build_description', CURDATE())";
 	mysqli_query($conn, $sql);
 

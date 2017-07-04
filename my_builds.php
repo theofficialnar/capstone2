@@ -21,12 +21,12 @@ function display_content(){
 			echo '<div class="card blue-grey darken-1">
 				<div class="card-content white-text">
 					<span class="card-title">'.$build_name.'</span>
-					<p class="build-date">'.$Date.'</p>
+					<p class="build-date">'.$build_date.'</p>
 					<p>'.$build_description.'</p>
 				</div>
-				<div class="card-action center-align">
-					<a href="#"><button>View</button></a>
-				</div>
+				<div class="card-action center-align">';
+					echo "<a href='build.php?build_id=$id'><button>View</button></a>";
+				echo '</div>
 			</div>';
 	};
 			echo '</div>

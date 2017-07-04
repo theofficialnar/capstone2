@@ -112,3 +112,7 @@ button[id^="min"]{
 .build-date{
 	font-size: 10px;
 }
+
+.header-padding {
+	padding: 20px;
+}
