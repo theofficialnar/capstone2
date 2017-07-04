@@ -18,28 +18,29 @@ function display_content(){
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
-			echo '<div class="card blue-grey">
+		echo "<a href='build.php?build_id=$id'>";
+			echo '<div class="card blue-grey z-depth-5" id="buildCards">
 				<div class="card-content white-text">
-					<span class="card-title">'.$build_name.'</span>
+					<span class="card-title"><b>'.strtoupper($build_name).'</b></span>
 					<p class="build-date">'.$build_date.'</p>
-					<p>'.$build_description.'</p>
+					<p>'.ucfirst($build_description).'</p>
 				</div>
 				<div class="card-action center-align">';
-					echo "<a href='build.php?build_id=$id' class='waves-effect btn'>View</a>
-						<a href='build_update.php?build_id=$id' class='waves-effect btn'>Update</a>
-						<a href='#modal3' class='waves-effect btn' id='del".$id."' onclick='modal_pass(this.id)'>Delete</a>";
+					echo "<button class='waves-effect waves-teal btn blue-grey lighten-5 black-text btn-hover-scale'>Update</button>
+						<a href='#modal3' class='waves-effect waves-red btn blue-grey lighten-5 black-text btn-hover-scale' id='del".$id."' onclick='modal_pass(this.id)'>Delete</a>";
 				echo '</div>
-			</div>';
+			</div>
+		</a>';
 	};
 			echo '</div>
 		</div>
 	</div>
 	<div id="modal3" class="modal">
-		<div class="modal-content">
+		<div class="modal-content center-align">
 			<h4>Are you sure you want to delete this build?</h4>
 			<span id="delIdReceiver" style="display: none"></span>
 		</div>
-		<div class="modal-footer">
+		<div class="modal-footer center-align">
 			<button id="deleteBuildYes" class="btn">Yes</button>
 			<button id="deleteBuildNo" class="btn">No</button>
 		</div>

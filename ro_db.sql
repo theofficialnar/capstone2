@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2017 at 10:43 AM
+-- Generation Time: Jul 04, 2017 at 03:40 PM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,7 +41,7 @@ CREATE TABLE `builds` (
 INSERT INTO `builds` (`id`, `acct_id`, `build_name`, `build_description`, `build_date`) VALUES
 (10, 5, 'test1build', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod asdasdasdasdas\r\ntempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\r\nquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\r\nconsequat. Duis', '2017-07-03'),
 (11, 5, 'test\'s build', 'insert random shit', '2017-07-04'),
-(12, 1, 'eh', 'eh', '2017-07-04');
+(19, 1, 'asdas', 'asdfgsdfg', '2017-07-04');
 
 -- --------------------------------------------------------
 
@@ -206,20 +206,16 @@ INSERT INTO `skill_sims` (`id`, `skill_id`, `level`, `build_id`, `pts_left`) VAL
 (26, 25, 0, 11, 4),
 (27, 26, 0, 11, 4),
 (28, 27, 1, 11, 4),
-(29, 14, 0, 12, 45),
-(30, 15, 1, 12, 45),
-(31, 16, 0, 12, 45),
-(32, 17, 0, 12, 45),
-(33, 18, 0, 12, 45),
-(34, 19, 0, 12, 45),
-(35, 20, 0, 12, 45),
-(36, 21, 3, 12, 45),
-(37, 22, 0, 12, 45),
-(38, 23, 0, 12, 45),
-(39, 24, 0, 12, 45),
-(40, 25, 0, 12, 45),
-(41, 26, 0, 12, 45),
-(42, 27, 1, 12, 45);
+(107, 62, 6, 19, 43),
+(108, 63, 0, 19, 43),
+(109, 64, 0, 19, 43),
+(110, 65, 0, 19, 43),
+(111, 66, 0, 19, 43),
+(112, 67, 0, 19, 43),
+(113, 68, 1, 19, 43),
+(114, 69, 1, 19, 43),
+(115, 70, 1, 19, 43),
+(116, 71, 1, 19, 43);
 
 -- --------------------------------------------------------
 
@@ -299,7 +295,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `build_comments`
 --
@@ -319,7 +315,7 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `skill_sims`
 --
 ALTER TABLE `skill_sims`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 --
 -- AUTO_INCREMENT for table `users`
 --

@@ -831,6 +831,19 @@ $('#deleteBuildYes').click(function(){
 		setTimeout(function(){
 			location.reload();
 		}, 0);
-		// document.getElementById('build-container').innerHTML = data
 	});
 });
+
+$('.card').hover(function(){
+	$('#buildCards').removeClass('z-depth-5');
+	$('#buildCards').addClass('z-depth-1');
+	}, function(){
+	$('#buildCards').addClass('z-depth-5');
+	$('#buildCards').removeClass('z-depth-1');
+});
+
+// $('.build-update-btn').hover(function(){
+// 	$(this).html('<i class="material-icons">mode_edit</i>');
+// 	}, function(){
+// 	$(this).html('Update');
+// });
