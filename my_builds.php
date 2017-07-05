@@ -19,8 +19,8 @@ function display_content(){
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
 		echo "<a href='build.php?build_id=$id'>";
-			echo '<div class="card blue-grey z-depth-5" id="buildCards">
-				<div class="card-content white-text">
+			echo '<div class="card indigo lighten-3 z-depth-5" id="buildCards">
+				<div class="card-content black-text">
 					<span class="card-title"><b>'.strtoupper($build_name).'</b></span>
 					<p class="build-date">'.$build_date.'</p>
 					<p>'.ucfirst($build_description).'</p>
@@ -41,8 +41,8 @@ function display_content(){
 			<span id="delIdReceiver" style="display: none"></span>
 		</div>
 		<div class="modal-footer center-align">
-			<button id="deleteBuildYes" class="btn">Yes</button>
-			<button id="deleteBuildNo" class="btn">No</button>
+			<button id="deleteBuildYes" class="btn red accent-1 btn-hover-scale">Yes</button>
+			<button class="modal-close btn teal accent-4 btn-hover-scale">No</button>
 		</div>
 	</div>';
 };

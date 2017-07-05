@@ -15,7 +15,7 @@ function display_content(){
 				<div class="input-field">
 					<form method="POST" action="" class="half-centered-form">';
 						multiDropdown('class');
-						echo '<input type="submit" name="skillDbSubmit" value="Select" class="btn btn-select">
+						echo '<input type="submit" name="skillDbSubmit" value="Select" class="btn btn-blue">
 					</form>
 				</div>
 			</div>
@@ -55,9 +55,9 @@ function display_content(){
 									</tbody>
 								</table>';
 									if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true && $_SESSION['role'] == 'admin'){
-										echo "<div class='center-align'>
-												<a href='skill_edit.php?id=$id'><button>Edit</button></a>
-												<a href='skill_delete.php?id=$id'><button>Delete</button></a>
+										echo "<div class='center-align skill-db-admin-btn'>
+												<a href='skill_edit.php?id=$id' class='btn btn-small waves-effect teal accent-4 btn-hover-scale'>Edit</a>
+												<a href='skill_delete.php?id=$id'class='btn btn-small waves-effect red accent-1 btn-hover-scale'>Delete</a>
 										</div>";
 										}
 							echo '</div>

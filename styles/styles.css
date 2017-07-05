@@ -106,7 +106,7 @@ button[id^="min"]{
 	margin: 0 auto;
 }
 
-.btn-select {
+.centralize {
 	margin: 0 auto;
 }
 
@@ -128,4 +128,62 @@ button[id^="min"]{
 
 .btn-hover-scale:hover {
 	transform: scale(1.2,1.2);
+}
+
+.bg {
+	background: #eceff1;
+	border-radius: 3px;
+}
+
+#deleteBuildYes,
+#deleteBuildNo {
+	margin: 0 10px 0;
+}
+
+.skill-db-admin-btn {
+	height: 20px;
+}
+
+/*Materialize CSS overrides*/
+.row .col {
+	padding: 1.5em 1.5em;
+}
+
+input[type=text]:focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #4d7ea8;
+  	box-shadow: 0 1px 0 0 #4d7ea8;
+}
+
+input[type="text"]:focus:not([readonly]) + label,
+textarea.materialize-textarea:focus:not([readonly]) + label {
+	color: #4d7ea8;
+}
+
+.btn-blue {
+	background-color: #4d7ea8;
+}
+
+.btn-pink {
+	background-color: #9e90a2;
+}
+
+.btn-blue:hover {
+	background-color: #628fb7;
+}
+
+.dropdown-content li > span {
+	color: #4d7ea8;
+}
+
+[type="checkbox"]:checked + label:before{
+	border-right: 2px solid #4d7ea8;
+  	border-bottom: 2px solid #4d7ea8;
+}
+
+.btn-small {
+	height: 25px;
+  	line-height: 25px;
+  	padding: 0 1rem;
+  	margin: 10px 10px 0;
 }
