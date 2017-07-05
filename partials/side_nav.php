@@ -1,15 +1,22 @@
 <ul id="slide-out" class="side-nav fixed">
-	<li><div class="user-view">
-		<div class="background valign-wrapper">
-			<img src="images/user_default.png" alt="user_photo" class="circle" id="profile-photo">
+	<li><div>
+		<div class="background">
+			<div class="user-view center-align">
+				<img src="images/user_default.png" alt="user_photo" class="circle" id="profile-photo">
+				<?php
+				if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
+					echo '<span class="user-welcome">Hello, ' .$_SESSION['username']. '!</span>';
+				}else{
+					echo '<span class="user-welcome">Hello, guest!</span>';
+				}
+				?>
+			</div>
 		</div>
 	</div></li>
 	<?php
-		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
-			echo '<li><a href=#> Hello, ' .$_SESSION['username']. '!</a></li>';
-		}else{
+		if(!isset($_SESSION['loginFlag'])){
 			echo '<li> <a href="#modal1">Login</a> </li>';
-			}
+		}
 		?>
 	<li><a href="index.php">Home</a></li>
 	<?php

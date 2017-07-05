@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 04, 2017 at 03:40 PM
+-- Generation Time: Jul 05, 2017 at 10:47 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -51,7 +51,7 @@ INSERT INTO `builds` (`id`, `acct_id`, `build_name`, `build_description`, `build
 
 CREATE TABLE `build_comments` (
   `id` int(11) NOT NULL,
-  `comment` varchar(255) NOT NULL,
+  `comment` text NOT NULL,
   `build_id` int(11) DEFAULT NULL,
   `commenter_id` int(11) DEFAULT NULL,
   `comment_date` date DEFAULT NULL
@@ -65,7 +65,9 @@ INSERT INTO `build_comments` (`id`, `comment`, `build_id`, `commenter_id`, `comm
 (1, 'test', NULL, 1, '2017-07-04'),
 (2, 'lol', NULL, 1, '2017-07-04'),
 (3, 'imba', NULL, 1, '2017-07-04'),
-(4, 'eeeee', NULL, 1, '2017-07-04');
+(4, 'eeeee', NULL, 1, '2017-07-04'),
+(5, 'wow', 19, 1, '2017-07-05'),
+(6, 'ayos!', 19, 5, '2017-07-05');
 
 -- --------------------------------------------------------
 
@@ -87,7 +89,7 @@ CREATE TABLE `ratings` (
 CREATE TABLE `skills` (
   `id` int(10) NOT NULL,
   `skill_name` varchar(255) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   `class` varchar(255) NOT NULL,
   `required_for` varchar(255) NOT NULL DEFAULT 'None',
   `max_level` int(10) NOT NULL,
@@ -157,10 +159,10 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (54, 'Identify', 'Identifies an unidentified item. Unidentified item must be in inventory (not cart). A Magnifier duplicates the effect of this skill.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_identify.svg', 'No', 'None'),
 (55, 'Vending', 'Allows the character to set up a shop at his current location. The items you want to sell must be in the characters pushcart, and the character must have his pushcart equipped.\r\nBe very careful to set the correct price!\r\nThe limit on distinct items that c', 'Merchant', 'Buying Store (Lv 1)', 10, 'ro_skill_icons/mc_vending.svg', 'No', 'Pushcart Lv 3'),
 (56, 'Mammonite', 'Uses 100z*SkillLV to increase ATK to (100+50*SkillLV)% for the next attack.', 'Merchant', 'Cart Termination (Lv 10, Whitesmith)', 10, 'ro_skill_icons/mc_mammonite.svg', 'No', 'None'),
-(57, 'Cart Revolution', 'Does ATK*150% neutral-property damage to 3x3 area around your target. Enemies hit by the attack are pushed back 2 cells. The appearance is just like Magnum Break, except you also see your cart go flying over your head and hitting the ground in front of yo', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_cartrevolution.svg', 'Yes', 'None'),
+(57, 'Buying Store', 'Enables the ability to open a purchase stall to buy various kinds of items. Must have at least 1 item you are buying.', 'Merchant', 'None', 1, 'ro_skill_icons/all_buying_store.svg', 'No', 'Vending Lv 1'),
 (58, 'Change Cart', 'Lets you change the appearance of your cart. A \"for fun\" skill, but because the appearances you can pick is restricted by the characters base level, you can tell a high level merchant or blacksmith just by looking at their cart.\r\nLevel 1-40: Normal cart o', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_changecart.svg', 'Yes', 'None'),
 (59, 'Loud Exclamation', 'Adds +4 STR.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_loud.svg', 'Yes', 'None'),
-(60, 'Buying Store', 'Enables the ability to open a purchase stall to buy various kinds of items. Must have atleast 1 item you are buying.', 'Merchant', 'None', 1, 'ro_skill_icons/all_buying_store.svg', 'Yes', 'None'),
+(60, 'Cart Revolution', 'Does ATK*150% neutral-property damage to 3x3 area around your target. Enemies hit by the attack are pushed back 2 cells. The appearance is just like Magnum Break, except you also see your cart go flying over your head and hitting the ground in front of yo', 'Merchant', 'Cart Boost (Lv 1, Whitesmith)', 1, 'ro_skill_icons/mc_cartrevolution.svg', 'Yes', 'None'),
 (61, 'Cart Decoration', 'Change Pushcart appearance.', 'Merchant', 'None', 1, 'ro_skill_icons/mc_cartdecorate.svg', 'Yes', 'None'),
 (62, 'Double Attack', 'Gives chance to double swing a Dagger class weapon with a chance equal to (5*SkillLV)%, and adds +1 HIT per SkillLV (that only applies in double attacks). In the case of an Assassin wielding two Dagger class weapons, it applies to the right-hand weapon on', 'Thief', 'Advanced Katar Research (Lv 5, Assassin Cross), Soul Breaker (Lv 5, Assassin Cross)', 10, 'ro_skill_icons/tf_double.svg', 'No', 'None'),
 (63, 'Increase Dodge', 'Increases Flee Rate by +3*SkillLV. This skill boosts the walking speed for Assassins by 1% per SkillLV and gives an additional +1 Flee Rate per SkillLV when you are an Assassin or Rogue.\r\nThe walking speed bonus does not add to the walking speed increase ', 'Thief', 'None', 10, 'ro_skill_icons/tf_miss.svg', 'No', 'None'),
@@ -206,16 +208,16 @@ INSERT INTO `skill_sims` (`id`, `skill_id`, `level`, `build_id`, `pts_left`) VAL
 (26, 25, 0, 11, 4),
 (27, 26, 0, 11, 4),
 (28, 27, 1, 11, 4),
-(107, 62, 6, 19, 43),
-(108, 63, 0, 19, 43),
-(109, 64, 0, 19, 43),
-(110, 65, 0, 19, 43),
-(111, 66, 0, 19, 43),
-(112, 67, 0, 19, 43),
-(113, 68, 1, 19, 43),
-(114, 69, 1, 19, 43),
-(115, 70, 1, 19, 43),
-(116, 71, 1, 19, 43);
+(107, 62, 6, 19, 27),
+(108, 63, 10, 19, 27),
+(109, 64, 6, 19, 27),
+(110, 65, 0, 19, 27),
+(111, 66, 0, 19, 27),
+(112, 67, 0, 19, 27),
+(113, 68, 1, 19, 27),
+(114, 69, 1, 19, 27),
+(115, 70, 1, 19, 27),
+(116, 71, 1, 19, 27);
 
 -- --------------------------------------------------------
 
@@ -228,17 +230,18 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `role` varchar(255) NOT NULL
+  `role` varchar(255) NOT NULL,
+  `display_photo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`) VALUES
-(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin'),
-(5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'regular'),
-(6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'hghghg', 'regular');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `display_photo`) VALUES
+(1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin@admin.com', 'admin', ''),
+(5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'regular', ''),
+(6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'hghghg', 'regular', '');
 
 --
 -- Indexes for dumped tables
@@ -295,12 +298,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `build_comments`
 --
 ALTER TABLE `build_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `ratings`
 --
@@ -315,7 +318,7 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `skill_sims`
 --
 ALTER TABLE `skill_sims`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 --
 -- AUTO_INCREMENT for table `users`
 --

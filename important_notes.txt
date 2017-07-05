@@ -1,12 +1,18 @@
 Bugs to squish:
 
 Things to do:
-- set up proper layout for skill sim
-- make front page and credits page
+- create my account page to change pw etc
+- polish edit skill and delete skill layouts from skill_db
+- polish front page
+- make credits page
 - include contact me and socials on the bottom of the side nav
+- polish comment's section on build view
+- fix skill sim view on mobile devices
+- change log in modal's password focus color and button color
+- set proper validations for registering
 
 To add if there's still enough time:
-- set up commenting and rating option on saved build pages
 - set option for each user to change dp and bg pic on side nav
+- create generate reports option on skill sim
 - set jumping poring as page preloader
 - replace dropdowns on skill db and sim with character sprites (will stand up when hovered)

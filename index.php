@@ -8,6 +8,7 @@ function get_title(){
 };
 
 function display_content(){
+	global $conn;
 	echo '<div class="container">
 		<div class="row">
 			<h1>Latest News</h1>
@@ -22,9 +23,29 @@ function display_content(){
 			<div class="col l6 m6 s12">
 				<h4>Top Builds</h4>
 			</div>
-			<div class="col l6 m6 s12">
-				<h4>Latest Builds</h4>
-			</div>
+			<div class="col l6 m6 s12 bg z-depth-2">
+				<div class="index-header center-align">
+					<h4>Latest Builds</h4>
+				</div>';
+				$sql = "SELECT * FROM builds b JOIN users u ON b.acct_id = u.id  
+						ORDER BY b.build_date  ASC";
+				$result = mysqli_query($conn, $sql);
+				while($row = mysqli_fetch_assoc($result)){
+					extract($row);
+					echo '<div>
+						<div class="row">
+							<div class="col l6">
+								<span><b>'.strtoupper($build_name).'</b></span>
+							</div>
+							<div class="col l6">
+								<span><i>'.$build_date.'</i></span>
+							</div>
+						</div>
+						<p>'.$build_description.'</p>
+						<span>'.$username.'</span><hr>
+					</div>';
+				}
+			echo '</div>
 		</div>
 	</div>';
 };

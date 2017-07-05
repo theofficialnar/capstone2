@@ -50,18 +50,54 @@ nav {
 	color: black;
 }
 
+.user-view {
+	position: absolute;
+	width: 300px;
+	height: 200px;
+}
+
+.user-welcome {
+	position: absolute;
+	left: 35%;
+	top: 65%;
+	/*background: rgba(0, 0, 0, 0.2);*/
+}
+
 #profile-photo {
 	width: 100px;
 	height: 100px;
-	margin: 0 auto;
 	border: 2px solid black;
 	box-shadow: 0px 0px 15px black;
+	position: absolute;
+	left: 33%;
+	top: 15%;
 	/*box-sizing: border-box;*/
 }
 
-.user-view .background {
-	background: url('../images/bg_default.jpeg');
+.background {
+	background: linear-gradient(233deg, #4d7ea8, #b6c2d9, #272932);
+	background-size: 600% 600%;
+	animation: gradient-scroll 10s ease infinite;
 	height: 200px;
+	position: relative;
+}
+
+@-webkit-keyframes gradient-scroll {
+    0%{background-position:0% 87%}
+    50%{background-position:100% 14%}
+    100%{background-position:0% 87%}
+}
+
+@-moz-keyframes gradient-scroll {
+    0%{background-position:0% 87%}
+    50%{background-position:100% 14%}
+    100%{background-position:0% 87%}
+}
+
+@keyframes gradient-scroll {
+    0%{background-position:0% 87%}
+    50%{background-position:100% 14%}
+    100%{background-position:0% 87%}
 }
 
 .disabledbutton,
@@ -133,19 +169,25 @@ button[id^="min"]{
 	height: 20px;
 }
 
+.index-header {
+	border-bottom: 1px solid #4d7ea8;
+}
+
 /*Materialize CSS overrides*/
 .row .col {
 	padding: 1.5em 1.5em;
 }
 
 input[type=text]:focus:not([readonly]),
-textarea.materialize-textarea:focus:not([readonly]) {
+textarea.materialize-textarea:focus:not([readonly]),
+input[type=password]:focus:not([readonly]) {
 	border-bottom: 1px solid #4d7ea8;
   	box-shadow: 0 1px 0 0 #4d7ea8;
 }
 
 input[type="text"]:focus:not([readonly]) + label,
-textarea.materialize-textarea:focus:not([readonly]) + label {
+textarea.materialize-textarea:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly])+label {
 	color: #4d7ea8;
 }
 
