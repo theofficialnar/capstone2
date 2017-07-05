@@ -71,7 +71,7 @@ function display_content(){
 							<input class="file-path validate" type="text">
 						</div>
 					</div>
-					<button type="submit" name="skillSubmit" class="btn blue accent-2 btn-hover-scale">Submit</button>
+					<button type="submit" name="skillSubmit" class="btn blue accent-2 btn-hover-scale"><i class="right material-icons">send</i>Submit</button>
 				</form>
 			</div>
 		</div>

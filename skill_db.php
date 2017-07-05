@@ -25,45 +25,50 @@ function display_content(){
 				<div class="collapsible-container">
 					<ul class="collapsible" data-collapsible="expandable">';
 				if(isset($_POST['skillDbSubmit'])){
-					$class_input = $_POST['class'];
-					$sql = "SELECT * FROM skills";
-					$result = mysqli_query($conn, $sql);
-					while($row = mysqli_fetch_assoc($result)){
-						extract($row);
-						if($class == $class_input){
-						echo '<li>';
-							if($quest_skill == 'Yes'){
-								echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. ' <b>[ Quest Skill ]</b></span></div>';
-								}else{
-								echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. '</span></div>';
-								};
-							echo '<div class="collapsible-body">
-								<table class="bordered">
-									<tbody>
-										<tr>
-											<td><span class="skill-db-title">Description: </span></td>
-											<td><span>'.$description.'</span></td>
-										</tr>
-										<tr>
-											<td><span class="skill-db-title">Unlock Requirements: </span></td>
-											<td><span>'.$unlock_requirements.'</span></td>
-										</tr>
-										<tr>
-											<td><span class="skill-db-title">Required For: </span></td>
-											<td><span>'.$required_for.'</span></td>
-										</tr>
-									</tbody>
-								</table>';
-									if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true && $_SESSION['role'] == 'admin'){
-										echo "<div class='center-align skill-db-admin-btn'>
-												<a href='skill_edit.php?id=$id' class='btn btn-small waves-effect teal accent-4 btn-hover-scale'>Edit</a>
-												<a href='skill_delete.php?id=$id'class='btn btn-small waves-effect red accent-1 btn-hover-scale'>Delete</a>
-										</div>";
-										}
-							echo '</div>
-						</li>';
-							}
-					};//while end
+					if(!isset($_POST['class'])){
+						echo '<span id="alert" style="display: none">Please choose a valid class!</span>';
+						alert();
+					}else{
+						$class_input = $_POST['class'];
+						$sql = "SELECT * FROM skills";
+						$result = mysqli_query($conn, $sql);
+						while($row = mysqli_fetch_assoc($result)){
+							extract($row);
+							if($class == $class_input){
+							echo '<li>';
+								if($quest_skill == 'Yes'){
+									echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. ' <b>[ Quest Skill ]</b></span></div>';
+									}else{
+									echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. '</span></div>';
+									};
+								echo '<div class="collapsible-body">
+									<table class="bordered">
+										<tbody>
+											<tr>
+												<td><span class="skill-db-title">Description: </span></td>
+												<td><span>'.$description.'</span></td>
+											</tr>
+											<tr>
+												<td><span class="skill-db-title">Unlock Requirements: </span></td>
+												<td><span>'.$unlock_requirements.'</span></td>
+											</tr>
+											<tr>
+												<td><span class="skill-db-title">Required For: </span></td>
+												<td><span>'.$required_for.'</span></td>
+											</tr>
+										</tbody>
+									</table>';
+										if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true && $_SESSION['role'] == 'admin'){
+											echo "<div class='center-align skill-db-admin-btn'>
+													<a href='skill_edit.php?id=$id' class='btn btn-small waves-effect teal accent-4 btn-hover-scale'><i class='material-icons'>edit</i></a>
+													<a href='skill_delete.php?id=$id'class='btn btn-small waves-effect red accent-1 btn-hover-scale'><i class='material-icons'>delete_forever</i></a>
+											</div>";
+											}
+								echo '</div>
+							</li>';
+								}
+						};//while end
+					};//else
 				};//if end
 					echo '
 					</ul>

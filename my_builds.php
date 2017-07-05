@@ -26,8 +26,8 @@ function display_content(){
 					<p>'.ucfirst($build_description).'</p>
 				</div>
 				<div class="card-action center-align">';
-					echo "<a href='build_update.php?build_id=$id' class='waves-effect waves-teal btn blue-grey lighten-5 black-text btn-hover-scale btn-margin'>Update</a>
-						<a href='#modal3' class='waves-effect waves-red btn blue-grey lighten-5 black-text btn-hover-scale btn-margin' id='del".$id."' onclick='modal_pass(this.id)'>Delete</a>";
+					echo "<a href='build_update.php?build_id=$id' class='waves-effect waves-teal btn blue-grey lighten-5 black-text btn-hover-scale btn-margin'><i class='material-icons'>edit</i></a>
+						<a href='#modal3' class='waves-effect waves-red btn blue-grey lighten-5 black-text btn-hover-scale btn-margin' id='del".$id."' onclick='modal_pass(this.id)'><i class='material-icons'>delete_forever</i></a>";
 				echo '</div>
 			</div>
 		</a>';
@@ -41,8 +41,8 @@ function display_content(){
 			<span id="delIdReceiver" style="display: none"></span>
 		</div>
 		<div class="modal-footer center-align">
-			<button id="deleteBuildYes" class="btn red accent-1 btn-hover-scale btn-margin">Yes</button>
-			<button id="deleteBuildNo" class="modal-close btn teal accent-4 btn-hover-scale btn-margin">No</button>
+			<button id="deleteBuildYes" class="btn red accent-1 btn-hover-scale btn-margin"><i class="material-icons">check</i></button>
+			<button id="deleteBuildNo" class="modal-close btn teal accent-4 btn-hover-scale btn-margin"><i class="material-icons">close</i></button>
 		</div>
 	</div>';
 };
