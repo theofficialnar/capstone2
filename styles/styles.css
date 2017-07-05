@@ -76,14 +76,6 @@ button[id^="min"]{
 	border: none;
 }
 
-.current-skill-tree,
-.to-be-unlocked-tree {
-	font-size: 13px;
-	border: 1px solid black;
-	margin-top: 30px;
-	margin-bottom: 30px;
-}
-
 .collapsible-container {
 	background: #f2f2f2;
 }
@@ -103,10 +95,6 @@ button[id^="min"]{
 
 .half-centered-form {
 	width: 50%;
-	margin: 0 auto;
-}
-
-.centralize {
 	margin: 0 auto;
 }
 
@@ -136,7 +124,8 @@ button[id^="min"]{
 }
 
 #deleteBuildYes,
-#deleteBuildNo {
+#deleteBuildNo,
+.btn-margin {
 	margin: 0 10px 0;
 }
 
@@ -186,4 +175,8 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
   	line-height: 25px;
   	padding: 0 1rem;
   	margin: 10px 10px 0;
+}
+
+.row-no-margin {
+	margin-bottom: 0;
 }
