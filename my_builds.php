@@ -14,13 +14,14 @@ function display_content(){
 	echo '<div class="container">
 		<div class="row">
 			<div class="col l8 m8 s12 offset-l2 offset-m2 margin-top" id="build-container">';
-	$sql = "SELECT * FROM builds WHERE acct_id = '$acct_id'";
+	$sql = "SELECT DISTINCT b.*,c.class_icon FROM classes c JOIN skills s ON c.class_name=s.class JOIN skill_sims ss ON ss.skill_id=s.id JOIN builds b ON ss.build_id=b.id WHERE acct_id = '$acct_id'";
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
 		echo "<a href='build.php?build_id=$id'>";
-			echo '<div class="card indigo lighten-3 z-depth-5" id="buildCards">
+			echo '<div class="card indigo lighten-3 z-depth-5">
 				<div class="card-content black-text">
+					<img src="'.$class_icon.'" class="left responsive-img" style="padding-right: 15px">
 					<span class="card-title"><b>'.strtoupper($build_name).'</b></span><hr>
 					<p class="build-date">'.$build_date.'</p>
 					<p>'.ucfirst($build_description).'</p>

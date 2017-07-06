@@ -4,7 +4,7 @@ function multiDropdown($name){
 	global $conn;
 	echo "<select name='$name'>";
 	echo '<option value="none" disabled selected>Choose an option</option>';
-	$sql = "SELECT DISTINCT class FROM skills";
+	$sql = "SELECT DISTINCT class FROM skills ORDER BY id ASC";
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
@@ -47,8 +47,8 @@ if(isset($_POST['skillSubmit'])){
 	$sql = "INSERT INTO skills (skill_name, description, class, required_for, max_level, icon, quest_skill, unlock_requirements)
 		VALUES ('$skill_name', '$description', '$class', '$required_for', '$max_level', '$icon', '$quest_skill', '$unlock_requirements')";
 	mysqli_query($conn, $sql);
-	echo 'Successfully added ' .$skill_name. ' to database!';
-	// echo '<script> Materialize.toast(\'I am a toast!\', 4000)</script>';
+	echo '<span id="alert" style="display: none"> Successfully added ' .$skill_name. ' to database! </span>';
+	alert();
 };
 
 // REGISTER
@@ -62,9 +62,11 @@ if(isset($_POST['registerSubmit'])){
 		$sql = "INSERT INTO users (username, email, password, role)
 				VALUES ('$username', '$email', '$password', 'regular')";
 		mysqli_query($conn, $sql);
-		echo 'Account successfully registered!<br>Welcome, '.$username;
+		echo '<span id="alert" style="display: none">Account successfully registered!</span>';
+		alert();
 	}else{
-		echo 'Passwords do not match. Please try again.';
+		echo '<span id="alert" style="display: none">Passwords do not match. Please try again.</span>';
+		alert();
 		}
 };
 
@@ -73,7 +75,7 @@ if(isset($_POST['saveBuild'])){
 	$acct_id = $_SESSION['id'];
 	$build_name = trim(addslashes($_POST['build_name']));
 	$build_description = trim(addslashes($_POST['build_description']));
-	echo "build name: $build_name, build description: $build_description<br>";
+	// echo "build name: $build_name, build description: $build_description<br>";
 	$sql = "INSERT INTO builds (acct_id, build_name, build_description, build_date)
 			VALUES ('$acct_id', '$build_name', '$build_description', CURDATE())";
 	mysqli_query($conn, $sql);
@@ -99,7 +101,8 @@ if(isset($_POST['saveBuild'])){
 		// echo "skill id: $id, skill name: $skill_name, skill level: $skill_level, acct id: $acct_id, build id: $build_id <br>";
 		
 	}
-	echo 'Build successfully saved.';
+	echo '<span id="alert" style="display: none">Build successfully saved.</span>';
+	alert();
 };
 
 //GENERATE REPORT

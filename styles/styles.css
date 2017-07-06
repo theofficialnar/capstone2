@@ -1,3 +1,18 @@
+@font-face {
+	font-family: Orbitron;
+	src: url(../fonts/Orbitron-Regular.ttf);
+}
+
+@font-face {
+	font-family: LuckiestGuy;
+	src: url(../fonts/LuckiestGuy.ttf);
+}
+
+header {
+	font-family: 'Orbitron', sans-serif;
+	text-shadow: 0 1px 5px black;
+}
+
 header, main, footer {
   padding-left: 300px;
 }
@@ -9,10 +24,6 @@ main {
 @media only screen and (max-width : 992px) {
 	header, main, footer {
 	    padding-left: 0;
-		}
-
-	.select-wrapper {
-		width: 100%;
 		}
 }
 
@@ -197,6 +208,30 @@ button[id^="min"]{
 	width: 50px;
 	height: 50px;
 	margin-right: 10px;
+	border: 1px solid black;
+}
+
+.max-skill-values {
+	color: #d84315;
+	font-weight: bold;
+}
+
+.pan-padding {
+	padding: 1.5em;
+}
+
+.credits,
+.copyright {
+	color: black;
+}
+
+.credits {
+	font-size: 10px;
+	font-style: italic;
+}
+
+.headline {
+	font-family: 'LuckiestGuy', cursive;
 }
 
 /*Materialize CSS overrides*/

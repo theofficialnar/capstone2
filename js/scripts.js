@@ -82,14 +82,21 @@ function level(val,id){
 		if(new_sp_left <= 0){
 			alert('All points used!');
 			$("[id^=add]").addClass("disabledbutton");
+			$('#unused-sp').addClass("max-skill-values");
 		};
 
 		if(new_sp_left > 0){
 			$("[id^=add]").removeClass("disabledbutton");
+			$('#unused-sp').removeClass("max-skill-values");
 		};
 
 		if(new_level == max){
 			document.getElementById("add"+skillName).classList.add("disable");
+			document.getElementById("skill-values"+skillName).classList.add("max-skill-values");
+		};
+
+		if(new_level < max && document.getElementById("skill-values"+skillName).classList.contains("max-skill-values")){
+			document.getElementById("skill-values"+skillName).classList.remove("max-skill-values");
 		};
 
 		if(new_level < max && document.getElementById("add"+skillName).classList.contains("disable")){
@@ -105,7 +112,7 @@ function level(val,id){
 		};
 
 
-		//Skill Unlock Requirements Section
+		//Skill Unlock Requirements Section + Auto refund script
 		//Endure
 		if($('.hidden8').html() >= 5){
 			$('.10').removeClass("disabledbutton");
@@ -834,13 +841,13 @@ $('#deleteBuildYes').click(function(){
 	});
 });
 
-$('.card').hover(function(){
-	$('#buildCards').removeClass('z-depth-5');
-	$('#buildCards').addClass('z-depth-1');
-	}, function(){
-	$('#buildCards').addClass('z-depth-5');
-	$('#buildCards').removeClass('z-depth-1');
-});
+// $('.card').hover(function(){
+// 	$('.buildCards').removeClass('z-depth-5');
+// 	$('.buildCards').addClass('z-depth-1');
+// 	}, function(){
+// 	$('.buildCards').addClass('z-depth-5');
+// 	$('.buildCards').removeClass('z-depth-1');
+// });
 
 // $('.build-update-btn').hover(function(){
 // 	$(this).html('<i class="material-icons">mode_edit</i>');

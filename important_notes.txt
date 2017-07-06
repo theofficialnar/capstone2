@@ -1,13 +1,9 @@
 Bugs to squish:
 
 Things to do:
-- make credits page
-- include contact me and socials on the bottom of the side nav
-- fix skill sim view on mobile devices
 - set proper validations for registering
 
 To add if there's still enough time:
-- set up top builds tab on front page
 - create generate reports option on skill sim
 - set jumping poring as page preloader
 - replace dropdowns on skill db and sim with character sprites (will stand up when hovered)

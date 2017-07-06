@@ -31,7 +31,8 @@
     <div class="modal-content">
     	<div class="container">
 			<div class="row" id="login">
-				<h3>Log in now</h3>
+				<h3 class="left" style="padding-top: 25px">Log in and join the fun! </h3>
+				<img src="images/kafra.gif">
 				<form method="POST" action="">
 					<div class="input-field">
 						<input type="text" name="username" id="username">
@@ -43,7 +44,7 @@
 					</div>
 					<button type="submit" name="logInSubmit" class="btn btn-blue waves-effect z-depth-5">Log in</button>
 				</form>
-				<h6>Don't have an account? <a href="register.php" target="_blank">Register here</a></h6>
+				<h6>Don't have an account? <a href="register.php" target="_blank">Register here!</a></h6>
 			</div>
 		</div>
     </div>

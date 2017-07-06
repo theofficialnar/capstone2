@@ -12,15 +12,21 @@ function display_content(){
 	global $conn;
 	$build_id = $_GET['build_id'];
 	echo '<div class="container">';
-		$sql = "SELECT * FROM builds WHERE id = '$build_id'";
+		$sql = "SELECT DISTINCT b.*,c.class_icon FROM classes c JOIN skills s ON c.class_name=s.class JOIN skill_sims ss ON ss.skill_id=s.id JOIN builds b ON ss.build_id=b.id WHERE b.id = '$build_id'";
 		$result = mysqli_query($conn, $sql);
 		while($row = mysqli_fetch_assoc($result)){
 			extract($row);
 			echo '<div class="row">
-				<div class="margin-top bg col l10 m10 s12 offset-l1 offset-m1 z-depth-2">
-					<h1>'.$build_name.'</h1><hr>
-					<span>'.$build_date.'</span><br>
-					<h5>'.$build_description.'</h5>
+				<div class="margin-top bg col l10 m12 s12 offset-l1 z-depth-2">
+					<div class="row">
+						<img src="'.$class_icon.'" class="left responsive-img" style="padding-right: 15px">
+						<h2>'.$build_name.'</h2>
+						<hr>
+						<span>'.$build_date.'</span>
+					</div>
+					<div class="row">
+						<span class="flow-text">'.$build_description.'</span>
+					</div>
 				</div>
 			</div>';
 		};//while end
@@ -51,7 +57,7 @@ function display_content(){
 			echo '</div>
 		</div>
 		<div class="row comment-section">
-			<div class="margin-top bg col l10 m10 s12 offset-l1 offset-m1 z-depth-2">
+			<div class="margin-top bg col l10 m12 s12 offset-l1 z-depth-2">
 				<h5>Have something to say?</h5>';
 				if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
 					echo '<div class="input-field">
@@ -77,7 +83,7 @@ function display_content(){
 				while($row = mysqli_fetch_assoc($result)){
 					extract($row);
 					echo '<div class="comment'.$id.'">
-						<img src="'.$display_photo.'" class="circle comment-section-photo left">
+						<img src="'.$display_photo.'" class="circle comment-section-photo left z-depth-2">
 						<p style="margin-top: 0">Posted by: <b>'.$username.'</b><br>
 						<span class="build-date">'.$comment_date.'</span></p>
 						<blockquote>'.$comment.'</blockquote>

@@ -4,11 +4,15 @@
 			<div class="user-view center-align">
 				<?php
 				if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
-					echo '<img src="'.$_SESSION['dp'].'" alt="user_photo" class="circle" id="profile-photo">';
-					echo '<span class="user-welcome">Hello, ' .$_SESSION['username']. '!</span>';
+					echo '<img src="'.$_SESSION['dp'].'" alt="user_photo" class="circle" id="profile-photo">
+					<div style="margin-top: 125px">
+						<span style="text-shadow: 0 1px 7px black">Hello, ' .$_SESSION['username']. '!</span>
+					</div>';
 				}else{
 					echo '<img src="images/user_default.png" alt="user_photo" class="circle" id="profile-photo">
-					<span class="user-welcome">Hello, guest!</span>';
+					<div style="margin-top: 125px">
+						<span style="text-shadow: 0 1px 7px black">Hello, guest!</span>
+					</div>';
 				}
 				?>
 			</div>
@@ -37,7 +41,39 @@
 		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
 			echo '<li><a href="?logOut">Log out</a></li>';
 		}
+		//used to force and adjust accordingly the credit's text
+		if(!isset($_SESSION['loginFlag'])){
+			echo '<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>';
+		}else if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true && $_SESSION['role'] == 'admin'){
+			echo '<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>';
+		}else if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
+			echo '<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>
+			<li>&nbsp;</li>';
+		}
 	?>
+	<li class="copyright center-align">myRagnarok db Copyright &copy; 2017</li>
+	<li class="credits center-align">All images and content belong to their respective creators.</li>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 

@@ -12,7 +12,7 @@
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
 		echo '<div class="comment'.$id.'">
-			<img src="'.$display_photo.'" class="circle comment-section-photo left">
+			<img src="'.$display_photo.'" class="circle comment-section-photo left z-depth-2">
 			<p style="margin-top: 0">Posted by: <b>'.$username.'</b><br>
 			<span class="build-date">'.$comment_date.'</span></p>
 			<blockquote>'.$comment.'</blockquote>
