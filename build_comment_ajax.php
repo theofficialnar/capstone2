@@ -7,14 +7,17 @@
 			VALUES ('$comment', '$bid', '$commenter_id', CURDATE())";
 	mysqli_query($conn, $sql);
 
-	$sql = "SELECT * FROM build_comments bc JOIN builds b ON bc.build_id = b.id JOIN users u ON bc.commenter_id = u.id  
-			ORDER BY bc.id  DESC LIMIT 1";
+	$sql = "SELECT bc.*,u.username,u.display_photo FROM build_comments bc JOIN builds b ON bc.build_id = b.id JOIN users u ON bc.commenter_id = u.id ORDER BY id DESC LIMIT 1";
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
-		echo '<p>Posted by: '.$username.'</p>
-			<p>Date: '.$comment_date.'</p>
-			<p>Comment: '.$comment.'<p>';
+		echo '<div class="comment'.$id.'">
+			<img src="'.$display_photo.'" class="circle comment-section-photo left">
+			<p style="margin-top: 0">Posted by: <b>'.$username.'</b><br>
+			<span class="build-date">'.$comment_date.'</span></p>
+			<blockquote>'.$comment.'</blockquote>
+			<hr>
+		</div>';
 	};
 	// $sql = "SELECT * FROM build_comments WHERE build_id = '$bid'";
 	// $result = mysqli_query($conn, $sql);

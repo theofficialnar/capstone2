@@ -37,7 +37,7 @@ function display_content(){
 							if($class == $class_input){
 							echo '<li>';
 								if($quest_skill == 'Yes'){
-									echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. ' <b>[ Quest Skill ]</b></span></div>';
+									echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. ' <span class="quest-marker">[ Quest Skill ]</span></span></div>';
 									}else{
 									echo '<div class="collapsible-header valign-wrapper"><img src=' .$icon. '>' . ' <span class="skill-db-header">' .$skill_name. '</span></div>';
 									};

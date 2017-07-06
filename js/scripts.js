@@ -810,7 +810,7 @@ $('#build-comment-submit').click(function(){
 		},
 		function(data,status){
 			// alert(data)
-			document.getElementById('comment-section').innerHTML += data
+			$('#comment-section').prepend(data)
 		});
 });
 

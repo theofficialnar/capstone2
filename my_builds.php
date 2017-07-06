@@ -21,7 +21,7 @@ function display_content(){
 		echo "<a href='build.php?build_id=$id'>";
 			echo '<div class="card indigo lighten-3 z-depth-5" id="buildCards">
 				<div class="card-content black-text">
-					<span class="card-title"><b>'.strtoupper($build_name).'</b></span>
+					<span class="card-title"><b>'.strtoupper($build_name).'</b></span><hr>
 					<p class="build-date">'.$build_date.'</p>
 					<p>'.ucfirst($build_description).'</p>
 				</div>
