@@ -11,39 +11,33 @@ function display_content(){
 	global $conn;
 	echo '<div class="container">
 		<div class="row">
-			<h1>Latest News</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+			<div class="col l12 m12 s12 bg margin-top center-align">
+				<h1 class="center-align">Latest News</h1><hr>
+				<h4>Ragnarok Philippines kicks off OBT!</h4>
+				<img src="images/roph_obt.jpg" style="margin: 0 auto">
+				<p>The RO Ph servers have once again opened it\'s doors to the public last June 29, 2017 after a successful Closed Beta. If you haven\'t joined in on all the fun and adventures during the CBT, now\'s your time to hop on to the servers and join thousands of fellow RO enthusiasts for Open Beta!
+				<br><br>
+				For more information, please visit their <a href="https://www.ragnarokonline.com.ph/main">official page</a>.</p>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col l6 m6 s12">
 				<h4>Top Builds</h4>
 			</div>
 			<div class="col l6 m6 s12 bg z-depth-2">
-				<div class="index-header center-align">
-					<h4>Latest Builds</h4>
-				</div>';
-				$sql = "SELECT * FROM builds b JOIN users u ON b.acct_id = u.id  
-						ORDER BY b.build_date  ASC";
+				<h4 class="center-align">Latest Builds</h4><hr>';
+				$sql = "SELECT b.*,u.username FROM builds b JOIN users u ON b.acct_id = u.id
+						ORDER BY b.build_date  DESC";
 				$result = mysqli_query($conn, $sql);
 				while($row = mysqli_fetch_assoc($result)){
 					extract($row);
 					echo '<div>
-						<div class="row">
-							<div class="col l6">
-								<span><b>'.strtoupper($build_name).'</b></span>
-							</div>
-							<div class="col l6">
-								<span><i>'.$build_date.'</i></span>
-							</div>
+							<span><b>'.strtoupper($build_name).'</b></span><br>
+							<span>Submitted by: '.$username.'</span><br>
+							<span class="build-date"><i>'.$build_date.'</i></span>
 						</div>
-						<p>'.$build_description.'</p>
-						<span>'.$username.'</span><hr>
-					</div>';
+						<p>'.$build_description.'</p>';
+						echo "<a href='build.php?build_id=$id'>View full build</a><hr>";
 				}
 			echo '</div>
 		</div>

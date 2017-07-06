@@ -38,7 +38,7 @@
 						<input type="password" name="password" id="password">
 						<label for="password">Password</label>
 					</div>
-					<button type="submit" name="logInSubmit" class="btn waves-effect waves-effect z-depth-5">Log in</button>
+					<button type="submit" name="logInSubmit" class="btn btn-blue waves-effect z-depth-5">Log in</button>
 				</form>
 				<h6>Don't have an account? <a href="register.php" target="_blank">Register here</a></h6>
 			</div>

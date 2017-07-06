@@ -169,10 +169,6 @@ button[id^="min"]{
 	height: 20px;
 }
 
-.index-header {
-	border-bottom: 1px solid #4d7ea8;
-}
-
 /*Materialize CSS overrides*/
 .row .col {
 	padding: 1.5em 1.5em;
