@@ -17,7 +17,7 @@ function display_content(){
 				<img src="images/roph_obt.jpg" style="margin: 0 auto">
 				<p>The RO Ph servers have once again opened it\'s doors to the public last June 29, 2017 after a successful Closed Beta. If you haven\'t joined in on all the fun and adventures during the CBT, now\'s your time to hop on to the servers and join thousands of fellow RO enthusiasts for Open Beta!
 				<br><br>
-				For more information, please visit their <a href="https://www.ragnarokonline.com.ph/main">official page</a>.</p>
+				For more information, please visit their <a href="https://www.ragnarokonline.com.ph/main" target="_blank">official page</a>.</p>
 			</div>
 		</div>
 		<div class="row">

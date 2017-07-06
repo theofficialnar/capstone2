@@ -12,9 +12,12 @@
 				$_SESSION['role'] = $role;
 				$_SESSION['loginFlag'] = true;
 				$_SESSION['id'] = $id;
+				$_SESSION['dp'] = $display_photo;
 				// echo '<span id="alert" style="display: none">Log in successful! ID: '.$id.'</span>';
 				// alert();
-				header('location: index.php');
+				// header('location:index.php');
+				header('Refresh: 0');
+				exit();
 			}
 		}else{
 		echo '<span id="alert" style="display: none">Account not registered!</span>';

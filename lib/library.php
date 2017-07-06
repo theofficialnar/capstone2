@@ -180,5 +180,56 @@ if(isset($_POST['updateBuild'])){
 	};
 };
 
+//ACCOUNT UPDATE
+if(isset($_POST['updateAcct'])){
+	$uid = $_SESSION['id'];
+	$new_display_photo = 'images/' . $_POST['display_photo'];
+	$new_email = $_POST['email'];
+	$new_pw1 = $_POST['password'];
+	$new_pw2 = $_POST['pw2'];
+	if($new_pw1 == "" || $new_pw2 == ""){
+		if($new_email == ""){
+			$sql = "UPDATE users SET
+			display_photo = '$new_display_photo'
+			WHERE id = '$uid'";
+			mysqli_query($conn, $sql);
+			echo '<span id="alert" style="display: none">Account updated!</span>';
+			alert();
+		}else{
+			$sql = "UPDATE users SET
+				display_photo = '$new_display_photo',
+				email = '$new_email'
+				WHERE id = '$uid'";
+			mysqli_query($conn, $sql);
+			echo '<span id="alert" style="display: none">Account updated!</span>';
+			alert();
+		}
+	}else{
+		if($new_pw1 == $new_pw2){
+			$new_password = sha1($new_pw1);
+			if($new_email == ""){
+				$sql = "UPDATE users SET
+				display_photo = '$new_display_photo',
+				password = '$new_password'
+				WHERE id = '$uid'";
+				mysqli_query($conn, $sql);
+				echo 'Account updated!';
+			}else{
+				$sql = "UPDATE users SET
+				display_photo = '$new_display_photo',
+				email = '$new_email',
+				password = '$new_password'
+				WHERE id = '$uid'";
+				mysqli_query($conn, $sql);
+				echo '<span id="alert" style="display: none">Account updated!</span>';
+				alert();
+			}
+		}else{
+			echo '<span id="alert" style="display: none">Passwords don\'t match!</span>';
+			alert();
+		}
+	};
+};
+
 	?>
 

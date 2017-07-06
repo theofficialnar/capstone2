@@ -1,4 +1,5 @@
 <?php
+ob_start();
 function header_title(){
 	echo 'Build View';
 };
@@ -47,15 +48,26 @@ function display_content(){
 		</div>
 		<div class="row comment-section bg z-depth-2">
 			<div class="col l12 m12 s12">
-				<h5>Have something to say?</h5>
-				<div class="input-field">
-					<span style="display: none" id="build_id">'.$build_id.'</span>
-					<span style="display: none" id="user_id">'.$_SESSION['id'].'</span>
-					<textarea name="build_comment" id="build_comment" class="materialize-textarea"></textarea>
-					<label for="build_comment">Leave a comment</label>
-					<button id="build-comment-submit" class="btn btn-blue">Comment</button>
-				</div>
-			</div>
+				<h5>Have something to say?</h5>';
+				if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
+					echo '<div class="input-field">
+						<span style="display: none" id="build_id">'.$build_id.'</span>
+						<span style="display: none" id="user_id">'.$_SESSION['id'].'</span>
+						<textarea name="build_comment" id="build_comment" class="materialize-textarea"></textarea>
+						<label for="build_comment">Leave a comment</label>
+						<button id="build-comment-submit" class="btn btn-blue">Comment</button>
+					</div>';
+				}else{
+					echo '<div class="comment-blocker">
+						<h3 class="comment-blocker-text center-align">Please <a href="#modal1">log in</a> to leave a comment.</h3>
+						<div class="input-field disable">
+							<textarea name="build_comment" id="build_comment" class="materialize-textarea"></textarea>
+							<label for="build_comment">Leave a comment</label>
+							<button id="build-comment-submit" class="btn btn-blue">Comment</button>
+						</div>
+					</div>';
+				}
+			echo '</div>
 
 			<div class="col l12 m12 s12">
 				<div id="comment-section">';
@@ -74,5 +86,5 @@ function display_content(){
 };
 
 require_once 'template.php';
-
+ob_end_flush();
 ?>
