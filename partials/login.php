@@ -15,9 +15,8 @@
 				$_SESSION['dp'] = $display_photo;
 				// echo '<span id="alert" style="display: none">Log in successful! ID: '.$id.'</span>';
 				// alert();
-				// header('location:index.php');
-				header('Refresh: 0');
-				exit();
+				header('location: index.php');
+				// header('Refresh: 0');
 			}
 		}else{
 		echo '<span id="alert" style="display: none">Account not registered!</span>';

@@ -1,4 +1,5 @@
 <?php
+ob_start();
 function header_title(){
 	echo '<img src="images/header.gif" class="responsive-img"><br>myRagnarok db
 	';
@@ -55,5 +56,5 @@ function display_content(){
 };
 
 require_once 'template.php';
-
+ob_end_flush();
 ?>
