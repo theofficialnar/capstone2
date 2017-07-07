@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2017 at 02:57 PM
+-- Generation Time: Jul 07, 2017 at 10:43 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -77,7 +77,10 @@ INSERT INTO `build_comments` (`id`, `comment`, `build_id`, `commenter_id`, `comm
 (23, '123', 19, 1, '2017-07-06'),
 (24, 'new comment', 19, 1, '2017-07-06'),
 (25, 'dsfd', NULL, 1, '2017-07-06'),
-(26, 'Something new, eh? /gg', 20, 5, '2017-07-06');
+(26, 'Something new, eh? /gg', 20, 5, '2017-07-06'),
+(27, 'asdasd', 19, 1, '2017-07-07'),
+(28, '111111111111111111111', 19, 1, '2017-07-07'),
+(29, '111111111111111111111', 19, 1, '2017-07-07');
 
 -- --------------------------------------------------------
 
@@ -285,18 +288,19 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL,
-  `display_photo` varchar(255) NOT NULL DEFAULT 'images/user_default.png'
+  `display_photo` varchar(255) NOT NULL DEFAULT 'images/user_default.png',
+  `file_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `display_photo`) VALUES
-(1, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'new@newdomain.com', 'admin', 'images/hp.jpg'),
-(5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'new@admin.com', 'regular', 'images/RagnarokStalker.jpg'),
-(6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'new@admin.com', 'regular', 'images/user_default.png'),
-(7, 'some_old_noob', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'something@domain.com', 'regular', 'images/BlacksmithCute.jpg');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `display_photo`, `file_name`) VALUES
+(1, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'new@newdomain.com', 'admin', 'images/hp.jpg', 'hp.jpg'),
+(5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'new@admin.com', 'regular', 'images/RagnarokStalker.jpg', 'RagnarokStalker.jpg'),
+(6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'new@admin.com', 'regular', 'images/user_default.png', 'user_default.png'),
+(7, 'some_old_noob', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'test', 'regular', 'uploads/BlacksmithCute.jpg', 'BlacksmithCute.jpg');
 
 --
 -- Indexes for dumped tables
@@ -365,7 +369,7 @@ ALTER TABLE `builds`
 -- AUTO_INCREMENT for table `build_comments`
 --
 ALTER TABLE `build_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `ratings`
 --
