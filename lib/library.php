@@ -24,33 +24,6 @@ function alert(){
 			</script>";
 };
 
-// SKILL SUBMIT
-if(isset($_POST['skillSubmit'])){
-	$skill_name = trim(addslashes($_POST['skill_name']));
-	$description = trim(addslashes($_POST['description']));
-	$class = $_POST['class'];
-	if($_POST['required_for'] == ""){
-		$required_for = "None";
-	}else{
-		$required_for = trim(addslashes($_POST['required_for']));
-	};
-	if($_POST['unlock_requirements'] == ""){
-		$unlock_requirements = "None";
-	}else{
-		$unlock_requirements = trim(addslashes($_POST['unlock_requirements']));
-	};
-	$max_level = isset($_POST['max_level']) ? $_POST['max_level'] : 1;
-	$icon = 'ro_skill_icons/' . $_POST['icon'];
-	$quest_skill = isset($_POST['quest_skill']) ? 'Yes' : 'No';
-
-	// var_dump($skill_name, $description, $class, $required_for, $max_level, $icon, $quest_skill, $unlock_requirements);
-	$sql = "INSERT INTO skills (skill_name, description, class, required_for, max_level, icon, quest_skill, unlock_requirements)
-		VALUES ('$skill_name', '$description', '$class', '$required_for', '$max_level', '$icon', '$quest_skill', '$unlock_requirements')";
-	mysqli_query($conn, $sql);
-	echo '<span id="alert" style="display: none"> Successfully added ' .$skill_name. ' to database! </span>';
-	alert();
-};
-
 // REGISTER
 if(isset($_POST['registerSubmit'])){
 	$username = $_POST['username'];

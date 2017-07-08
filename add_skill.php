@@ -12,7 +12,7 @@ function display_content(){
 	echo '<div class="container">
 		<div class="row">
 			<div class="col l10 offset-l1 m12 s12 margin-top bg z-depth-2 center-align">
-				<form method="POST" action="">
+				<form method="POST" action="lib/skill_add_script.php" enctype="multipart/form-data">
 					<div class="input-field">
 						<select name="class">
 							<option value="" disabled selected>Choose an option</option>
@@ -62,14 +62,9 @@ function display_content(){
 						<input type="text" name="unlock_requirements" id="unlock_requirements">
 						<label for="unlock_requirements">Unlock Requirements</label>
 					</div>
-					<div class="file-field input-field">
-						<div class="btn btn-blue">
-							<span>File</span>
-							<input type="file" name="icon">
-						</div>
-						<div class="file-path-wrapper">
-							<input class="file-path validate" type="text">
-						</div>
+					<div class="left-align" style="margin: 10px 0 20px">
+						<label style="font-size: 15px">Skill Icon</label><br>
+						<input type="file" name="icon">
 					</div>
 					<button type="submit" name="skillSubmit" class="btn blue accent-2 btn-hover-scale"><i class="right material-icons">send</i>Submit</button>
 				</form>
