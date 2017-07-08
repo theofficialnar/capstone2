@@ -1,7 +1,6 @@
 Bugs to squish:
 
 Things to do:
-- set proper validations for registering
 - make manual on how to use page
 - add delete comment option on build view
 

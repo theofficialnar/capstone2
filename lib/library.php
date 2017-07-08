@@ -24,23 +24,12 @@ function alert(){
 			</script>";
 };
 
-// REGISTER
-if(isset($_POST['registerSubmit'])){
-	$username = $_POST['username'];
-	$email = $_POST['email'];
-	$pw = $_POST['password'];
-	$pw2 = $_POST['pw2'];
-	if($pw == $pw2){
-		$password = sha1($pw);
-		$sql = "INSERT INTO users (username, email, password, role)
-				VALUES ('$username', '$email', '$password', 'regular')";
-		mysqli_query($conn, $sql);
-		echo '<span id="alert" style="display: none">Account successfully registered!</span>';
-		alert();
-	}else{
-		echo '<span id="alert" style="display: none">Passwords do not match. Please try again.</span>';
-		alert();
-		}
+//INPUT CLEANSER
+function test_input($data) {
+	$data = trim($data);
+	$data = stripcslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
 };
 
 //SAVE_BUILD
