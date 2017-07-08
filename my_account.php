@@ -23,8 +23,8 @@ function display_content(){
 									<div class="col l4 m4 s4">
 										<img src="'.$display_photo.'" alt="user_photo" class="circle change-profile-photo">
 									</div>
-									<div class="col l8 m8 s8">
-										<h5 class="left-align">Update display photo</h5>
+									<div class="col l8 m8 s8 left-align">
+										<h5>Update display photo</h5>
 										<input type="file" name="display_photo">
 									</div>
 							</div>

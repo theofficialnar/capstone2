@@ -37,43 +37,6 @@
 		?>
 	<li><a href="skill_db.php">Skill Database</a></li>
 	<li><a href="skill_sim.php">Skill Simulator</a></li>
-	<?php
-		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
-			echo '<li><a href="?logOut">Log out</a></li>';
-		}
-		//used to force and adjust accordingly the credit's text
-		if(!isset($_SESSION['loginFlag'])){
-			echo '<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>';
-		}else if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true && $_SESSION['role'] == 'admin'){
-			echo '<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>';
-		}else if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
-			echo '<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>
-			<li>&nbsp;</li>';
-		}
-	?>
-	<li class="copyright center-align">myRagnarok db Copyright &copy; 2017</li>
-	<li class="credits center-align">All images and content belong to their respective creators.</li>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 

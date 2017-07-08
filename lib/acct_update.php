@@ -76,6 +76,7 @@ if(isset($_POST['updateAcct'])){
 								file_name = '$newDP',
 								password = '$newPassword'
 								WHERE id = '$uid'";
+								mysqli_query($conn, $sql);
 								echo '<script>
 									alert("Account details updated!");
 									window.location.replace("../index.php");

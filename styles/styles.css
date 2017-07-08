@@ -19,6 +19,7 @@ header, main, footer {
 
 main {
 	position: relative;
+	flex: 1 0 auto;
 }
 
 @media only screen and (max-width : 992px) {
@@ -30,6 +31,9 @@ main {
 body {
 	background: #b6c2d9;
 	cursor: url('../images/arrow.png'), default;
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
 button,
@@ -44,9 +48,14 @@ h1 {
 	margin: 0;
 }
 
-nav {
+nav,
+.page-footer {
 	height: auto;
 	background: #4d7ea8;
+}
+
+.page-footer {
+	box-shadow: 0 0 5px rgba(0,0,0,0.8);
 }
 
 .main-body-wrapper {
@@ -218,11 +227,6 @@ button[id^="min"]{
 
 .pan-padding {
 	padding: 1.5em;
-}
-
-.credits,
-.copyright {
-	color: black;
 }
 
 .credits {
