@@ -37,6 +37,11 @@
 		?>
 	<li><a href="skill_db.php">Skill Database</a></li>
 	<li><a href="skill_sim.php">Skill Simulator</a></li>
+	<?php
+	if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
+		echo '<li><a href="?logOut">Log out</a></li>';
+		}
+		?>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 

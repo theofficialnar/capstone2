@@ -17,7 +17,7 @@ function display_content(){
 			<div class="col l10 offset-l1 m12 s12 margin-top bg z-depth-2 center-align">';
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
-				echo '<form method="POST" action="">
+				echo '<form method="POST" action="lib/skill_edit_script.php?id='.$id.'" enctype="multipart/form-data">
 					<div class="input-field">
 						<input type="text" name="skill_name" id="skill_name" value="'.$skill_name.'">
 						<label for="skill_name">Skill Name</label>
@@ -46,14 +46,9 @@ function display_content(){
 						<input type="text" name="unlock_requirements" id="unlock_requirements" value="'.$unlock_requirements.'">
 						<label for="unlock_requirements">Unlock Requirements</label>
 					</div>
-					<div class="file-field input-field">
-						<div class="btn btn-blue">
-							<span>File</span>
-							<input type="file">
-						</div>
-						<div class="file-path-wrapper">
-							<input class="file-path validate" name="icon" type="text" value="'.substr($icon,15).'">
-						</div>
+					<div class="left-align" style="margin: 10px 0 20px">
+						<label style="font-size: 15px">Skill Icon</label><br>
+						<input type="file" name="icon">
 					</div>
 					<h5> Apply changes? </h5>
 					<button type="submit" name="editYes" class="btn red accent-1 btn-hover-scale btn-margin">Yes</button>

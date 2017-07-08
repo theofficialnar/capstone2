@@ -2,6 +2,8 @@ Bugs to squish:
 
 Things to do:
 - set proper validations for registering
+- make manual on how to use page
+- add delete comment option on build view
 
 To add if there's still enough time:
 - create generate reports option on skill sim

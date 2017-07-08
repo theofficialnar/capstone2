@@ -4,7 +4,7 @@ if(isset($_POST['skillSubmit'])){
 	if($_FILES["icon"]["error"] == 4){
 		echo '<script>
 			alert("Icon field cannot be empty!");
-			
+			window.location.replace("../add_skill.php");
 		</script>';
 	}else{
 		$iconName = basename($_FILES["icon"]["name"]);
@@ -13,21 +13,27 @@ if(isset($_POST['skillSubmit'])){
 		$target_file = $target_dir . $iconName;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
-		$check = getimagesize($_FILES["icon"]["tmp_name"]);
-		if($check !== false){
-			$uploadOk = 0;
-		}else{
-			$uploadOk = 1;
+		//checks if image is real, svg icons will be skipped
+		if($imageFileType !== "svg"){
+			$check = getimagesize($_FILES["icon"]["tmp_name"]);
+			if($check !== false){
+				$uploadOk = 0;
+			}else{
+				$uploadOk = 1;
+			};
 		};
 
+		//checks if file is lesser than 500kb
 		if($_FILES["icon"]["size"] > 500000){
 			$uploadOk = 1;
 		};
 
+		//checks the file if the extensions are valid
 		if($imageFileType !== "jpg" && $imageFileType !== "jpeg" && $imageFileType !== "gif" && $imageFileType !== "png" && $imageFileType !== "svg"){
 			$uploadOk = 1;
 		};
 
+		//moves and adds the file to database if no problems are encountered
 		if($uploadOk == 0){
 			if(move_uploaded_file($_FILES["icon"]["tmp_name"], $target_file)){
 				$skill_name = trim(addslashes($_POST['skill_name']));
@@ -54,20 +60,20 @@ if(isset($_POST['skillSubmit'])){
 				mysqli_query($conn, $sql);
 				echo '<script>
 					alert("Skill has successfully added to the database.");
-					
+					window.location.replace("../add_skill.php");
 				</script>';
 			}else{
 				echo '<script>
 					alert("An error was encountered when adding the skill to the database. \\n Please try again.");
-					
+					window.location.replace("../add_skill.php");
 				</script>';
-			};//move upload end
+			};//move_uploaded_files end
 		}else{
 			echo '<script>
 				alert("An error was encountered in uploading your photo.\\n Please make sure the file is less than 500kb and either one of the following file types .jpg, .jpeg, .gif, .png or .svg.");
-				
+				window.location.replace("../add_skill.php");
 			</script>';
 		}//uploadOk end
-	};//file error end
-};//isset end
+	};//file_error end
+};//skillSubmit end
 ?>

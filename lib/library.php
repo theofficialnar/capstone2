@@ -91,41 +91,6 @@ if(isset($_POST['genRep'])){
 	};
 };
 
-//SKILL_EDIT
-if(isset($_POST['editYes'])){
-	$id = $_GET['id'];
-	$skill_name = trim(addslashes($_POST['skill_name']));
-	$description = trim(addslashes($_POST['description']));
-	if($_POST['required_for'] == ""){
-		$required_for = "None";
-	}else{
-		$required_for = trim(addslashes($_POST['required_for']));
-	};
-	if($_POST['unlock_requirements'] == ""){
-		$unlock_requirements = "None";
-	}else{
-		$unlock_requirements = trim(addslashes($_POST['unlock_requirements']));
-	};
-	$max_level = isset($_POST['max_level']) ? $_POST['max_level'] : 1;
-	$icon = 'ro_skill_icons/' . $_POST['icon'];
-	$quest_skill = isset($_POST['quest_skill']) ? 'Yes' : 'No';
-	$sql = "UPDATE skills SET
-			skill_name = '$skill_name',
-			description = '$description',
-			required_for = '$required_for',
-			unlock_requirements = '$unlock_requirements',
-			max_level = '$max_level',
-			icon = '$icon',
-			quest_skill = '$quest_skill'
-			WHERE id='$id'";
-	mysqli_query($conn, $sql);
-	header('location: skill_db.php');
-};
-
-if(isset($_POST['editNo'])){
-	header('location: skill_db.php');
-};
-
 // SKILL_DELETE
 if(isset($_POST['deleteYes'])){
 	$sql = "DELETE FROM skills WHERE id = '$id'";
@@ -156,56 +121,5 @@ if(isset($_POST['updateBuild'])){
 	};
 };
 
-//ACCOUNT UPDATE
-// if(isset($_POST['updateAcct'])){
-// 	$uid = $_SESSION['id'];
-// 	$new_display_photo = 'images/' . $_POST['display_photo'];
-// 	$new_email = $_POST['email'];
-// 	$new_pw1 = $_POST['password'];
-// 	$new_pw2 = $_POST['pw2'];
-// 	if($new_pw1 == "" || $new_pw2 == ""){
-// 		if($new_email == ""){
-// 			$sql = "UPDATE users SET
-// 			display_photo = '$new_display_photo'
-// 			WHERE id = '$uid'";
-// 			mysqli_query($conn, $sql);
-// 			echo '<span id="alert" style="display: none">Account updated!</span>';
-// 			alert();
-// 		}else{
-// 			$sql = "UPDATE users SET
-// 				display_photo = '$new_display_photo',
-// 				email = '$new_email'
-// 				WHERE id = '$uid'";
-// 			mysqli_query($conn, $sql);
-// 			echo '<span id="alert" style="display: none">Account updated!</span>';
-// 			alert();
-// 		}
-// 	}else{
-// 		if($new_pw1 == $new_pw2){
-// 			$new_password = sha1($new_pw1);
-// 			if($new_email == ""){
-// 				$sql = "UPDATE users SET
-// 				display_photo = '$new_display_photo',
-// 				password = '$new_password'
-// 				WHERE id = '$uid'";
-// 				mysqli_query($conn, $sql);
-// 				echo 'Account updated!';
-// 			}else{
-// 				$sql = "UPDATE users SET
-// 				display_photo = '$new_display_photo',
-// 				email = '$new_email',
-// 				password = '$new_password'
-// 				WHERE id = '$uid'";
-// 				mysqli_query($conn, $sql);
-// 				echo '<span id="alert" style="display: none">Account updated!</span>';
-// 				alert();
-// 			}
-// 		}else{
-// 			echo '<span id="alert" style="display: none">Passwords don\'t match!</span>';
-// 			alert();
-// 		}
-// 	};
-// };
-
-	?>
+?>
 
