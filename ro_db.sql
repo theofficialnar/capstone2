@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 07, 2017 at 10:43 AM
+-- Generation Time: Jul 08, 2017 at 10:37 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.2
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -80,7 +80,8 @@ INSERT INTO `build_comments` (`id`, `comment`, `build_id`, `commenter_id`, `comm
 (26, 'Something new, eh? /gg', 20, 5, '2017-07-06'),
 (27, 'asdasd', 19, 1, '2017-07-07'),
 (28, '111111111111111111111', 19, 1, '2017-07-07'),
-(29, '111111111111111111111', 19, 1, '2017-07-07');
+(29, '111111111111111111111', 19, 1, '2017-07-07'),
+(30, 'amazing! /no1', 21, 10, '2017-07-08');
 
 -- --------------------------------------------------------
 
@@ -145,7 +146,7 @@ INSERT INTO `skills` (`id`, `skill_name`, `description`, `class`, `required_for`
 (2, 'First Aid', 'Heal yourself for 5 HP. Not a crazy powerful skill, but mages seem to like it for saving money on healing items.', 'Novice', 'None', 1, 'ro_skill_icons/nv_firstaid.svg', 'Yes', 'None'),
 (3, 'Trick Dead', 'You lay on the ground like you were dead and aggressive monsters won\'t target you. You can\'t recover HP or SP while pretending to be dead. You can Trick Dead as long as you want.\r\nCasting Trick Dead a second time cancels it, letting you move again. Once you choose another Job, you lose the ability to use this skill.', 'Novice', 'None', 1, 'ro_skill_icons/nv_trickdead.svg', 'Yes', 'None'),
 (4, 'Sword Mastery', 'Increases damage with Daggers and Swords (1-handed only) by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks. ', 'Swordsman', 'Two-Handed Sword Mastery (Lv 1)', 10, 'ro_skill_icons/sm_sword.svg', 'No', 'None'),
-(5, 'Two-Handed Sword Mastery', ' Increases damage with Two-Handed Swords by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks. ', 'Swordsman', 'Two-Hand Quicken (Lv 1, Knight), Auto Counter (Lv 1, Knight), Bowling Bash (Lv 5, Knight), Parrying (Lv 10, Lord Knight), Aura Blade (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_twohand.svg', 'No', 'Sword Mastery Lv 1'),
+(5, 'Two-Handed Sword Mastery', 'Increases damage with Two-Handed Swords by 4*SkillLV. This damage ignores modification from Armor and VIT defense, but not from Elemental and Card modifiers and applies to all hits for multi hit attacks.', 'Swordsman', 'Two-Hand Quicken (Lv 1, Knight), Auto Counter (Lv 1, Knight), Bowling Bash (Lv 5, Knight), Parrying (Lv 10, Lord Knight), Aura Blade (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_twohand.svg', 'No', 'Sword Mastery Lv 1'),
 (6, 'Increase Recuperative Power', 'Heals ((5*SkillLV) + (Maximum HP*0.002*SkillLV)) HP per 10 full seconds spent standing on one cell. Increases the effect of healing items by (10*SkillLV)% (cumulative with the increase from VIT).', 'Swordsman', 'Concentration (Lv 5, Lord Knight), Tension Relax (Lv 10, Lord Knight)', 10, 'ro_skill_icons/sm_recovery.svg', 'No', 'None'),
 (7, 'Bash', 'A melee attack with ATK equal to (100+30*SkillLV)%. There is a HIT bonus of 5*SkillLV. If the character has the Fatal Blow skill as well, levels 6-10 will add a chance to Stun of 5%*(Bash SkillLV - 5) plus a bonus depending on BaseLV.', 'Swordsman', 'Magnum Break (Lv 5), Bowling Bash (Lv 10, Knight)', 10, 'ro_skill_icons/sm_bash.svg', 'No', 'None'),
 (8, 'Provoke', 'Lowers the enemy DEF and VIT DEF by (5+5*SkillLV)% and increases their ATK by (2+3*SkillLV)%. Undead property and Boss monsters are not affected. ', 'Swordsman', 'Endure (Lv 5), Tension Relax (Lv 5, Lord Knight), Parrying (Lv 5, Lord Knight)', 10, 'ro_skill_icons/sm_provoke.svg', 'No', 'None'),
@@ -297,10 +298,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `display_photo`, `file_name`) VALUES
-(1, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'new@newdomain.com', 'admin', 'images/hp.jpg', 'hp.jpg'),
-(5, 'test', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'new@admin.com', 'regular', 'images/RagnarokStalker.jpg', 'RagnarokStalker.jpg'),
+(1, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'newadminemail@s.com', 'admin', 'uploads/hp.jpg', 'hp.jpg'),
+(5, 'test', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'new@admin.com', 'regular', 'uploads/RagnarokStalker.jpg', 'RagnarokStalker.jpg'),
 (6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'new@admin.com', 'regular', 'images/user_default.png', 'user_default.png'),
-(7, 'some_old_noob', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'test', 'regular', 'uploads/BlacksmithCute.jpg', 'BlacksmithCute.jpg');
+(7, 'some_old_noob', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'test', 'regular', 'uploads/BlacksmithCute.jpg', 'BlacksmithCute.jpg'),
+(10, 'some_guy', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'some_guy@cooldomain.com', 'regular', 'images/user_default.png', ''),
+(11, 'master_smith19', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'master@mastersmith.com', 'regular', 'images/user_default.png', '');
 
 --
 -- Indexes for dumped tables
@@ -369,7 +372,7 @@ ALTER TABLE `builds`
 -- AUTO_INCREMENT for table `build_comments`
 --
 ALTER TABLE `build_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 --
 -- AUTO_INCREMENT for table `ratings`
 --
@@ -379,7 +382,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 --
 -- AUTO_INCREMENT for table `skill_sims`
 --
@@ -389,7 +392,7 @@ ALTER TABLE `skill_sims`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Constraints for dumped tables
 --
