@@ -36,20 +36,20 @@ if(isset($_POST['skillSubmit'])){
 		//moves and adds the file to database if no problems are encountered
 		if($uploadOk == 0){
 			if(move_uploaded_file($_FILES["icon"]["tmp_name"], $target_file)){
-				$skill_name = trim(addslashes($_POST['skill_name']));
-				$description = trim(addslashes($_POST['description']));
+				$skill_name = user_input($_POST['skill_name']);
+				$description = user_input($_POST['description']);
 				$class = $_POST['class'];
 				$target_file = substr($target_file, 3);
 				if($_POST['required_for'] == ""){
 					$required_for = "None";
 				}else{
-					$required_for = trim(addslashes($_POST['required_for']));
+					$required_for = user_input($_POST['required_for']);
 				};
 
 				if($_POST['unlock_requirements'] == ""){
 					$unlock_requirements = "None";
 				}else{
-					$unlock_requirements = trim(addslashes($_POST['unlock_requirements']));
+					$unlock_requirements = user_input($_POST['unlock_requirements']);
 				};
 
 				$max_level = isset($_POST['max_level']) ? $_POST['max_level'] : 1;

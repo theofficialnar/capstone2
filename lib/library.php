@@ -24,10 +24,18 @@ function alert(){
 			</script>";
 };
 
-//INPUT CLEANSER
-function test_input($data) {
+//REGISTER INPUT CLEANSER
+function register_input($data) {
 	$data = trim($data);
-	$data = stripcslashes($data);
+	$data = stripslashes($data);
+	$data = htmlspecialchars($data);
+	return $data;
+};
+
+//USER INPUT CLEANSER
+function user_input($data) {
+	$data = trim($data);
+	$data = addslashes($data);
 	$data = htmlspecialchars($data);
 	return $data;
 };
@@ -35,8 +43,8 @@ function test_input($data) {
 //SAVE_BUILD
 if(isset($_POST['saveBuild'])){
 	$acct_id = $_SESSION['id'];
-	$build_name = trim(addslashes($_POST['build_name']));
-	$build_description = trim(addslashes($_POST['build_description']));
+	$build_name = user_input($_POST['build_name']);
+	$build_description = user_input($_POST['build_description']);
 	// echo "build name: $build_name, build description: $build_description<br>";
 	$sql = "INSERT INTO builds (acct_id, build_name, build_description, build_date)
 			VALUES ('$acct_id', '$build_name', '$build_description', CURDATE())";

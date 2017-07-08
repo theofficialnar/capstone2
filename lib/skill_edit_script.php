@@ -4,19 +4,19 @@ require_once 'connection.php';
 
 if(isset($_POST['editYes'])){
 	$id = $_GET['id'];
-	$skill_name = trim(addslashes($_POST['skill_name']));
-	$description = trim(addslashes($_POST['description']));
+	$skill_name = user_input($_POST['skill_name']);
+	$description = user_input($_POST['description']);
 
 	if($_POST['required_for'] == ""){
 		$required_for = "None";
 	}else{
-		$required_for = trim(addslashes($_POST['required_for']));
+		$required_for = user_input($_POST['required_for']);
 	};
 
 	if($_POST['unlock_requirements'] == ""){
 		$unlock_requirements = "None";
 	}else{
-		$unlock_requirements = trim(addslashes($_POST['unlock_requirements']));
+		$unlock_requirements = user_input($_POST['unlock_requirements']);
 	};
 
 	$max_level = isset($_POST['max_level']) ? $_POST['max_level'] : 1;

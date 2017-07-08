@@ -14,21 +14,21 @@ function display_content(){
 	if(isset($_POST['registerSubmit'])){
 		$registerErr = 0;
 
-		$username = test_input($_POST['username']);
+		$username = register_input($_POST['username']);
 		if(!preg_match("/^[a-z\d_]{3,20}$/i", $username)){
 			$unameErr = "Username must be between 3 to 20 characters long in alphanumeric and _ characters.";
 			$registerErr = 1;
 		};
 
 
-		$email = test_input($_POST['email']);
+		$email = register_input($_POST['email']);
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$emailErr = "Please enter a valid email address!";
 			$registerErr = 1;
 		}
 		
-		$pw = test_input($_POST['password']);
-		$pw2 = test_input($_POST['pw2']);
+		$pw = register_input($_POST['password']);
+		$pw2 = register_input($_POST['pw2']);
 
 		if($registerErr == 0){
 			if($pw == $pw2){

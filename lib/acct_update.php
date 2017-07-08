@@ -1,12 +1,13 @@
 <?php
 session_start();
 require_once 'connection.php';
+require_once 'library.php';
 global $conn;
 $uid = $_SESSION['id'];
 if(isset($_POST['updateAcct'])){
-	$newEmail = $_POST['email'];
-	$newPw1 = $_POST['password'];
-	$newPw2 = $_POST['pw2'];
+	$newEmail = register_input($_POST['email']);
+	$newPw1 = register_input($_POST['password']);
+	$newPw2 = register_input($_POST['pw2']);
 
 	if($_FILES["display_photo"]["error"] != 4){
 		$newDP = basename($_FILES["display_photo"]["name"]);
@@ -53,7 +54,12 @@ if(isset($_POST['updateAcct'])){
 							mysqli_query($conn, $sql);
 							echo '<script>
 								alert("Account details updated!");
-								window.location.replace("../index.php");
+								window.location.replace("../my_account.php");
+							</script>';
+						}else if(!filter_var($newEmail, FILTER_VALIDATE_EMAIL)){
+							echo '<script>
+								alert("Please input a valid email address.");
+								window.location.replace("../my_account.php");
 							</script>';
 						}else{
 							$sql = "UPDATE users SET
@@ -64,7 +70,7 @@ if(isset($_POST['updateAcct'])){
 							mysqli_query($conn, $sql);
 							echo '<script>
 								alert("Account details updated!");
-								window.location.replace("../index.php");
+								window.location.replace("../my_account.php");
 							</script>';
 						};
 					}else{
@@ -79,7 +85,12 @@ if(isset($_POST['updateAcct'])){
 								mysqli_query($conn, $sql);
 								echo '<script>
 									alert("Account details updated!");
-									window.location.replace("../index.php");
+									window.location.replace("../my_account.php");
+								</script>';
+							}else if(!filter_var($newEmail, FILTER_VALIDATE_EMAIL)){
+								echo '<script>
+									alert("Please input a valid email address.");
+									window.location.replace("../my_account.php");
 								</script>';
 							}else{
 								$sql = "UPDATE users SET
@@ -91,13 +102,13 @@ if(isset($_POST['updateAcct'])){
 								mysqli_query($conn, $sql);
 								echo '<script>
 									alert("Account details updated!");
-									window.location.replace("../index.php");
+									window.location.replace("../my_account.php");
 								</script>';
 							};
 						}else{
 							echo '<script>
 								alert("Passwords don\'t match!");
-								window.location.replace("../index.php");
+								window.location.replace("../my_account.php");
 							</script>';
 						};
 
@@ -105,7 +116,7 @@ if(isset($_POST['updateAcct'])){
 				}else{
 					echo '<script>
 						alert("An error was encountered in uploading your photo.");
-						window.location.replace("../index.php");
+						window.location.replace("../my_account.php");
 					</script>';
 				};
 			};//Upload ok end
@@ -113,21 +124,26 @@ if(isset($_POST['updateAcct'])){
 		}else{
 			echo '<script>
 				alert("The photo already exists in the directory, please choose another one.");
-				window.location.replace("../index.php");
+				window.location.replace("../my_account.php");
 			</script>';
 		};//file exist end
 	}else{
 		if($newPw1 == "" || $newPw2 == ""){
-			if($newEmail != ""){
+			if($newEmail != "" && filter_var($newEmail, FILTER_VALIDATE_EMAIL)){
 				$sql = "UPDATE users SET
 				email = '$newEmail'
 				WHERE id = '$uid'";
 				mysqli_query($conn, $sql);
 				echo '<script>
 					alert("Account details updated!");
-					window.location.replace("../index.php");
+					window.location.replace("../my_account.php");
 				</script>';
-			};
+			}else{
+				echo '<script>
+					alert("Please input a valid email address.");
+					window.location.replace("../my_account.php");
+				</script>';
+			}
 		}else{
 			if($newPw1 == $newPw2){
 				$newPassword = sha1($newPw1);
@@ -136,7 +152,7 @@ if(isset($_POST['updateAcct'])){
 					mysqli_query($conn, $sql);
 					echo '<script>
 						alert("Account details updated!");
-						window.location.replace("../index.php");
+						window.location.replace("../my_account.php");
 					</script>';
 				}else{
 					$sql = "UPDATE users SET email = '$newEmail',
@@ -145,13 +161,13 @@ if(isset($_POST['updateAcct'])){
 					mysqli_query($conn, $sql);
 					echo '<script>
 						alert("Account details updated!");
-						window.location.replace("../index.php");
+						window.location.replace("../my_account.php");
 					</script>';
 				};
 			}else{
 				echo '<script>
 					alert("Passwords don\'t match!");
-					window.location.replace("../index.php");
+					window.location.replace("../my_account.php");
 				</script>';
 			};
 		};
