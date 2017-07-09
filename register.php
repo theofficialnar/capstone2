@@ -14,18 +14,27 @@ function display_content(){
 	if(isset($_POST['registerSubmit'])){
 		$registerErr = 0;
 
-		$username = register_input($_POST['username']);
-		if(!preg_match("/^[a-z\d_]{3,20}$/i", $username)){
+		$sql = "SELECT * FROM users";
+		$result = mysqli_query($conn, $sql);
+		while($row = mysqli_fetch_assoc($result)){
+			extract($row);
+			$uname = register_input($_POST['username']);
+			if($username == $uname){
+				$unameErr = "Username already taken.";
+				$registerErr = 1;
+			};
+		};//while end
+
+		if(!preg_match("/^[a-z\d_]{3,20}$/i", $uname)){
 			$unameErr = "Username must be between 3 to 20 characters long in alphanumeric and _ characters.";
 			$registerErr = 1;
 		};
-
 
 		$email = register_input($_POST['email']);
 		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
 			$emailErr = "Please enter a valid email address!";
 			$registerErr = 1;
-		}
+		};
 		
 		$pw = register_input($_POST['password']);
 		$pw2 = register_input($_POST['pw2']);
@@ -34,9 +43,9 @@ function display_content(){
 			if($pw == $pw2){
 				$password = sha1($pw);
 				$sql = "INSERT INTO users (username, email, password, role)
-						VALUES ('$username', '$email', '$password', 'regular')";
+						VALUES ('$uname', '$email', '$password', 'regular')";
 				mysqli_query($conn, $sql);
-				echo '<span id="alert" style="display: none">Account successfully registered! Welcome, '.$username.'</span>';
+				echo '<span id="alert" style="display: none">Account successfully registered! Welcome, '.$uname.'</span>';
 				alert();
 
 
@@ -44,7 +53,7 @@ function display_content(){
 				$pwErr = "Password's don't match!";
 				}
 		};
-	};
+	};//isset end
 
 	echo '<div class="container">
 		<div class="row">
