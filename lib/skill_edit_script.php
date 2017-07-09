@@ -101,7 +101,7 @@ if(isset($_POST['editYes'])){
 };//skillEditYes end
 
 if(isset($_POST['editNo'])){
-	header('location: skill_db.php');
+	header('location: ../skill_db.php');
 };
 
 ?>

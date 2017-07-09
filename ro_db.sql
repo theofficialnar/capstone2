@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2017 at 10:37 AM
+-- Generation Time: Jul 09, 2017 at 11:02 AM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -303,7 +303,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `display_pho
 (6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'new@admin.com', 'regular', 'images/user_default.png', 'user_default.png'),
 (7, 'some_old_noob', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'test', 'regular', 'uploads/BlacksmithCute.jpg', 'BlacksmithCute.jpg'),
 (10, 'some_guy', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'some_guy@cooldomain.com', 'regular', 'images/user_default.png', ''),
-(11, 'master_smith19', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'master@mastersmith.com', 'regular', 'images/user_default.png', '');
+(11, 'master_smith19', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'master@mastersmith.com', 'regular', 'images/user_default.png', ''),
+(13, 'some_guy1', '3da541559918a808c2402bba5012f6c60b27661c', 'some_guy@cooldomain.com', 'regular', 'images/user_default.png', '');
 
 --
 -- Indexes for dumped tables
@@ -382,7 +383,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `skills`
 --
 ALTER TABLE `skills`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 --
 -- AUTO_INCREMENT for table `skill_sims`
 --
@@ -392,7 +393,7 @@ ALTER TABLE `skill_sims`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- Constraints for dumped tables
 --

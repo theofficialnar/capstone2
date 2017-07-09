@@ -10,6 +10,8 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php get_title() ?></title>
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="styles/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="styles/styles.css">
