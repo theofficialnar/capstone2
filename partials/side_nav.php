@@ -35,6 +35,7 @@
 			<li><a href="my_builds.php">My Builds</a></li>';
 		}
 		?>
+	<li><a href="all_builds.php">All Builds</a></li>
 	<li><a href="skill_db.php">Skill Database</a></li>
 	<li><a href="skill_sim.php">Skill Simulator</a></li>
 	<?php

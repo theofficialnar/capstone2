@@ -154,6 +154,11 @@ button[id^="min"]{
 	font-size: 10px;
 }
 
+.build-creator {
+	font-size: 13px;
+	font-style: italic;
+}
+
 .header-padding {
 	padding: 20px;
 }

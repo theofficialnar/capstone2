@@ -20,12 +20,12 @@ function display_content(){
 				<div class="margin-top bg col l10 m12 s12 offset-l1 z-depth-2">
 					<div class="row">
 						<img src="'.$class_icon.'" class="left responsive-img" style="padding-right: 15px">
-						<h2>'.$build_name.'</h2>
+						<h2>'.strtoupper($build_name).'</h2>
 						<hr>
 						<span>'.$build_date.'</span>
 					</div>
 					<div class="row">
-						<span class="flow-text">'.$build_description.'</span>
+						<span class="flow-text">'.ucfirst($build_description).'</span>
 					</div>
 				</div>
 			</div>';
