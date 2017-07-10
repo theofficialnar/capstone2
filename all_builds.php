@@ -10,8 +10,8 @@ function get_title(){
 function display_content(){
 	global $conn;
 	echo '<div class="container">
-		<div class="row">';
-	$sql = "SELECT DISTINCT b.*,c.class_icon,u.username FROM classes c JOIN skills s ON c.class_name=s.class JOIN skill_sims ss ON ss.skill_id=s.id JOIN builds b ON ss.build_id=b.id JOIN users u ON b.acct_id = u.id ORDER BY b.id DESC";
+		<div class="row" id="builds-section">';
+	$sql = "SELECT DISTINCT b.*,c.class_icon,u.username FROM classes c JOIN skills s ON c.class_name=s.class JOIN skill_sims ss ON ss.skill_id=s.id JOIN builds b ON ss.build_id=b.id JOIN users u ON b.acct_id = u.id ORDER BY b.id DESC LIMIT 6";
 	$result = mysqli_query($conn,$sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
@@ -35,8 +35,18 @@ function display_content(){
 			</a>
 		</div>';
 	};
-		echo '</div>
-	</div>';
+		echo '</div>';
+		$sql = "SELECT COUNT(*) builds FROM builds";
+		$result = mysqli_query($conn,$sql);
+		while($row = mysqli_fetch_assoc($result)){
+			extract($row);
+			if($builds > 6){
+				echo '<button id="buildsShowMore">Show more</button>
+				<button id="buildsShowLess" style="display: none">Show less</button>';
+			}
+		};
+		
+	echo '</div>';
 };
 
 require_once 'template.php';

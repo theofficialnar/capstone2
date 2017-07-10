@@ -869,6 +869,31 @@ $('#showLess').click(function(){
 	});
 });
 
+//Show builds AJAX
+$('#buildsShowMore').click(function(){
+	$('#buildsShowMore').css("display", "none");
+	$('#buildsShowLess').css("display", "block");
+	$.post('lib/show_builds.php?dis=more',
+	{
+
+	},
+	function(data,status){
+		$('#builds-section').html(data);
+	});
+});
+
+$('#buildsShowLess').click(function(){
+	$('#buildsShowMore').css("display", "block");
+	$('#buildsShowLess').css("display", "none");
+	$.post('lib/show_builds.php?dis=less',
+	{
+
+	},
+	function(data,status){
+		$('#builds-section').html(data);
+	});
+});
+
 // $('.card').hover(function(){
 // 	$('.buildCards').removeClass('z-depth-5');
 // 	$('.buildCards').addClass('z-depth-1');
