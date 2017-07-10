@@ -89,17 +89,6 @@ if(isset($_POST['genRep'])){
 	};
 };
 
-// SKILL_DELETE
-if(isset($_POST['deleteYes'])){
-	$sql = "DELETE FROM skills WHERE id = '$id'";
-	mysqli_query($conn, $sql);
-	header('location: skill_db.php');
-};
-
-if(isset($_POST['deleteNo'])){
-	header('location: skill_db.php');
-};
-
 //BUILD UPDATE
 if(isset($_POST['updateBuild'])){
 	$build_id = $_GET['build_id'];

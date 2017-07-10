@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'connection.php';
+require_once 'library.php';
 
 if(isset($_POST['editYes'])){
 	$id = $_GET['id'];

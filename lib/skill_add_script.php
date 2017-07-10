@@ -1,5 +1,6 @@
 <?php
 require_once 'connection.php';
+require_once 'library.php';
 if(isset($_POST['skillSubmit'])){
 	if($_FILES["icon"]["error"] == 4){
 		echo '<script>

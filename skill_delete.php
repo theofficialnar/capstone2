@@ -53,6 +53,18 @@ function display_content(){
 			echo '</div>
 		</div>
 	</div>';
+
+	// SKILL_DELETE
+	if(isset($_POST['deleteYes'])){
+		$sql = "DELETE FROM skills WHERE id = '$id'";
+		mysqli_query($conn, $sql);
+		header('location: skill_db.php');
+	};
+
+	if(isset($_POST['deleteNo'])){
+		header('location: skill_db.php');
+	};
+	
 };//function end
 
 require_once 'template.php';
