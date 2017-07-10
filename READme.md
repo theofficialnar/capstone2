@@ -12,7 +12,7 @@ Welcome to my second capstone website. The website is designed to help fellow Ra
 - Once on the Registration page, user may then proceed to fill in their details:
 	- Username must consist of **3-20** alphanumeric characters and an underscore ( _ )
 	- Password must be **at least 3** characters
-	- Email must be in a valid format eg. some_cool_handle@domain.com
+	- Email must be in a valid format e.g. some_cool_handle@domain.com
 - After registering, log in and change your display photo by clicking on My Account. Photos must meet certain requirements to be accepted:
 	- Size: at most **500kb**
 	- Must be either **.jpg, .jpeg, .gif or .png**
