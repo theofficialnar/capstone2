@@ -3,6 +3,8 @@ Bugs to squish:
 Things to do:
 - make manual on how to use page
 - add delete comment option on build view
+- set limit to front page's latest builds of up to 5
+- set limit of only 10 comments to show in build view with show more button
 
 To add if there's still enough time:
 - create generate reports option on skill sim

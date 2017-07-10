@@ -29,7 +29,7 @@ function display_content(){
 				<div class="bg z-depth-2 pan-padding">
 					<h4 class="center-align headline">Latest Builds <img src="images/no1.gif"></h4><hr>';
 					$sql = "SELECT b.*,u.username FROM builds b JOIN users u ON b.acct_id = u.id
-							ORDER BY b.id DESC";
+							ORDER BY b.id DESC LIMIT 5";
 					$result = mysqli_query($conn, $sql);
 					while($row = mysqli_fetch_assoc($result)){
 						extract($row);
