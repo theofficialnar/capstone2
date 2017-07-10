@@ -46,9 +46,9 @@ function display_content(){
 			<div class="col l6 m12 s12">
 				<div class="bg z-depth-2 pan-padding">
 					<h4 class="center-align headline">Media <img src="images/ho.gif"></h4><hr>
-					<video class="responsive-video" controls>
-						<source src="videos/ro_media.mp4" type="video/mp4">
-					</video> 
+					<div class="video-container">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/sj5xPVjRnio?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+					</div> 
 				</div>
 			</div>
 		</div>

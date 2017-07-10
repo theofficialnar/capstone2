@@ -71,6 +71,7 @@ function level(val,id){
 	var level = document.getElementById("level"+skillName).value;
 	var hidden = document.getElementById("hidden"+skillName).innerHTML;
 	var sp_left = document.getElementById("sp_left").value;
+
 	if(val == -1 && parseInt(level,10) > 0 || val == 1 && parseInt(level,10) < max){
 		var new_level = parseInt(level,10) + val;
 		var new_hidden = parseInt(hidden,10) + val;
@@ -82,12 +83,12 @@ function level(val,id){
 		if(new_sp_left <= 0){
 			alert('All points used!');
 			$("[id^=add]").addClass("disabledbutton");
-			$('#unused-sp').addClass("max-skill-values");
+			// $('#unused-sp').addClass("max-skill-values");
 		};
 
 		if(new_sp_left > 0){
 			$("[id^=add]").removeClass("disabledbutton");
-			$('#unused-sp').removeClass("max-skill-values");
+			// $('#unused-sp').removeClass("max-skill-values");
 		};
 
 		if(new_level == max){
@@ -124,7 +125,7 @@ function level(val,id){
 		if($('.hidden8').html() < 5){
 			var skill_pts = parseInt($('.level10').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.10').addClass("disabledbutton");
 			$('.level10').val(0);
 			$('.hidden10').html(0);
@@ -147,7 +148,7 @@ function level(val,id){
 		if($('.hidden7').html() < 5){
 			var skill_pts = parseInt($('.level9').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.9').addClass("disabledbutton");
 			$('.level9').val(0);
 			$('.hidden9').html(0);
@@ -170,7 +171,7 @@ function level(val,id){
 		if($('.hidden4').html() < 1){
 			var skill_pts = parseInt($('.level5').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.5').addClass("disabledbutton");
 			$('.level5').val(0);
 			$('.hidden5').html(0);
@@ -193,7 +194,7 @@ function level(val,id){
 		if($('.hidden25').html() < 4){
 			var skill_pts = parseInt($('.level26').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.26').addClass("disabledbutton");
 			$('.level26').val(0);
 			$('.hidden26').html(0);
@@ -216,7 +217,7 @@ function level(val,id){
 		if($('.hidden15').html() < 1 || $('.hidden22').html() < 5 || $('.hidden24').html() < 4){
 			var skill_pts = parseInt($('.level23').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.23').addClass("disabledbutton");
 			$('.level23').val(0);
 			$('.hidden23').html(0);
@@ -239,7 +240,7 @@ function level(val,id){
 		if($('.hidden24').html() < 4){
 			var skill_pts = parseInt($('.level22').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.22').addClass("disabledbutton");
 			$('.level22').val(0);
 			$('.hidden22').html(0);
@@ -262,7 +263,7 @@ function level(val,id){
 		if($('.hidden19').html() < 5){
 			var skill_pts = parseInt($('.level20').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.20').addClass("disabledbutton");
 			$('.level20').val(0);
 			$('.hidden20').html(0);
@@ -285,7 +286,7 @@ function level(val,id){
 		if($('.hidden16').html() < 4){
 			var skill_pts = parseInt($('.level18').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.18').addClass("disabledbutton");
 			$('.level18').val(0);
 			$('.hidden18').html(0);
@@ -308,7 +309,7 @@ function level(val,id){
 		if($('.hidden18').html() < 5 || $('.hidden16').html() < 7){
 			var skill_pts = parseInt($('.level17').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.17').addClass("disabledbutton");
 			$('.level17').val(0);
 			$('.hidden17').html(0);
@@ -331,7 +332,7 @@ function level(val,id){
 		if($('.hidden28').html() < 3){
 			var skill_pts = parseInt($('.level29').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.29').addClass("disabledbutton");
 			$('.level29').val(0);
 			$('.hidden29').html(0);
@@ -354,7 +355,7 @@ function level(val,id){
 		if($('.hidden29').html() < 1 || $('.hidden28').html() < 3){
 			var skill_pts = parseInt($('.level30').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.30').addClass("disabledbutton");
 			$('.level30').val(0);
 			$('.hidden30').html(0);
@@ -377,7 +378,7 @@ function level(val,id){
 		if($('.hidden31').html() < 5){
 			var skill_pts = parseInt($('.level32').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.32').addClass("disabledbutton");
 			$('.level32').val(0);
 			$('.hidden32').html(0);
@@ -400,7 +401,7 @@ function level(val,id){
 		if($('.hidden35').html() < 3){
 			var skill_pts = parseInt($('.level36').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.36').addClass("disabledbutton");
 			$('.level36').val(0);
 			$('.hidden36').html(0);
@@ -423,7 +424,7 @@ function level(val,id){
 		if($('.hidden40').html() < 4 || $('.hidden39').html() < 2 || $('.hidden37').html() < 1){
 			var skill_pts = parseInt($('.level38').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.38').addClass("disabledbutton");
 			$('.level38').val(0);
 			$('.hidden38').html(0);
@@ -450,7 +451,7 @@ function level(val,id){
 		if($('.hidden37').html() < 1){
 			var skill_pts = parseInt($('.level39').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.39').addClass("disabledbutton");
 			$('.level39').val(0);
 			$('.hidden39').html(0);
@@ -477,7 +478,7 @@ function level(val,id){
 		if($('.hidden39').html() < 2 || $('.hidden37').html() < 1){
 			var skill_pts = parseInt($('.level40').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.40').addClass("disabledbutton");
 			$('.level40').val(0);
 			$('.hidden40').html(0);
@@ -504,7 +505,7 @@ function level(val,id){
 		if($('.hidden41').html() < 3){
 			var skill_pts = parseInt($('.level42').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.42').addClass("disabledbutton");
 			$('.level42').val(0);
 			$('.hidden42').html(0);
@@ -527,7 +528,7 @@ function level(val,id){
 		if($('.hidden41').html() < 3 || $('.hidden42').html() < 1){
 			var skill_pts = parseInt($('.level43').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.43').addClass("disabledbutton");
 			$('.level43').val(0);
 			$('.hidden43').html(0);
@@ -550,7 +551,7 @@ function level(val,id){
 		if($('.hidden35').html() < 3 || $('.hidden36').html() < 3){
 			var skill_pts = parseInt($('.level45').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.45').addClass("disabledbutton");
 			$('.level45').val(0);
 			$('.hidden45').html(0);
@@ -573,7 +574,7 @@ function level(val,id){
 		if($('.hidden35').html() < 3){
 			var skill_pts = parseInt($('.level46').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.46').addClass("disabledbutton");
 			$('.level46').val(0);
 			$('.hidden46').html(0);
@@ -596,7 +597,7 @@ function level(val,id){
 		if($('.hidden35').html() < 5){
 			var skill_pts = parseInt($('.level47').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.47').addClass("disabledbutton");
 			$('.level47').val(0);
 			$('.hidden47').html(0);
@@ -619,7 +620,7 @@ function level(val,id){
 		if($('.hidden41').html() < 2){
 			var skill_pts = parseInt($('.level48').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.48').addClass("disabledbutton");
 			$('.level48').val(0);
 			$('.hidden48').html(0);
@@ -642,7 +643,7 @@ function level(val,id){
 		if($('.hidden50').html() < 3){
 			var skill_pts = parseInt($('.level51').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.51').addClass("disabledbutton");
 			$('.level51').val(0);
 			$('.hidden51').html(0);
@@ -665,7 +666,7 @@ function level(val,id){
 		if($('.hidden50').html() < 3 || $('.hidden51').html() < 3){
 			var skill_pts = parseInt($('.level52').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.52').addClass("disabledbutton");
 			$('.level52').val(0);
 			$('.hidden52').html(0);
@@ -688,7 +689,7 @@ function level(val,id){
 		if($('.hidden50').html() < 5){
 			var skill_pts = parseInt($('.level53').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.53').addClass("disabledbutton");
 			$('.level53').val(0);
 			$('.hidden53').html(0);
@@ -711,7 +712,7 @@ function level(val,id){
 		if($('.hidden50').html() < 5 || $('.hidden53').html() < 3){
 			var skill_pts = parseInt($('.level55').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.55').addClass("disabledbutton");
 			$('.level55').val(0);
 			$('.hidden55').html(0);
@@ -734,7 +735,7 @@ function level(val,id){
 		if($('.hidden50').html() < 5 || $('.hidden53').html() < 3 || $('.hidden55').html() < 1){
 			var skill_pts = parseInt($('.level57').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.57').addClass("disabledbutton");
 			$('.level57').val(0);
 			$('.hidden57').html(0);
@@ -761,7 +762,7 @@ function level(val,id){
 		if($('.hidden64').html() < 5){
 			var skill_pts = parseInt($('.level65').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.65').addClass("disabledbutton");
 			$('.level65').val(0);
 			$('.hidden65').html(0);
@@ -784,7 +785,7 @@ function level(val,id){
 		if($('.hidden66').html() < 3){
 			var skill_pts = parseInt($('.level67').val());
 			new_sp_left = parseInt(new_sp_left,10) + skill_pts;
-			document.getElementById("sp_left").innerHTML = new_sp_left;
+			document.getElementById("sp_left").value = new_sp_left;
 			$('.67').addClass("disabledbutton");
 			$('.level67').val(0);
 			$('.hidden67').html(0);
