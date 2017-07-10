@@ -18,7 +18,9 @@ Welcome to my second capstone website. The website is designed to help fellow Ra
 	- Must be either **.jpg, .jpeg, .gif or .png**
 - To get started on creating your own build, click on Skill Simulator and choose your desired class from the dropdown list
 - Afterwards, click on save, choose a name and add a cool description to make it stand out
-- Once saved, user can view the build under My Builds
+- Once saved, user can find the build under My Builds
+	- To view your saved build, simply click any part of the header
+	- User also has the option to edit and delete said build by click the pencil and trash can icons respectively
 - Top 5 latest builds are also shown on the front page, simply click View full build for a close look
 - Got something to say to the build's creator? Then leave a comment (must be logged in), don't forget to be friendly, now! :smile:
 - If you're looking to get informed on the latest buzz in the Ragnarok world, feel free to drop by the front page as we frequently update it with the latest news in everything RO!
@@ -36,7 +38,8 @@ Username: admin
 Password: 1234
 ```
 Admin superpowers include:
-- Option to add new skills into the database
+- Add new skills into the database
+- Edit and delete skills from the skill database
 
 The site is still currently a work in progress, so please expect more classes to be added soon.
 That's about it and thanks for popping in!
