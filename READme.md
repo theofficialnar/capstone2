@@ -5,14 +5,14 @@ Welcome to my second capstone website. The website is designed to help fellow Ra
 ### The website's features are as follows
 - Create skill builds, with the ability to save it for future use (account required)
 - Check out fellow player's created builds and leave comments
-- Find out more about each skill n the built in Skill Database
+- Find out more about each skill in the built in Skill Database
 
 ### How to use the website
 - To get the most out of the website, please register an account by clicking on the Log In button and then Register.
 - Once on the Registration page, user may then proceed to fill in their details:
 	- Username must consist of **3-20** alphanumeric characters and an underscore ( _ )
 	- Password must be **at least 3** characters
-	- Email must be in a valid format ie. some_cool_handle@domain.com
+	- Email must be in a valid format eg. some_cool_handle@domain.com
 - After registering, log in and change your display photo by clicking on My Account. Photos must meet certain requirements to be accepted:
 	- Size: at most **500kb**
 	- Must be either **.jpg, .jpeg, .gif or .png**
