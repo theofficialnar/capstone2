@@ -53,6 +53,7 @@ if(isset($_GET['logOut'])){
 	unset($_SESSION['role']);
 	unset($_SESSION['loginFlag']);
 	unset($_SESSION['id']);
+	unset($_SESSION['dp']);
 	header('location: index.php');
 }
 

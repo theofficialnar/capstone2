@@ -52,6 +52,13 @@ if(isset($_POST['updateAcct'])){
 							file_name = '$newDP'
 							WHERE id = '$uid'";
 							mysqli_query($conn, $sql);
+							unset($_SESSION['dp']);
+							$sql = "SELECT * FROM users WHERE id = '$uid'";
+							$result = mysqli_query($conn, $sql);
+							while($row = mysqli_fetch_assoc($result)){
+								extract($row);
+								$_SESSION['dp'] = $display_photo;
+							};
 							echo '<script>
 								alert("Account details updated!");
 								window.location.replace("../my_account.php");
@@ -68,6 +75,13 @@ if(isset($_POST['updateAcct'])){
 							email = '$newEmail'
 							WHERE id = '$uid'";
 							mysqli_query($conn, $sql);
+							unset($_SESSION['dp']);
+							$sql = "SELECT * FROM users WHERE id = '$uid'";
+							$result = mysqli_query($conn, $sql);
+							while($row = mysqli_fetch_assoc($result)){
+								extract($row);
+								$_SESSION['dp'] = $display_photo;
+							};
 							echo '<script>
 								alert("Account details updated!");
 								window.location.replace("../my_account.php");
@@ -83,6 +97,13 @@ if(isset($_POST['updateAcct'])){
 								password = '$newPassword'
 								WHERE id = '$uid'";
 								mysqli_query($conn, $sql);
+								unset($_SESSION['dp']);
+								$sql = "SELECT * FROM users WHERE id = '$uid'";
+								$result = mysqli_query($conn, $sql);
+								while($row = mysqli_fetch_assoc($result)){
+									extract($row);
+									$_SESSION['dp'] = $display_photo;
+								};
 								echo '<script>
 									alert("Account details updated!");
 									window.location.replace("../my_account.php");
@@ -100,6 +121,13 @@ if(isset($_POST['updateAcct'])){
 								password = '$newPassword'
 								WHERE id = '$uid'";
 								mysqli_query($conn, $sql);
+								unset($_SESSION['dp']);
+								$sql = "SELECT * FROM users WHERE id = '$uid'";
+								$result = mysqli_query($conn, $sql);
+								while($row = mysqli_fetch_assoc($result)){
+									extract($row);
+									$_SESSION['dp'] = $display_photo;
+								};
 								echo '<script>
 									alert("Account details updated!");
 									window.location.replace("../my_account.php");
@@ -172,5 +200,6 @@ if(isset($_POST['updateAcct'])){
 			};
 		};
 	};
+
 };//isset end
 ?>
