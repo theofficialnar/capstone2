@@ -30,18 +30,9 @@ main {
 
 body {
 	background: #b6c2d9;
-	cursor: url('../images/arrow.png'), default;
 	display: flex;
     min-height: 100vh;
     flex-direction: column;
-}
-
-button,
-li,
-a,
-input,
-.collapsible-header {
-	cursor: url('../images/hand.cur'), default !important;
 }
 
 h1 {

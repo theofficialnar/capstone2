@@ -810,7 +810,7 @@ $('#build-comment-submit').click(function(){
 	var comment = document.getElementById('build_comment').value;
 	var build_id = document.getElementById('build_id').innerHTML;
 	var user_id = document.getElementById('user_id').innerHTML;
-	$.post('build_comment_ajax.php?bid='+build_id,
+	$.post('lib/build_comment_ajax.php?bid='+build_id,
 		{
 			comment: comment,
 			user_id: user_id
@@ -828,7 +828,7 @@ function modal_pass(id){
 //Build delete AJAX
 $('#deleteBuildYes').click(function(){
 	var build_id = document.getElementById('delIdReceiver').innerHTML;
-	$.post('build_delete_ajax.php?bid='+build_id,
+	$.post('lib/build_delete_ajax.php?bid='+build_id,
 	{
 
 	},
@@ -838,6 +838,33 @@ $('#deleteBuildYes').click(function(){
 		setTimeout(function(){
 			location.reload();
 		}, 0);
+	});
+});
+
+//Show comments AJAX
+$('#showMore').click(function(){
+	var build_id = document.getElementById('build_id').innerHTML;
+	$('#showLess').css("display", "block");
+	$('#showMore').css("display", "none");
+	$.post('lib/show_more_comments_ajax.php?bid='+build_id,
+	{
+
+	},
+	function(data,status){
+		$('#comment-section').html(data);
+	});
+});
+
+$('#showLess').click(function(){
+	var build_id = document.getElementById('build_id').innerHTML;
+	$('#showMore').css("display", "block");
+	$('#showLess').css("display", "none");
+	$.post('lib/show_less_comments_ajax.php?bid='+build_id,
+	{
+
+	},
+	function(data,status){
+		$('#comment-section').html(data);
 	});
 });
 

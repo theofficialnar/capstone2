@@ -78,7 +78,7 @@ function display_content(){
 					</div>';
 				};
 				echo '<div id="comment-section" class="margin-top">';
-				$sql = "SELECT bc.*,u.username,u.display_photo FROM build_comments bc JOIN builds b ON bc.build_id = b.id JOIN users u ON bc.commenter_id = u.id WHERE build_id = '$build_id' ORDER BY id DESC";
+				$sql = "SELECT bc.*,u.username,u.display_photo FROM build_comments bc JOIN builds b ON bc.build_id = b.id JOIN users u ON bc.commenter_id = u.id WHERE build_id = '$build_id' ORDER BY id DESC LIMIT 5";
 				$result = mysqli_query($conn, $sql);
 				while($row = mysqli_fetch_assoc($result)){
 					extract($row);
@@ -90,6 +90,17 @@ function display_content(){
 						<hr>
 					</div>';
 				};
+				echo '</div>
+				<div>';
+					$sql = "SELECT COUNT(*) comments FROM build_comments WHERE build_id = '$build_id'";
+					$result = mysqli_query($conn, $sql);
+					while($row = mysqli_fetch_assoc($result)){
+						extract($row);
+						if($comments >= 5){
+							echo '<button id="showMore">Show more</button>
+							<button id="showLess" style="display: none">Show less</button>';
+						};
+					};
 				echo '</div>
 			</div>
 		</div>

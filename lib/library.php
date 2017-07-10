@@ -118,6 +118,4 @@ if(isset($_POST['updateBuild'])){
 		header('location: my_builds.php');
 	};
 };
-
 ?>
-
