@@ -24,10 +24,10 @@ Welcome to my second capstone website. The website is designed to help fellow Ra
 - If you're looking to get informed on the latest buzz in the Ragnarok world, feel free to drop by the front page as we frequently update it with the latest news in everything RO!
 
 ### Roadmap
-[] Add a delete comment option in build view
-[] Create a generate reports option in skill sim
-[] Replace drowndowns in Skill db and sim with the exact character sprites
-[] Add map database
+- [ ] Add a delete comment option in build view
+- [ ] Create a generate reports option in skill sim
+- [ ] Replace drowndowns in Skill db and sim with the exact character sprites
+- [ ] Add map database
 
 ### Admin superpowers
 Test the admin superpowers by logging in with:
