@@ -159,6 +159,10 @@ button[id^="min"]{
 	font-style: italic;
 }
 
+.builds-button {
+	padding-bottom: 15px;
+}
+
 .header-padding {
 	padding: 20px;
 }
