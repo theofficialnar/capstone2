@@ -923,13 +923,18 @@ $('#cbSubmit').click(function(){
 	$('.cb_textarea').val('');
 	$('.chat_data').stop().animate({ scrollTop: $('.chat_data')[0].scrollHeight}, 500);
 });
-
+	
 function chatLog(){
 	$.post('lib/chat_log.php',
 	{
 
 	},function(data,status){
+		var osh = $('.chat_data')[0].scrollHeight;
 		$('.chat_data').html(data);
+		var nosh = $('.chat_data')[0].scrollHeight;
+		if(nosh > osh){
+			$('.chat_data').stop().animate({ scrollTop: $('.chat_data')[0].scrollHeight}, 500);
+		}
 	});
 };
 

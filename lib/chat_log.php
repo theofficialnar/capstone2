@@ -1,6 +1,6 @@
 <?php
 	require_once 'connection.php';
-	$sql = "SELECT c.*,u.username,u.id FROM chats c JOIN users u ON c.user_id = u.id ORDER by c.date ASC";
+	$sql = "SELECT * FROM (SELECT c.user_id,c.msg,c.date,u.username,u.id FROM chats c JOIN users u ON c.user_id = u.id ORDER BY c.date DESC LIMIT 20) AS cu ORDER BY date ASC";
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);

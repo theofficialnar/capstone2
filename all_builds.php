@@ -41,9 +41,9 @@ function display_content(){
 		while($row = mysqli_fetch_assoc($result)){
 			extract($row);
 			if($builds > 6){
-				echo '<div class="builds-button">
-					<button id="buildsShowMore" class="btn btn-blue">Show more</button>
-					<button id="buildsShowLess" style="display: none" class="btn btn-blue">Show less</button>
+				echo '<div class="builds-button center-align">
+					<a id="buildsShowMore" class="btn btn-blue">Show more</a>
+					<a id="buildsShowLess" style="display: none" class="btn btn-blue">Show less</a>
 				</div>';
 			}
 		};

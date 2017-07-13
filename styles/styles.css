@@ -164,6 +164,11 @@ button[id^="min"]{
 	padding-bottom: 15px;
 }
 
+#buildsShowMore,
+#buildsShowLess {
+	width: 100%;
+}
+
 .header-padding {
 	padding: 20px;
 }
