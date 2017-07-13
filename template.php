@@ -36,6 +36,7 @@
 
 	<?php
 	require_once 'partials/footer.php';
+	require_once 'partials/chat_box.php';
 	require_once 'partials/login.php';
 	?>
 

@@ -33,6 +33,7 @@ body {
 	display: flex;
     min-height: 100vh;
     flex-direction: column;
+    position: relative;
 }
 
 h1 {
@@ -236,6 +237,70 @@ button[id^="min"]{
 
 .headline {
 	font-family: 'LuckiestGuy', cursive;
+}
+
+.cb_modal {
+	position: fixed;
+	z-index: 9999;
+	right: -400px;
+	bottom: 0;
+	height: 400px;
+	width: 400px;
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-radius: 5px 0 0 0;
+	background: white;
+	padding: 0 10px 0;
+}
+.close_container {
+	height: 35px;
+}
+
+.cbClose {
+	color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cbClose:hover,
+.cbClose:focus {
+	color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chat_data {
+	border: 1px solid black;
+	height: 270px;
+	padding: 5px;
+	/*overflow: auto;*/
+}
+
+.chat_name {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.chat_msg {
+	font-size: 11px;
+}
+
+.btn-full-width {
+	width: 100%;
+}
+
+.chat_input {
+	padding-top: 5px;
+}
+
+#cbTrigger {
+	transform: scale(1);
+	transition: all 500ms;
+}
+
+#cbTrigger.cbAnimate {
+	transform: scale(0);
 }
 
 /*Materialize CSS overrides*/

@@ -894,6 +894,24 @@ $('#buildsShowLess').click(function(){
 	});
 });
 
+//Chat Room
+$('#cbTrigger').click(function(){
+	$('#chatBox').animate({right: '0'});
+	$('#cbTrigger').addClass('cbAnimate');
+});
+
+$('.cbClose').click(function(){
+	$('#chatBox').animate({right: '-400px'});
+	$('#cbTrigger').removeClass('cbAnimate');
+});
+
+$('#cb_login').click(function(){
+	$('#chatBox').animate({right: '-400px'});
+	$('#cbTrigger').removeClass('cbAnimate');
+});
+
+
+
 // $('.card').hover(function(){
 // 	$('.buildCards').removeClass('z-depth-5');
 // 	$('.buildCards').addClass('z-depth-1');
