@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 09, 2017 at 11:02 AM
+-- Generation Time: Jul 13, 2017 at 10:29 AM
 -- Server version: 10.1.21-MariaDB
--- PHP Version: 5.6.30
+-- PHP Version: 7.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -41,8 +41,11 @@ CREATE TABLE `builds` (
 INSERT INTO `builds` (`id`, `acct_id`, `build_name`, `build_description`, `build_date`) VALUES
 (11, 5, 'Git Gud!', 'The ultimate #GitGud guide as a mage.', '2017-07-04'),
 (19, 1, 'Dodging Bullets All Day', 'Just when you think you can\'t get more dodge. #miss anyone?', '2017-07-04'),
-(20, 1, 'Vendor v1.0', 'Saving a build for a pure money making merchant.', '2017-07-06'),
-(21, 7, 'Prototype Archer', 'An up and coming hunter. Work in progress.', '2017-07-06');
+(21, 7, 'Prototype Archer', 'An up and coming hunter. Work in progress.', '2017-07-06'),
+(22, 1, 'test', 'test', '2017-07-10'),
+(23, 13, 'test', 'test', '2017-07-10'),
+(24, 11, 'Super Novice', 'Well, we all start from somewhere', '2017-07-10'),
+(25, 11, 'Boss Hunter v5.2a', 'Hunting bosses is like eating breakfast... smooth and easy.', '2017-07-10');
 
 -- --------------------------------------------------------
 
@@ -77,11 +80,62 @@ INSERT INTO `build_comments` (`id`, `comment`, `build_id`, `commenter_id`, `comm
 (23, '123', 19, 1, '2017-07-06'),
 (24, 'new comment', 19, 1, '2017-07-06'),
 (25, 'dsfd', NULL, 1, '2017-07-06'),
-(26, 'Something new, eh? /gg', 20, 5, '2017-07-06'),
+(26, 'Something new, eh? /gg', NULL, 5, '2017-07-06'),
 (27, 'asdasd', 19, 1, '2017-07-07'),
 (28, '111111111111111111111', 19, 1, '2017-07-07'),
 (29, '111111111111111111111', 19, 1, '2017-07-07'),
-(30, 'amazing! /no1', 21, 10, '2017-07-08');
+(30, 'amazing! /no1', 21, 10, '2017-07-08'),
+(31, 'testing. leaving a comment.', 21, 1, '2017-07-10'),
+(32, 'astig!', 21, 1, '2017-07-10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chats`
+--
+
+CREATE TABLE `chats` (
+  `id` int(10) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `msg` varchar(255) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `chats`
+--
+
+INSERT INTO `chats` (`id`, `user_id`, `msg`, `date`) VALUES
+(12, 1, 'test', '2017-07-13 03:20:01'),
+(13, 1, 'test', '2017-07-13 03:21:43'),
+(14, 13, 'Hello, world!', '2017-07-13 03:29:51'),
+(15, 13, 'sup?', '2017-07-13 03:32:16'),
+(16, 1, 'Hey hey', '2017-07-13 03:32:24'),
+(17, 1, 'hello', '2017-07-13 04:24:48'),
+(18, 13, 'ui', '2017-07-13 04:25:41'),
+(19, 13, 'test', '2017-07-13 04:25:57'),
+(20, 13, 'hello', '2017-07-13 04:27:29'),
+(21, 13, 'asdasd', '2017-07-13 04:28:06'),
+(22, 13, 'o', '2017-07-13 04:28:42'),
+(23, 1, 'hello', '2017-07-13 04:33:40'),
+(24, 13, 'i', '2017-07-13 04:35:05'),
+(25, 13, 'asdasd', '2017-07-13 04:37:45'),
+(26, 1, '123', '2017-07-13 04:38:54'),
+(27, 1, '123123', '2017-07-13 04:39:01'),
+(28, 1, 'dddddd', '2017-07-13 04:39:23'),
+(29, 1, 'r', '2017-07-13 04:41:02'),
+(30, 1, 'asdas', '2017-07-13 04:47:09'),
+(31, 1, 'asdsad', '2017-07-13 04:48:07'),
+(32, 11, 'hey there mate!', '2017-07-13 06:00:16'),
+(33, 11, 'hello there!', '2017-07-13 06:32:56'),
+(34, 1, 'Hey they my man!', '2017-07-13 06:34:51'),
+(35, 11, 'Hello, friend!', '2017-07-13 06:40:45'),
+(36, 1, 'yes', '2017-07-13 06:43:49'),
+(37, 1, 'a', '2017-07-13 06:44:49'),
+(38, 11, 'pssssttt', '2017-07-13 06:53:17'),
+(39, 1, 'Heeelllloooooo!!!!!!', '2017-07-13 06:53:39'),
+(40, 11, 'Kain na!', '2017-07-13 06:54:04'),
+(41, 1, 'Heelllo', '2017-07-13 06:54:31');
 
 -- --------------------------------------------------------
 
@@ -247,35 +301,50 @@ INSERT INTO `skill_sims` (`id`, `skill_id`, `level`, `build_id`, `pts_left`) VAL
 (26, 25, 0, 11, 4),
 (27, 26, 0, 11, 4),
 (28, 27, 1, 11, 4),
-(107, 62, 6, 19, 27),
-(108, 63, 10, 19, 27),
-(109, 64, 6, 19, 27),
-(110, 65, 0, 19, 27),
-(111, 66, 0, 19, 27),
-(112, 67, 0, 19, 27),
-(113, 68, 1, 19, 27),
-(114, 69, 1, 19, 27),
-(115, 70, 1, 19, 27),
-(116, 71, 1, 19, 27),
-(117, 50, 10, 20, 0),
-(118, 51, 10, 20, 0),
-(119, 52, 10, 20, 0),
-(120, 53, 10, 20, 0),
-(121, 54, 0, 20, 0),
-(122, 55, 8, 20, 0),
-(123, 56, 0, 20, 0),
-(124, 57, 1, 20, 0),
-(125, 58, 1, 20, 0),
-(126, 59, 1, 20, 0),
-(127, 60, 1, 20, 0),
-(128, 61, 1, 20, 0),
+(107, 62, 6, 19, 13),
+(108, 63, 10, 19, 13),
+(109, 64, 10, 19, 13),
+(110, 65, 10, 19, 13),
+(111, 66, 0, 19, 13),
+(112, 67, 0, 19, 13),
+(113, 68, 1, 19, 13),
+(114, 69, 1, 19, 13),
+(115, 70, 1, 19, 13),
+(116, 71, 1, 19, 13),
 (129, 28, 10, 21, 0),
 (130, 29, 10, 21, 0),
 (131, 30, 10, 21, 0),
 (132, 31, 10, 21, 0),
 (133, 32, 9, 21, 0),
 (134, 33, 1, 21, 0),
-(135, 34, 1, 21, 0);
+(135, 34, 1, 21, 0),
+(136, 28, 10, 22, 0),
+(137, 29, 10, 22, 0),
+(138, 30, 9, 22, 0),
+(139, 31, 10, 22, 0),
+(140, 32, 10, 22, 0),
+(141, 33, 1, 22, 0),
+(142, 34, 1, 22, 0),
+(143, 4, 10, 23, 29),
+(144, 5, 10, 23, 29),
+(145, 6, 0, 23, 29),
+(146, 7, 0, 23, 29),
+(147, 8, 0, 23, 29),
+(148, 9, 0, 23, 29),
+(149, 10, 0, 23, 29),
+(150, 11, 1, 23, 29),
+(151, 12, 1, 23, 29),
+(152, 13, 1, 23, 29),
+(153, 1, 9, 24, 40),
+(154, 2, 1, 24, 40),
+(155, 3, 1, 24, 40),
+(156, 28, 10, 25, 29),
+(157, 29, 0, 25, 29),
+(158, 30, 0, 25, 29),
+(159, 31, 10, 25, 29),
+(160, 32, 0, 25, 29),
+(161, 33, 1, 25, 29),
+(162, 34, 1, 25, 29);
 
 -- --------------------------------------------------------
 
@@ -298,13 +367,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `role`, `display_photo`, `file_name`) VALUES
-(1, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'newadminemail@s.com', 'admin', 'uploads/hp.jpg', 'hp.jpg'),
+(1, 'admin', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'admin@admin.com', 'admin', 'uploads/hp.jpg', 'hp.jpg'),
 (5, 'test', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'new@admin.com', 'regular', 'uploads/RagnarokStalker.jpg', 'RagnarokStalker.jpg'),
 (6, 'ghghgh', '85a12e6849725369722ceebce2c904eabe016e20', 'new@admin.com', 'regular', 'images/user_default.png', 'user_default.png'),
-(7, 'some_old_noob', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'test', 'regular', 'uploads/BlacksmithCute.jpg', 'BlacksmithCute.jpg'),
+(7, 'some_old_noob', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'test@test.gov', 'regular', 'uploads/BlacksmithCute.jpg', 'BlacksmithCute.jpg'),
 (10, 'some_guy', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'some_guy@cooldomain.com', 'regular', 'images/user_default.png', ''),
 (11, 'master_smith19', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'master@mastersmith.com', 'regular', 'images/user_default.png', ''),
-(13, 'some_guy1', '3da541559918a808c2402bba5012f6c60b27661c', 'some_guy@cooldomain.com', 'regular', 'images/user_default.png', '');
+(13, 'some_guy1', '3da541559918a808c2402bba5012f6c60b27661c', 'some_guy@cooldomain.com', 'regular', 'uploads/download.jpg', 'download.jpg');
 
 --
 -- Indexes for dumped tables
@@ -324,6 +393,13 @@ ALTER TABLE `build_comments`
   ADD PRIMARY KEY (`id`),
   ADD KEY `build_id` (`build_id`),
   ADD KEY `commenter_id` (`commenter_id`);
+
+--
+-- Indexes for table `chats`
+--
+ALTER TABLE `chats`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `classes`
@@ -368,12 +444,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `builds`
 --
 ALTER TABLE `builds`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `build_comments`
 --
 ALTER TABLE `build_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+--
+-- AUTO_INCREMENT for table `chats`
+--
+ALTER TABLE `chats`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `ratings`
 --
@@ -388,7 +469,7 @@ ALTER TABLE `skills`
 -- AUTO_INCREMENT for table `skill_sims`
 --
 ALTER TABLE `skill_sims`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -410,6 +491,12 @@ ALTER TABLE `builds`
 ALTER TABLE `build_comments`
   ADD CONSTRAINT `build_comments_ibfk_1` FOREIGN KEY (`build_id`) REFERENCES `builds` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `build_comments_ibfk_2` FOREIGN KEY (`commenter_id`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
+
+--
+-- Constraints for table `chats`
+--
+ALTER TABLE `chats`
+  ADD CONSTRAINT `chats_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ratings`

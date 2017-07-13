@@ -1,6 +1,7 @@
 $(".button-collapse").sideNav();
 
 $(document).ready(function(){
+		$('.preloader').css('display','none');
 		$('select').material_select();
 		$('.modal').modal();
 		$('.collapsible').collapsible();
