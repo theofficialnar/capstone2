@@ -249,7 +249,7 @@ button[id^="min"]{
 	border-left: 1px solid black;
 	border-top: 1px solid black;
 	border-radius: 5px 0 0 0;
-	background: white;
+	background: #eceff1;
 	padding: 0 10px 0;
 }
 .close_container {
@@ -261,11 +261,12 @@ button[id^="min"]{
     float: right;
     font-size: 28px;
     font-weight: bold;
+    height: 35px;
 }
 
 .cbClose:hover,
 .cbClose:focus {
-	color: black;
+	color: #4d7ea8;
     text-decoration: none;
     cursor: pointer;
 }
@@ -274,7 +275,12 @@ button[id^="min"]{
 	border: 1px solid black;
 	height: 270px;
 	padding: 5px;
-	/*overflow: auto;*/
+	overflow: auto;
+	width: 380px;
+	background-color: white;
+	border: 1px solid #e3e3e3;
+  	border-radius: 4px;
+	box-shadow: inset 0px 0px 30px -6px rgba(86,91,102,0.75);
 }
 
 .chat_name {

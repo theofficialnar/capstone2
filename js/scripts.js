@@ -898,6 +898,7 @@ $('#buildsShowLess').click(function(){
 $('#cbTrigger').click(function(){
 	$('#chatBox').animate({right: '0'});
 	$('#cbTrigger').addClass('cbAnimate');
+	$('.chat_data').stop().animate({ scrollTop: $('.chat_data')[0].scrollHeight}, 500);
 });
 
 $('.cbClose').click(function(){
@@ -910,18 +911,26 @@ $('#cb_login').click(function(){
 	$('#cbTrigger').removeClass('cbAnimate');
 });
 
+$('#cbSubmit').click(function(){
+	var uid = $('#cb_uid').html();
+	var msg = $('.cb_textarea').val();
+	$.post('lib/chat_box_ajax.php?uid='+uid,
+	{
+		msg: msg
+	}, function(data,status){
+		$('.chat_data').append(data);
+	});
+	$('.cb_textarea').val('');
+	$('.chat_data').stop().animate({ scrollTop: $('.chat_data')[0].scrollHeight}, 500);
+});
 
+function chatLog(){
+	$.post('lib/chat_log.php',
+	{
 
-// $('.card').hover(function(){
-// 	$('.buildCards').removeClass('z-depth-5');
-// 	$('.buildCards').addClass('z-depth-1');
-// 	}, function(){
-// 	$('.buildCards').addClass('z-depth-5');
-// 	$('.buildCards').removeClass('z-depth-1');
-// });
+	},function(data,status){
+		$('.chat_data').html(data);
+	});
+};
 
-// $('.build-update-btn').hover(function(){
-// 	$(this).html('<i class="material-icons">mode_edit</i>');
-// 	}, function(){
-// 	$(this).html('Update');
-// });
+setInterval(chatLog, 2000);
