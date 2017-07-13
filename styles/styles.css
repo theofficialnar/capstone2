@@ -246,14 +246,27 @@ button[id^="min"]{
 	bottom: 0;
 	height: 400px;
 	width: 400px;
-	border-left: 1px solid black;
-	border-top: 1px solid black;
+	border-left: 1px solid #e3e3e3;
+	border-top: 1px solid #e3e3e3;
 	border-radius: 5px 0 0 0;
 	background: #eceff1;
 	padding: 0 10px 0;
 }
 .close_container {
 	height: 35px;
+}
+
+.cb_textarea {
+	resize: none;
+	background-color: white;
+	border: 1px solid #e3e3e3;
+  	border-radius: 4px;
+	box-shadow: inset 0px 0px 20px -6px rgba(86,91,102,0.75);
+}
+
+.cb_textarea:focus {
+	outline: none;
+	box-shadow: 0px 0px 16px 0px rgba(77,126,168,0.75);
 }
 
 .cbClose {
@@ -272,7 +285,6 @@ button[id^="min"]{
 }
 
 .chat_data {
-	border: 1px solid black;
 	height: 270px;
 	padding: 5px;
 	overflow: auto;
@@ -286,6 +298,7 @@ button[id^="min"]{
 .chat_name {
 	font-size: 13px;
 	font-weight: bold;
+	color: #4d7ea8;
 }
 
 .chat_msg {

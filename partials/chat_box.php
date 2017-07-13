@@ -15,7 +15,7 @@ echo '<div class="fixed-action-btn">
 		<div class="chat_data"></div>';
 		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
 		echo '<div class="chat_input">
-			<textarea name="msg" placeholder="Say something..." class="cb_textarea"></textarea>
+			<textarea name="msg" placeholder="Say something..." class="cb_textarea" maxlength="255"></textarea>
 			<button id="cbSubmit" class="btn btn-blue btn-full-width">Send</button>
 			<span style="display: none" id="cb_uid">'.$user_id.'</span>
 		</div>';
