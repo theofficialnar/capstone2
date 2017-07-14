@@ -18,13 +18,13 @@ function display_content(){
 	$result = mysqli_query($conn, $sql);
 	while($row = mysqli_fetch_assoc($result)){
 		extract($row);
-		echo "<a href='build.php?build_id=$id'>";
+		echo "<a href='build.php?build_id=$id' style='color: inherit'>";
 			echo '<div class="card indigo lighten-3 z-depth-5">
-				<div class="card-content black-text">
+				<div class="card-content">
 					<img src="'.$class_icon.'" class="left responsive-img" style="padding-right: 15px">
-					<span class="card-title"><b>'.strtoupper($build_name).'</b></span><hr>
-					<p class="build-date">'.$build_date.'</p>
-					<p>'.ucfirst($build_description).'</p>
+					<span class="card-title black-text"><b>'.strtoupper($build_name).'</b></span><hr>
+					<p class="build-date black-text">'.$build_date.'</p>
+					<p class="black-text">'.ucfirst($build_description).'</p>
 				</div>
 				<div class="card-action center-align">';
 					echo "<a href='build_update.php?build_id=$id' class='waves-effect waves-teal btn blue-grey lighten-5 black-text btn-hover-scale btn-margin'><i class='material-icons'>edit</i></a>

@@ -1,5 +1,4 @@
 <?php
-$user_id = $_SESSION['id'];
 
 echo '<div class="fixed-action-btn">
 	<a class="btn-floating btn-large blue pulse" id="cbTrigger">
@@ -14,6 +13,7 @@ echo '<div class="fixed-action-btn">
 		</div>
 		<div class="chat_data"></div>';
 		if(isset($_SESSION['loginFlag']) && $_SESSION['loginFlag'] == true){
+		$user_id = $_SESSION['id'];
 		echo '<div class="chat_input">
 			<textarea name="msg" placeholder="Say something..." class="cb_textarea" maxlength="255"></textarea>
 			<button id="cbSubmit" class="btn btn-blue btn-full-width">Send</button>

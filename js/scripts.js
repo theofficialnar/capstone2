@@ -819,7 +819,8 @@ $('#build-comment-submit').click(function(){
 		},
 		function(data,status){
 			// alert(data)
-			$('#comment-section').prepend(data)
+			$('#comment-section').prepend(data);
+			$('#build_comment').val('');
 		});
 });
 
@@ -844,6 +845,7 @@ $('#deleteBuildYes').click(function(){
 });
 
 //Show comments AJAX
+var oldcH = $('#comment-section').height();
 $('#showMore').click(function(){
 	var build_id = document.getElementById('build_id').innerHTML;
 	$('#showLess').css("display", "block");
@@ -854,6 +856,9 @@ $('#showMore').click(function(){
 	},
 	function(data,status){
 		$('#comment-section').html(data);
+		var newcH = $('#comment-section').height();
+		$('#comment-section').height(oldcH);
+		$('#comment-section').animate({height: newcH}, 'fast')
 	});
 });
 
@@ -867,10 +872,14 @@ $('#showLess').click(function(){
 	},
 	function(data,status){
 		$('#comment-section').html(data);
+		$('#comment-section').animate({height: oldcH}, 'fast', function(){
+			$('#comment-section').height('auto');
+		})
 	});
 });
 
 //Show builds AJAX
+var oldH = $('#builds-section').height();
 $('#buildsShowMore').click(function(){
 	$('#buildsShowMore').css("display", "none");
 	$('#buildsShowLess').css("display", "block");
@@ -880,6 +889,9 @@ $('#buildsShowMore').click(function(){
 	},
 	function(data,status){
 		$('#builds-section').html(data);
+		var newH = $('#builds-section').height();
+		$('#builds-section').height(oldH);
+		$('#builds-section').animate({height: newH}, 'fast')
 	});
 });
 
@@ -892,6 +904,9 @@ $('#buildsShowLess').click(function(){
 	},
 	function(data,status){
 		$('#builds-section').html(data);
+		$('#builds-section').animate({height: oldH}, 'fast', function(){
+			$('#builds-section').height('auto');
+		})
 	});
 });
 
@@ -940,3 +955,14 @@ function chatLog(){
 };
 
 setInterval(chatLog, 2000);
+
+//Set Navbar links to active
+$(function(){
+	var path = $(location).attr('pathname');
+	$('a').each(function(){
+		if ("/" + $(this).attr('href') == path){
+			$(this).addClass('activeLink-text');
+			$(this).parents('li').addClass('activeLink');
+		}
+	});
+});

@@ -380,6 +380,10 @@ input[type=password]:focus:not([readonly])+label {
 	margin-bottom: 0;
 }
 
+.side-nav li > a:hover {
+	background: rgba(77, 126, 168, 0.3);
+}
+
 .preloader {
 	position: fixed;
 	background: white;
@@ -393,4 +397,12 @@ input[type=password]:focus:not([readonly])+label {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+.activeLink {
+	background: #82b1ff;
+}
+
+.activeLink-text {
+	color: white !important;
 }
